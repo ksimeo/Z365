@@ -1,0 +1,10 @@
+.main {
+    background-color: #E0FFFF;
+    color: #154e15;
+    text-align: center;
+}
+
+.error {
+    background-color: #ffd3d3;
+    text-align: center;
+}
