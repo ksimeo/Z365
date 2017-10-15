@@ -27,12 +27,11 @@ public class VisitorController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String enterUserForm(UserInfo model, HttpServletRequest req) {
+    public String enterUserForm(UserInfo model, HttpServletRequest req, HttpSession session) {
         String res;
         if ((res = checkPoint1(req)) != null) return res;
         logger.info("User has entered name: {}, surname: {}, email: {}, region: {}", model.getName(), model.getSurname(),
                 model.getEmail(), model.getRegion());
-        HttpSession session = req.getSession();
         session.setAttribute("user", model);
         return "redirect:/fork1";
     }

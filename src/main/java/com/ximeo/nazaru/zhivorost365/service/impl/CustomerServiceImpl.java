@@ -1,31 +1,39 @@
 package com.ximeo.nazaru.zhivorost365.service.impl;
 
+import com.google.common.collect.Lists;
+import com.ximeo.nazaru.zhivorost365.dao.CustomerRepository;
 import com.ximeo.nazaru.zhivorost365.domain.models.Customer;
 import com.ximeo.nazaru.zhivorost365.service.CustomerService;
-import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-@Service
+import java.util.List;
+
+//@Service
+// ("custServ")
 //@Repository
 //@Transactional
 public class CustomerServiceImpl implements CustomerService {
 
-//    private CustomerRepository custRepo;
+    private CustomerRepository custDAO;
 
     @Override
-    public boolean isExsist(String phone) {
-        if (phone.equals("+380938181491")) return true;
-        return false;
-    }
-
-    @Override
+    @Transactional(readOnly = true)
     public Customer getById(String phone) {
-//        custRepo.findOne(phone);
-        if (("+380938181491").equals(phone)) return new Customer("+380938181491", "Максим", "Федоренко");
-        return null;
+        return custDAO.findOne(phone);
     }
 
-//    @Resource
-//    public void setCustRepo(CustomerRepository custRepo) {
-//        this.custRepo = custRepo;
-//    }
+    @Override
+    @Transactional(readOnly = true)
+    public List<Customer> getAll() {
+        return Lists.newArrayList(custDAO.findAll());
+    }
+
+    @Override
+    public void delCustomer(String phone) {
+        custDAO.delete(phone);
+    }
+
+    public void setCustDAO(CustomerRepository custDAO) {
+        this.custDAO = custDAO;
+    }
 }

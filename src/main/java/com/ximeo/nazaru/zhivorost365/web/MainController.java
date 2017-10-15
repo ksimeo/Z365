@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.Cookie;
@@ -22,21 +23,19 @@ public class MainController {
     private CustomerService custServ;
 
     @RequestMapping({"/", "/index"})
-    public String showStartPage(HttpServletRequest req, Model uiModel) {
+    public String showStartPage(HttpServletRequest req, Model uiModel,
+                                @CookieValue(value = "parth1", required = false) Cookie cookieParth1,
+                                @CookieValue(value = "parth2", required = false) Cookie cookieParth2,
+                                @CookieValue(value = "parth3", required = false) Cookie cookieParth3,
+                                @CookieValue(value = "parth4", required = false) Cookie cookieParth4
+                                ) {
         logger.info("showStartPage(): user with IP {} has entered on start page.", req.getHeader("host"));
-        Cookie[] cookies = req.getCookies();
         PhoneInfo phoneform = new PhoneInfo();
-        if (cookies != null && cookies.length != 0) {
-            String parth1 = null;
-            String parth2 = null;
-            String parth3 = null;
-            String parth4 = null;
-            for (Cookie cookie : cookies) {
-                if(cookie.getName().equals("parth1")) parth1 = cookie.getValue();
-                if(cookie.getName().equals("parth2")) parth2 = cookie.getValue();
-                if(cookie.getName().equals("parth3")) parth3 = cookie.getValue();
-                if(cookie.getName().equals("parth4")) parth4 = cookie.getValue();
-            }
+        if (cookieParth1 != null && cookieParth2 != null && cookieParth3 != null && cookieParth4 != null) {
+            String parth1 = cookieParth1.getValue();
+            String parth2 = cookieParth2.getValue();
+            String parth3 = cookieParth3.getValue();
+            String parth4 = cookieParth4.getValue();
             phoneform.setParth1(parth1);
             phoneform.setParth2(parth2);
             phoneform.setParth3(parth3);

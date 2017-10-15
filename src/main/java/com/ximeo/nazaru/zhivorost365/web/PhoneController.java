@@ -43,10 +43,11 @@ public class PhoneController {
         Customer cust = custServ.getById(phone);
         if (cust != null) {
             session.setAttribute("customer", cust);
-            logger.info("The visitor has been recognised as a familiar customer.");
+            logger.info("showResultPage(): The visitor has been recognised as a identified customer.");
             return "public/fork1";
         }
-        logger.info("The user has been recognised as a new customer.");
+        session.setAttribute("phone", phone);
+        logger.info("showResultPage(): The visitor has been recognised as a new customer.");
         return "redirect:/userform";
     }
 
