@@ -18,6 +18,10 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class MainController {
 
+    {
+        System.setProperty("file.encoding", "utf-8");
+    }
+
     private final static Logger logger = LoggerFactory.getLogger(MainController.class);
 
     private CustomerService custServ;

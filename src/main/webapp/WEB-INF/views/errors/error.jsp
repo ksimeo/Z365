@@ -13,7 +13,7 @@
         <link rel="shortcut icon" type="image/x-icon" href="../../../resources/img/ico/favicon.ico"/>
     </head>
     <body class="error">
-        <h2>Something has gone wrong!</h2>
+        <h2>Something went wrong!</h2>
         <hr/>
     </body>
 </html>

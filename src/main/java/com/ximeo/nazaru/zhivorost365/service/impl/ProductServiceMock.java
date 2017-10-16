@@ -2,12 +2,11 @@ package com.ximeo.nazaru.zhivorost365.service.impl;
 
 import com.ximeo.nazaru.zhivorost365.domain.models.Product;
 import com.ximeo.nazaru.zhivorost365.service.ProductService;
-import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Service
+//@Service
 public class ProductServiceMock implements ProductService {
     public List<Product> products;
 

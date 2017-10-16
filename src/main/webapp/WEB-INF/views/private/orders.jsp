@@ -43,7 +43,7 @@
     <c:forEach var="order" items="${orders}">
       <tr>
         <td>${order.id}</td>
-        <td><fmt:formatDate pattern="dd.MM.yy HH:mm" value="${order.createTime}"/></td>
+        <td><fmt:formatDate pattern="dd.MM.yy HH:mm" value="${order.createDate}"/></td>
         <td><c:if test="${not empty order.customer.name}">${order.customer.name}</c:if></td>
         <td><c:if test="${not empty order.customer.surname}">${order.customer.surname}</c:if></td>
         <td>${order.customer.phoneNumber}</td>

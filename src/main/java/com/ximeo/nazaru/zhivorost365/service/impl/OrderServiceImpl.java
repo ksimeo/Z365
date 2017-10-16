@@ -7,14 +7,15 @@ import com.ximeo.nazaru.zhivorost365.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-//@Service
-// ("ordServ")
-//@Repository
-//@Transactional
+@Service("ordServ")
+@Repository
+@Transactional
 public class OrderServiceImpl implements OrderService {
 
     private OrderRepository ordDAO;

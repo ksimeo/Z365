@@ -27,7 +27,7 @@
 
 <body class="main">
 <div class="container">
-    <spring:url value="/order" var="userActionUrl" />
+    <spring:url value="/admin" var="userActionUrl" />
 
     <h3>Заказы поступившие на данный момент</h3>
 
@@ -51,7 +51,7 @@
                 <c:forEach var="order" items="${orders}">
                     <tr>
                         <td>${order.id}</td>
-                        <td><fmt:formatDate pattern="dd.MM.yy HH:mm" value="${order.createTime}"/></td>
+                        <td><fmt:formatDate pattern="dd.MM.yy HH:mm" value="${order.createDate}"/></td>
                         <td>
                             <c:if test="${not empty order.customer.name}">${order.customer.name}</c:if>
                             <c:if test="${empty order.customer.name}">Не указано</c:if>
@@ -68,7 +68,7 @@
                         <td>${order.product.name}</td>
                         <td>${order.amount}</td>
                         <td>&nbsp; x &nbsp;</td>
-                        <td>${order.product.units}</td>
+                        <td>${order.product.units.name}</td>
                     </tr>
                 </c:forEach>
             </tbody>

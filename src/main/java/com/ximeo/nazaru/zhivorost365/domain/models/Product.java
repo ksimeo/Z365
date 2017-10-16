@@ -2,20 +2,20 @@ package com.ximeo.nazaru.zhivorost365.domain.models;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.math.BigDecimal;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
-//@Entity
-//@Table(name = "products")
+@Entity
+@Table(name = "product")
 public class Product implements Serializable {
     private static final long serialVersionUID = -5579174309345318350L;
 
     private Long id;
     private String name;
-    private BigDecimal price;
+    private float price;
     private CurrencyType currency;
     private MeasureUnit units;
-    private List<Order> orders;
+    private Set<Order> orders = new HashSet<>();
     private boolean actual;
 
     private int version;
@@ -30,22 +30,26 @@ public class Product implements Serializable {
         this.units = MeasureUnit.CANISTER;
     }
 
-    public Product(Long id, String name, BigDecimal price, boolean actual) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
-        this.actual = actual;
-    }
+//    public Product(Long id, String name, BigDecimal price, boolean actual) {
+//        this.id = id;
+//        this.name = name;
+//        this.price = price;
+//        this.actual = actual;
+//    }
 
-    public Product(String name, BigDecimal price, CurrencyType currency, MeasureUnit units) {
+
+    public Product(String name, float price, CurrencyType currency, MeasureUnit units, boolean actual, int version) {
         this.name = name;
         this.price = price;
         this.currency = currency;
         this.units = units;
+        this.actual = actual;
+        this.version = version;
     }
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
     public Long getId() {
         return id;
     }
@@ -54,7 +58,7 @@ public class Product implements Serializable {
         this.id = id;
     }
 
-    @Column
+    @Column(name = "NAME")
     public String getName() {
         return name;
     }
@@ -63,16 +67,16 @@ public class Product implements Serializable {
         this.name = name;
     }
 
-    @Column
-    public BigDecimal getPrice() {
+    @Column(name = "PRICE")
+    public float getPrice() {
         return price;
     }
 
-    public void setPrice(BigDecimal price) {
+    public void setPrice(float price) {
         this.price = price;
     }
 
-    @Column
+    @Column(name = "CURRENCY_TYPE")
     public CurrencyType getCurrency() {
         return currency;
     }
@@ -81,7 +85,7 @@ public class Product implements Serializable {
         this.currency = currency;
     }
 
-    @Column(name = "measure_units")
+    @Column(name = "MEASURE_UNITS")
     public MeasureUnit getUnits() {
         return units;
     }
@@ -99,17 +103,25 @@ public class Product implements Serializable {
         this.version = version;
     }
 
-    @OneToMany(mappedBy = "product")
-    @Column
-    public List<Order> getOrders() {
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    public Set<Order> getOrders() {
         return orders;
     }
 
-    public void setOrders(List<Order> orders) {
+    public void setOrders(Set<Order> orders) {
         this.orders = orders;
     }
 
-    @Column
+    public void addOrder(Order order) {
+        order.setProduct(this);
+        getOrders().add(order);
+    }
+
+    public void removeOrder(Order order) {
+        getOrders().remove(order);
+    }
+
+    @Column(name = "IS_ACTUAL")
     public boolean isActual() {
         return actual;
     }

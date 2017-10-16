@@ -6,12 +6,11 @@ import com.ximeo.nazaru.zhivorost365.domain.models.Product;
 import com.ximeo.nazaru.zhivorost365.service.OrderService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Service
+//@Service
 public class OrderServiceMock implements OrderService {
 
     private List<Order> orders;

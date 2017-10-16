@@ -2,11 +2,10 @@ package com.ximeo.nazaru.zhivorost365.service.impl;
 
 import com.ximeo.nazaru.zhivorost365.domain.models.Customer;
 import com.ximeo.nazaru.zhivorost365.service.CustomerService;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+//@Service
 public class CustomerServiceMock implements CustomerService {
 
 //    private CustomerRepository custRepo;

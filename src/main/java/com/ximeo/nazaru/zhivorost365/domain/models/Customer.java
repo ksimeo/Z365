@@ -2,18 +2,22 @@ package com.ximeo.nazaru.zhivorost365.domain.models;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
-//@Entity
-//@Table(name="customer")
+@Entity
+@Table(name="customer")
 public class Customer implements Serializable {
-    private static final long serialVersionUID = -7321126218150356552L;
+    private static final long serialVersionUID = 2784499156417061453L;
 
     private String phoneNumber;
     private String name;
     private String surname;
     private String email;
-    private List<Order> orders;
+    private Date regDate;
+//    private Date lastDate;
+    private Set<Order> orders = new HashSet<>();
     private int version;
 
     public Customer() {
@@ -25,9 +29,11 @@ public class Customer implements Serializable {
         this.name = name;
         this.surname = surname;
         this.email = email;
+        this.regDate = new Date();
     }
 
-    @Column(name = "phone_number")
+    @Id
+    @Column(name = "PHONE_NUMBER")
     public String getPhoneNumber() {
         return phoneNumber;
     }
@@ -36,7 +42,7 @@ public class Customer implements Serializable {
         this.phoneNumber = phoneNumber;
     }
 
-    @Column
+    @Column(name = "NAME")
     public String getName() {
         return name;
     }
@@ -45,7 +51,7 @@ public class Customer implements Serializable {
         this.name = name;
     }
 
-    @Column
+    @Column(name = "SURNAME")
     public String getSurname() {
         return surname;
     }
@@ -54,7 +60,7 @@ public class Customer implements Serializable {
         this.surname = surname;
     }
 
-    @Column
+    @Column(name = "EMAIL")
     public String getEmail() {
         return email;
     }
@@ -63,17 +69,36 @@ public class Customer implements Serializable {
         this.email = email;
     }
 
-    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @Column
-    public List<Order> getOrders() {
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
+    public Set<Order> getOrders() {
         return orders;
     }
 
-    public void setOrders(List<Order> orders) {
+    public void setOrders(Set<Order> orders) {
         this.orders = orders;
     }
 
+    public void addOrder(Order order) {
+        order.setCustomer(this);
+        getOrders().add(order);
+    }
+
+    public void removeOrder(Order order) {
+        getOrders().remove(order);
+    }
+
+    @Column(name = "REG_DATE")
+    @Temporal(TemporalType.DATE)
+    public Date getRegDate() {
+        return regDate;
+    }
+
+    public void setRegDate(Date regDate) {
+        this.regDate = regDate;
+    }
+
     @Version
+    @Column(name = "VERSION")
     public int getVersion() {
         return version;
     }
@@ -82,12 +107,27 @@ public class Customer implements Serializable {
         this.version = version;
     }
 
+//
+//    @Column(name = "LAST_DATE")
+//    public Date getLastDate() {
+//        return lastDate;
+//    }
+//
+//    public void setLastDate(Date lastDate) {
+//        this.lastDate = lastDate;
+//    }
+
+
     @Override
     public String toString() {
         return "Customer{" +
                 "phoneNumber='" + phoneNumber + '\'' +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
+                ", email='" + email + '\'' +
+                ", regDate=" + regDate +
+                ", orders=" + orders +
+                ", version=" + version +
                 '}';
     }
 }

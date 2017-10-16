@@ -4,14 +4,16 @@ import com.google.common.collect.Lists;
 import com.ximeo.nazaru.zhivorost365.dao.CustomerRepository;
 import com.ximeo.nazaru.zhivorost365.domain.models.Customer;
 import com.ximeo.nazaru.zhivorost365.service.CustomerService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-//@Service
-// ("custServ")
-//@Repository
-//@Transactional
+@Service("custServ")
+@Repository
+@Transactional
 public class CustomerServiceImpl implements CustomerService {
 
     private CustomerRepository custDAO;
@@ -33,6 +35,7 @@ public class CustomerServiceImpl implements CustomerService {
         custDAO.delete(phone);
     }
 
+    @Autowired
     public void setCustDAO(CustomerRepository custDAO) {
         this.custDAO = custDAO;
     }

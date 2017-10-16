@@ -5,13 +5,15 @@ import com.ximeo.nazaru.zhivorost365.dao.ProductRepository;
 import com.ximeo.nazaru.zhivorost365.domain.models.Product;
 import com.ximeo.nazaru.zhivorost365.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-//@Service
-//        ("prodServ")
-//@Repository
-//@Transactional
+@Service("prodServ")
+@Repository
+@Transactional
 public class ProductServiceImpl implements ProductService {
 
     ProductRepository prodDAO;

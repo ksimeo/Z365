@@ -4,36 +4,33 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
-//@Entity
-//@Table(name = "ORDERS")
+@Entity
+@Table(name = "orders")
 public class Order implements Serializable {
     private static final long serialVersionUID = -5484814236598120693L;
-
-    private static Long gid = 1L;
     private Long id;
     private Customer customer;
     private Product product;
     private int amount;
     //TODO Joda Time?
-    private Date createTime;
-    private int version;
+    private Date createDate;
     private Date reviewDate;
+    private int version;
 
     public Order() {
-        this.createTime = new Date();
+        this.createDate = new Date();
     }
 
     public Order(Customer customer, Product product, int amount) {
-        id = gid++;
         this.customer = customer;
         this.product = product;
         this.amount = amount;
-        this.createTime = new Date();
+        this.createDate = new Date();
     }
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
     public Long getId() {
         return id;
     }
@@ -42,8 +39,8 @@ public class Order implements Serializable {
         this.id = id;
     }
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @Column
+    @ManyToOne
+    @JoinColumn(name = "CUSTOMER_ID")
     public Customer getCustomer() {
         return customer;
     }
@@ -52,8 +49,8 @@ public class Order implements Serializable {
         this.customer = customer;
     }
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @Column
+    @ManyToOne
+    @JoinColumn(name = "PRODUCT_ID")
     public Product getProduct() {
         return product;
     }
@@ -71,33 +68,34 @@ public class Order implements Serializable {
         this.amount = amount;
     }
 
-    @Temporal(TemporalType.DATE)
-    @Column
-    public Date getCreateTime() {
-        return createTime;
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "CREATE_DATE")
+    public Date getCreateDate() {
+        return createDate;
     }
 
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
     }
 
-    @Version
-    public int getVersion() {
-        return version;
-    }
-
-    public void setVersion(int version) {
-        this.version = version;
-    }
-
-    @Temporal(TemporalType.DATE)
-    @Column(name = "review_date")
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "REVIEW_DATE")
     public Date getReviewDate() {
         return reviewDate;
     }
 
     public void setReviewDate(Date reviewDate) {
         this.reviewDate = reviewDate;
+    }
+
+    @Version
+    @Column(name = "VERSION")
+    public int getVersion() {
+        return version;
+    }
+
+    public void setVersion(int version) {
+        this.version = version;
     }
 
     @Override
@@ -107,7 +105,7 @@ public class Order implements Serializable {
                 ", customer=" + customer +
                 ", product=" + product +
                 ", amount=" + amount +
-                ", createTime=" + createTime +
+                ", createDate=" + createDate +
                 ", version=" + version +
                 '}';
     }
