@@ -16,6 +16,7 @@ public class User implements Serializable {
     private int version;
 
     public User() {
+        this.regDate = new Date();
         //NOP
     }
 
@@ -23,6 +24,7 @@ public class User implements Serializable {
         this.login = login;
         this.password = password;
         this.role = role;
+        this.regDate = new Date();
     }
 
     @Id

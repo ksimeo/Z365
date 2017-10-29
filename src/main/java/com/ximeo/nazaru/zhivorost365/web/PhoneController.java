@@ -48,7 +48,7 @@ public class PhoneController {
         }
         session.setAttribute("phone", phone);
         logger.info("showResultPage(): The visitor has been recognised as a new customer.");
-        return "redirect:/userform";
+        return "redirect:/customers?new";
     }
 
     @Autowired

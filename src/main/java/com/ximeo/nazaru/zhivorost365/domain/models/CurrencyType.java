@@ -12,7 +12,20 @@ public enum CurrencyType {
         this.c = c;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setC(char c) {
+        this.c = c;
+    }
+
     public char getC() {
         return c;
     }
+
 }

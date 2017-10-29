@@ -18,21 +18,21 @@ public class RedirectController {
     public String showFork1(HttpServletRequest req) {
         String res;
         if ((res = checkPoint2(req)) != null) return res;
-        return "public/fork1";
+        return "custom/fork1";
     }
 
     @RequestMapping(value = "/calc", method = RequestMethod.GET)
     public String showCalculation(HttpServletRequest req) {
         String res;
         if ((res = checkPoint2(req)) != null) return res;
-        return "public/calc";
+        return "custom/calc";
     }
 
     @RequestMapping(value = "/fork2", method = RequestMethod.GET)
     public String showFork2(HttpServletRequest req) {
         String res;
         if ((res = checkPoint2(req)) != null) return res;
-        return "public/fork2";
+        return "custom/fork2";
     }
 
     @RequestMapping(value = "/gratitude", method = RequestMethod.GET)
@@ -40,7 +40,7 @@ public class RedirectController {
         String res;
         if ((res = checkPoint2(req)) != null) return res;
         req.getSession().invalidate();
-        return "public/gratitude";
+        return "custom/gratitude";
     }
 
 

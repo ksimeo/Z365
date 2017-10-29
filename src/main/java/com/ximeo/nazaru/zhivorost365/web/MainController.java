@@ -18,13 +18,14 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class MainController {
 
-    {
-        System.setProperty("file.encoding", "utf-8");
-    }
-
     private final static Logger logger = LoggerFactory.getLogger(MainController.class);
 
     private CustomerService custServ;
+
+//    @RequestMapping({"/", "/index"})
+//    public String showErrorPage() {
+//        return "errorpages/error404";
+//    }
 
     @RequestMapping({"/", "/index"})
     public String showStartPage(HttpServletRequest req, Model uiModel,
@@ -46,7 +47,7 @@ public class MainController {
             phoneform.setParth4(parth4);
         }
         uiModel.addAttribute("phoneForm", phoneform);
-        return "public/phoneform";
+        return "custom/phoneform";
     }
 
     @Autowired

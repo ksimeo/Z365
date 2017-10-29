@@ -1,6 +1,7 @@
 package com.ximeo.nazaru.zhivorost365.service.impl;
 
 import com.google.common.collect.Lists;
+import com.ximeo.nazaru.zhivorost365.dao.OrderPagerRepository;
 import com.ximeo.nazaru.zhivorost365.dao.OrderRepository;
 import com.ximeo.nazaru.zhivorost365.domain.models.Order;
 import com.ximeo.nazaru.zhivorost365.service.OrderService;
@@ -19,6 +20,8 @@ import java.util.List;
 public class OrderServiceImpl implements OrderService {
 
     private OrderRepository ordDAO;
+
+    private OrderPagerRepository ordrPgrDAO;
 
     @Override
     public void addOrder(Order order) {
@@ -42,12 +45,18 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Page<Order> getOrderPage(Pageable pageable) {
-        return null;
+        return ordrPgrDAO.findAll(pageable);
     }
 
     @Autowired
     public void setOrdDAO(OrderRepository ordDAO) {
         this.ordDAO = ordDAO;
+    }
+
+    @Autowired
+    public void setOrdrPgrDAO(OrderPagerRepository ordrPgrDAO) {
+        this.ordrPgrDAO = ordrPgrDAO;
     }
 }

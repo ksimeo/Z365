@@ -49,7 +49,7 @@ public class OrderController {
         uiModel.addAttribute("orderForm", ordInfo);
         uiModel.addAttribute("prods", prods);
         session.setAttribute("prods", prods);
-        return "public/orderform";
+        return "custom/orderform";
     }
 
     @RequestMapping(value = "/order", method = RequestMethod.POST)
@@ -68,13 +68,14 @@ public class OrderController {
         return "redirect:/fork2";
     }
 
-
-    @RequestMapping(value = "/listgrid", method = RequestMethod.GET, produces="application/json")
+    @RequestMapping(value = "/orders/listgrid", method = RequestMethod.GET, produces="application/json")
     @ResponseBody
     public OrderGrid listGrid(@RequestParam(value = "page", required = false) Integer page,
                                 @RequestParam(value = "rows", required = false) Integer rows,
                                 @RequestParam(value = "sidx", required = false) String sortBy,
                                 @RequestParam(value = "sord", required = false) String order) {
+
+        System.err.println("Запрос получен!!!");
 
         logger.info("Listing contacts for grid with page: {}, rows: {}", page, rows);
         logger.info("Listing contacts for grid with sort: {}, order: {}", sortBy, order);

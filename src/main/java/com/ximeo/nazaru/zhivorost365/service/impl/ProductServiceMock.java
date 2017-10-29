@@ -18,6 +18,11 @@ public class ProductServiceMock implements ProductService {
     }
 
     @Override
+    public Product getById(long id) {
+        return products.get((int)id);
+    }
+
+    @Override
     public void addProduct(Product prod) {
         products.add(prod);
     }
