@@ -25,7 +25,7 @@
         <br/>
     </div>
 
-    <form:form name="form" class="form-horizontal" method="POST" modelAttribute="userForm" action="${userActionUrl}">
+    <form:form customerName="form" class="form-horizontal" method="POST" modelAttribute="userForm" action="${userActionUrl}">
 
         <form:input path="id" type="hidden" id="id" />
 
@@ -46,7 +46,7 @@
             <div class="form-group ${status.error ? 'has-error' : ''}">
                 <div class="col-sm-10">
                     <label class="col-sm-2 control-label">Пароль: &nbsp;
-                        <form:input path="password" type="password" class="form-control" id="pass1" name="pass1"
+                        <form:input path="password" type="password" class="form-control" id="pass1" customerName="pass1"
                         style='width: 12em !important;' onkeyup="passValid('form','pass1','pass12','submit');
                          isRavno('form','pass1','pass2','pass22', 'submit')" />
                         <form:errors path="password" class="control-label" placeholder = "Введите новый пароль"/>
@@ -61,7 +61,7 @@
         <br/>
         <div class="col-sm-10">
             <label class="col-sm-2 control-label">Подтверждение пароля:
-                <input type="password" class="form-control" id="pass2" name="pass2" style='width: 12em !important;'
+                <input type="password" class="form-control" id="pass2" customerName="pass2" style='width: 12em !important;'
                        onkeyup="isRavno('form','pass1','pass2','pass22','submit')" />
                 <span id="pass22"></span><br/>
                 </label>
@@ -75,11 +75,11 @@
             <div class="form-group" >
                 <div class="col-sm-10">
                     <label class="col-sm-2 control-label">Статус пользователя:
-                        <select id="role" name="product" size="1" onchange="checkParams3()">
-                            <option name="role" id="role0" value="NaN">-Виберіть-статус-</option>
+                        <select id="role" customerName="product" size="1" onchange="checkParams3()">
+                            <option customerName="role" id="role0" value="NaN">-Виберіть-статус-</option>
                             <c:forEach items="${roles}" var="item">
-                                <option name="type" value="${item}">
-                                        ${item.name}
+                                <option customerName="type" value="${item}">
+                                        ${item.customerName}
                                 </option>
                             </c:forEach>
                         </select>

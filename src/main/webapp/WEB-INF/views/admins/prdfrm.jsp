@@ -19,7 +19,7 @@
     <h3 class="title">Для добавления нового продукта, пожалуйста, заполните все поля формы:</h3>
     <br/>
     <br/>
-</div>
+
 
 <form:form class="form-horizontal" method="POST" modelAttribute="prodForm" action="${userActionUrl}">
 
@@ -98,8 +98,8 @@
     <br/>
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" id="submit" class="btn-success btn-lg pull-right">Добавить</button> &nbsp;
-            <button type="button"  onclick="document.location='../admin/prods'" class="btn-success btn-lg pull-right">
+            <button type="submit" id="submit" class="btn-success btn-sm pull-right">Добавить</button> &nbsp;
+            <button type="button"  onclick="document.location='../admins/prods'" class="btn-success btn-sm pull-right">
                 Hазад</button>
         </div>
     </div>
@@ -108,7 +108,7 @@
     </div>
     <%-- TODO Предварительный подсчёт цены (on-line) --%>
 </form:form>
-
+</div>
 <jsp:include page="fragments/footer.jsp" />
 
 </body>

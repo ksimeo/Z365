@@ -62,8 +62,8 @@
         <td>${order.id}</td>
         <td><fmt:formatDate pattern="dd.MM.yy HH:mm" value="${order.createDate}"/></td>
         <td>
-          <c:if test="${not empty order.customer.name}">${order.customer.name}</c:if>
-          <c:if test="${empty order.customer.name}">Не указано</c:if>
+          <c:if test="${not empty order.customer.customerName}">${order.customer.customerName}</c:if>
+          <c:if test="${empty order.customer.customerName}">Не указано</c:if>
         </td>
         <td>
           <c:if test="${not empty order.customer.surname}">${order.customer.surname}</c:if>
@@ -74,10 +74,10 @@
           <c:if test="${not empty order.customer.email}">${order.customer.email}</c:if>
           <c:if test="${empty order.customer.email}">Не указано</c:if>
         </td>
-        <td>${order.product.name}</td>
+        <td>${order.product.customerName}</td>
         <td>${order.amount}</td>
         <td>&nbsp; x &nbsp;</td>
-        <td>${order.product.units.name}</td>
+        <td>${order.product.units.customerName}</td>
         <td>
           <c:if test="${not empty order.reviewDate}">
             <fmt:formatDate pattern="dd.MM.yy HH:mm" value="${order.reviewDate}"/></c:if>

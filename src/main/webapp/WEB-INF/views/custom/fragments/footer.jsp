@@ -1,10 +1,11 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<div class="container">
+<div class="container" style="position: absolute; bottom: 0px;">
   <hr>
   <footer>
-    <p>&copy; LaconiCode 2017</p>
+    <p>&copy; 2017 <span style="font: bold italic 110% serif;">4each Inc.</span></p>
   </footer>
 </div>
+</body>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 

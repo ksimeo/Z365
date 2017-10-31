@@ -1,13 +1,25 @@
-body {
+.custom {
     background-color: #E0FFFF;
     background-image: url(../images/png/logo_background.png) !important;
     background-repeat: repeat !important;
-    background-size: 50%;
+    background-size: 25%;
     background-position: 25%, 20%;
     color: #154e15;
     text-align: center;
-    font-family: fantasy;
+    /*font-family: sans-serif;*/
 }
+
+.admins {
+    background-color: #E0FFFF;
+    /*background-image: url(../images/png/logo_background.png) !important;*/
+    background-repeat: repeat !important;
+    background-size: 25%;
+    background-position: 25%, 20%;
+    color: #154e15;
+    text-align: center;
+    /*font-family: sans-serif;*/
+}
+
 
 .error {
     background-color: #ffd3d3;
@@ -58,11 +70,65 @@ input {
     width: 140px;
 }
 
-a {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    font-weight: bold;
-    color: #fff;
-    font-size: 50px;
+/*a {*/
+    /*position: absolute;*/
+    /*bottom: 10px;*/
+    /*right: 10px;*/
+    /*font-weight: bold;*/
+    /*color: #fff;*/
+    /*font-size: 50px;*/
+/*}*/
+
+.field2 {
+    width: 5px;
+}
+
+.field3 {
+    width: 7px;
+}
+
+/*Блок,в котором плавает индикатор надежности пароля*/
+#pass11 {
+    background: #000;
+    width: 98px;
+    height: 10px;
+    border: 1px solid #fff;
+    display: block;
+    overflow: hidden;
+}
+
+/*индикатор надежности пароля*/
+#pass12 {
+    margin-left: -102px;
+    width: 100px;
+    height: 8px;
+    background: #f00;
+    border: 1px solid #fff;
+    display: block;
+}
+
+/*индикатор совпадения паролей*/
+#pass22 {
+    padding: 1px 4px;
+    width: 136px;
+    display: block;
+    font-size: 10px;
+}
+
+input {
+    width: 140px;
+}
+
+/*a {*/
+    /*position: absolute;*/
+    /*bottom: 10px;*/
+    /*right: 10px;*/
+    /*font-weight: bold;*/
+    /*color: #fff;*/
+    /*font-size: 50px;*/
+/*}*/
+
+.logo {
+    top: 5px; !important;
+    right: 100%;
 }

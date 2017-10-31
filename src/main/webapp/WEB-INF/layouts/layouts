@@ -4,9 +4,9 @@
         "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
-    <definition name="default" template="/WEB-INF/layouts/default.jspx">
-        <put-attribute name="header" value="/WEB-INF/views/private/orders/header.jspx" />
-        <put-attribute name="menu" value="/WEB-INF/views/private/orders/menu.jspx" />
-        <put-attribute name="footer" value="/WEB-INF/views/private/orders/footer.jspx" />
+    <definition customerName="default" template="/WEB-INF/layouts/default.jspx">
+        <put-attribute customerName="header" value="/WEB-INF/views/private/orders/header.jspx" />
+        <put-attribute customerName="menu" value="/WEB-INF/views/private/orders/menu.jspx" />
+        <put-attribute customerName="footer" value="/WEB-INF/views/private/orders/footer.jspx" />
     </definition>
 </tiles-definitions>

@@ -47,19 +47,19 @@
         <c:out value="${fn:replace(plocale, '_', '-')}" default="en" />
     </c:set>
 
-    <spring:message code="application_name" var="app_name" htmlEscape="false"/>
-    <title><spring:message code="welcome_h3" arguments="${app_name}" /></title>
+    <spring:messageBody code="application_name" var="app_name" htmlEscape="false"/>
+    <title><spring:messageBody code="welcome_h3" arguments="${app_name}" /></title>
 </head>
 
 <body class="tundra spring">
 <div id="headerWrapper">
-    <tiles:insertAttribute name="header" ignore="true" />
+    <tiles:insertAttribute customerName="header" ignore="true" />
 </div>
 <div id="wrapper">
-    <tiles:insertAttribute name="menu" ignore="true" />
+    <tiles:insertAttribute customerName="menu" ignore="true" />
     <div id="main">
-        <tiles:insertAttribute name="body"/>
-        <tiles:insertAttribute name="footer" ignore="true"/>
+        <tiles:insertAttribute customerName="body"/>
+        <tiles:insertAttribute customerName="footer" ignore="true"/>
     </div>
 </div>
 </body>

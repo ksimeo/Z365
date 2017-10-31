@@ -9,26 +9,27 @@
     <title> Администрирование системы - Живорост365</title>
     <spring:url value="/resources/styles/standard.css" var="coreCss" />
     <spring:url value="/resources/styles/bootstrap.min.css" var="bootstrapCss" />
-    <link href="../../../../resources/styles/standard.css" rel="stylesheet" >
-    <link href="../../../../resources/styles/bootstrap.min.css" rel="stylesheet" >
-    <link rel="shortcut icon" href="../../../../resources/images/ico/favicon.ico">
+    <link href="../../../../resources/styles/standard.css" rel="stylesheet" type="text/css"/>
+    <link href="../../../../resources/styles/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link rel="shortcut icon" href="../../../../resources/images/ico/favicon.ico"/>
+    <link rel="javascript" type="text/javascript" href="../../../../resources/scripts/admins.js"/>
     <link href="${bootstrapCss}" rel="stylesheet" />
     <link href="${coreCss}" rel="stylesheet" />
 </head>
 
-<spring:url value="/admin/" var="urlHome" />
-<spring:url value="/admin/calc" var="urlCalculation" />
-<spring:url value="/admin/prods" var="urlProducts" />
-<spring:url value="/admin/users" var="urlUsers" />
-<spring:url value="/admin/users/1/pswrd" var="urlChangePassword" />
-<spring:url value="/admin/logout" var="urlLogout" />
+<spring:url value="/admins/" var="urlHome" />
+<spring:url value="/admins/calc" var="urlCalculation" />
+<spring:url value="/admins/prods" var="urlProducts" />
+<spring:url value="/admins/users" var="urlUsers" />
+<spring:url value="/admins/users/1/pswrd" var="urlChangePassword" />
+<spring:url value="/admins/logout" var="urlLogout" />
 <spring:url value="username" var="userName" />
 
 <nav class="navbar navbar-inverse">
     <div class="container">
         <div id="navbar-header">
             <div class="navbar-header">
-                <a class="navbar-brand" href="${urlHome}"><img src="../../../../resources/images/png/logo_mini.png"/></a>
+                <jsp:include page="logo.jsp" />
             </div>
             <ul class="nav navbar-nav navbar-right">
                 <li class="navbar-brand">
@@ -40,7 +41,7 @@
                         <button class="btn btn-default btn-sm" onclick="document.location='${urlProducts}'">
                             <img src="../../../../resources/images/png/list.png"/>&nbsp;Перечень продукции</button>
                         <button class="btn btn-default btn-sm" onclick="document.location='${urlUsers}'">
-                            <img src="../../../../resources/images/png/messages.png"/>&nbsp;Cообщения пользователей</button>
+                            <img src="../../../../resources/images/png/messages.png"/>&nbsp;Cообщения от пользователей<span class="badge">2</span></button>
                     </span>
                 </li>
             <%--</ul>--%>
@@ -51,7 +52,7 @@
                     <%--<button class="btn btn-default btn-sm">--%>
                         <div class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <img src="../../../../resources/images/png/wheel.png" /> Настройки
+                        <img src="../../../../resources/images/png/wheel.png" />Настройки
                         <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                         <li><a href="#">Сменить пароль</a></li>
@@ -87,3 +88,4 @@
         </div>
     </div>
 </nav>
+<body class="admins">

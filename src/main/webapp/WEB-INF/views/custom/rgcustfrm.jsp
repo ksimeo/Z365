@@ -7,64 +7,61 @@
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 <%@ page isELIgnored="false" %>
 
+<!DOCTYPE html>
 <html lang="uk">
-<head>
-    <title>Живорост365 - сервис заказа биоудобрений</title>
-    <meta charset="utf-8">
-    <link type="text/css" rel="stylesheet" href="../../../resources/css/style.css" />
-    <link type="shortcut icon" rel="image/x-icon" href="../../../resources/img/ico/favicon.ico">
-</head>
-<body class="main">
-<div>
-    <h2>Видим Вы у нас впервые!</h2>
-    <hr/>
-    <h3>Пожалуйста, заполните по возможности поля <br/>
-        нашей формы, чтобы мы могли знать о Вас больше.</h3>
 
-    <form:form type="userform" method="POST" modelAttribute="usrForm" action="userform" >
+<jsp:include page="fragments/header.jsp"/>
 
-        <spring:bind path="name">
-            <div>
-                <label>Имя:</label>
-                <div>
-                    <form:input path="name" size="10" id="user_name" placeholder="Имя отчества или просто имя"/>
-                    <small>Чтобы мы знали как обращаться к вам</small>
+<div class="container">
+    <jsp:include page="fragments/logo.jsp"/>
+    <br/>
+    <br/>
+    <div class="well">
+        <h2>Вы у нас впервые?!</h2>
+        <h3>Пожалуйста, заполните по возможности поля нашей <br/>
+            формы, чтобы мы могли знать о Вас больше.</h3>
+
+        <form:form type="userform" class="form-horizontal" method="POST" modelAttribute="usrForm" action="userform" >
+
+            <spring:bind path="name">
+            <div class="form-group ${status.error ? 'has-error' : ''}" >
+                <div class="col-sm-10">
+                <label class="col-sm-2 control-label">Имя:</label>
+                    <form:input path="name" size="10" id="user_name" class="form-control"
+                                style="width: 200px;" placeholder="Введите ваше имя"/>
                     <form:errors path="name" />
                 </div>
-                <div class="col-sm-5"></div>
             </div>
         </spring:bind>
 
         <spring:bind path="surname">
-            <div>
-                <label for="user_surname">Фамилия:</label>
-                <div>
-                    <sf:input path="surname" size="10" id="user_surname"/>
-                    <small>Чтобы мы представляем с кем имеем дело :)</small>
+            <div class="form-group ${status.error ? 'has-error' : ''}">
+                <div class="col-sm-10">
+                <label for="user_surname" class="col-sm-2 control-label">Фамилия:</label>
+                    <sf:input path="surname" size="10" id="user_surname" class="form-control"
+                              style="width: 200px;" placeholder="Введите вашу фамилию"/>
                     <form:errors path="surname" />
                 </div>
-                <div class="col-sm-5"></div>
             </div>
         </spring:bind>
 
         <spring:bind path="email">
-            <div>
-                <label for="user_email">Имя:</label>
-                <div>
-                    <sf:input path="email" size="10" id="user_email"/>
-                    <small>На случай если у нас появятся интересные предложения для Вас</small>
+            <div class="form-group ${status.error ? 'has-error' : ''}">
+                <div class="col-sm-10">
+                <label for="user_email" class="col-sm-2 control-label">Электронная почта:</label>
+                    <sf:input path="email" size="10" class="form-control" id="user_email" style="width: 200px;"
+                            placeholder="Введите ваш электронный адрес"/>
                     <form:errors path="email" />
                 </div>
-                <div class="col-sm-5"></div>
             </div>
         </spring:bind>
 
         <spring:bind path="region">
-            <div>
-                <label for="region">Ваш регион:</label>
-                <div>
-                    <form:select path="region" multiple="false" size="1" class="form-control">
-                        <form:option value="NONE" label="-Выберите-Ваш-регион-" />
+            <div class="form-group ${status.error ? 'has-error' : ''}">
+                <div class="col-sm-10">
+                <label for="region" class="col-sm-2 control-label">Ваш регион:</label>
+                    <form:select path="region" multiple="false" size="1" style="width: 200px;" class="form-control">
+                        <form:option value="NONE" label="-Выберите-ваш-регион-" />
                         <form:option value="Крим">АР Крым</form:option>
                         <form:option value="Віннічина">Винницкая обл.</form:option>
                         <form:option value="Волинщина">Волынская обл.</form:option>
@@ -90,21 +87,23 @@
                         <form:option value="Черкасчина">Черкасская обл.</form:option>
                         <form:option value="Чернівеччина">Черновецкая обл.</form:option>
                         <form:option value="Чернігівщина">Черниновская обл.</form:option>
-                        <form:option value=" " selected="true"></form:option>
+                        <%--<form:option value=" " selected="true"></form:option>--%>
                     </form:select>
                 </div>
-                <div class="col-sm-5"></div>
             </div>
         </spring:bind>
-
-
-        <div>
-            <div>
-                <button type="submit">OK</button>
-            </div>
-        </div>
-
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" id="submit" class="btn btn-success btn-md pull-left">ОК</button>
+                    <button type="button" onclick="document.location='/'" class="btn btn-md">
+                        Вернуться на главную
+                    </button>
+                    <button type="button" class="btn btn-md btn-info" onclick="document.location='/questions?form'">
+                        <img src="../../../resources/images/png/question.png">&nbsp;Задать вопрос</button>
+                </div>
+            <br/>
+            <br/>
     </form:form>
+    </div>
 </div>
-</body>
+<jsp:include page="fragments/footer.jsp"/>
 </html>

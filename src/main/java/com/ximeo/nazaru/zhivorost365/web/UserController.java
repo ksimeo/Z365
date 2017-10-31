@@ -15,54 +15,53 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 @Controller
-@RequestMapping(value = "/admin/users")
 public class UserController {
 
     private UserService usrServ;
 
-    @RequestMapping(value="" ,method = RequestMethod.GET)
+    @RequestMapping(value="/admins/users" ,method = RequestMethod.GET)
     public String showAllUsers(Model uiModel) {
         uiModel.addAttribute("id", "2");
         uiModel.addAttribute("users", usrServ.getAllUsers());
-        return "admins/users";
+        return "admins/usrs";
     }
 
-    @RequestMapping(value="" ,method = RequestMethod.GET, params = "new")
+    @RequestMapping(value="/admins/users" ,method = RequestMethod.GET, params = "form")
     public String showNewUserForm(Model uiModel, HttpServletRequest req) {
         User usr = new User();
         UserRole[] userRoles = UserRole.values();
         uiModel.addAttribute("roles", userRoles);
         uiModel.addAttribute("userForm", usr);
-        return "admins/userform";
+        return "admins/usrfrm";
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/admins/users/{id}", method = RequestMethod.GET)
     public String showEditForm(@PathVariable("id") Long id, Model uiModel) {
         User usr = usrServ.getUser(id);
         uiModel.addAttribute("userForm", usr);
-        return "admins/userform";
+        return "admins/usrfrm";
     }
 
-    @RequestMapping(value = "", method = RequestMethod.POST)
+    @RequestMapping(value = "/admins/users", method = RequestMethod.POST)
     public String saveUser(User usr) {
         usrServ.addUser(usr);
         return "redirect:/admin/users";
     }
 
-    @RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
+    @RequestMapping(value = "/admins/users/{id}/delete", method = RequestMethod.GET)
     public String deleteUser(@PathVariable("id") int id) {
         usrServ.delUser(id);
         return "redirect:/admin/users";
     }
 
-    @RequestMapping(value = "/{id}/pswrd", method = RequestMethod.GET)
+    @RequestMapping(value = "/admins/users/{id}/pswrd", method = RequestMethod.GET)
     public String showChangePasswordForm(@PathVariable("id") long id,Model uiModel) {
         PasswInfo model = new PasswInfo();
         uiModel.addAttribute("passwForm", model);
         return "admins/chpswrd";
     }
 
-    @RequestMapping(value = "", method = RequestMethod.POST, params = "chpswrd")
+    @RequestMapping(value = "/admins/users", method = RequestMethod.POST, params = "chpswrd")
     public String saveNewPassword(PasswInfo model, HttpSession session) {
         User usr = (User)session.getAttribute("user");
         if ((usr.getPassword()).equals(model.getOldPassword())) {

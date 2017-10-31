@@ -9,6 +9,7 @@
 
     <body class="main">
     <div class="container">
+        <jsp:include page="fragments/logo.jsp"/>
         <br/>
         <h3 class="title">Розрахунок потрібної кiлькостi</h3>
         <br/>
@@ -18,7 +19,7 @@
         <h4>Вкажіть тип зрошення яку потрiбно орошувати:</h4>
         <br/>
         <label>
-            <select id="irrigation" name="irrigation" size="1" onchange="irrTypeChange()">
+            <select id="irrigation" customerName="irrigation" size="1" onchange="irrTypeChange()">
                 <option id="i0" value="0">-Виберіть-тип-зрошення-</option>
                 <option id="i1" value="0.14">Обработка насiння</option>
                 <option id="i2" value="0.24">Позакорнева обробка</option>
@@ -58,14 +59,14 @@
         <h4>Вкажіть марку продукту та введіть розмiр площi яку необхідно удобрювати:</h4>
         <br/>
         <label>
-            <select id="prodType" name="prodType" onchange="changeProdType()" size="1">
-                <option name="prodName" id="prod0" value="NaN">-Виберіть-тип-продукту-</option>
+            <select id="prodType" customerName="prodType" onchange="changeProdType()" size="1">
+                <option customerName="prodName" id="prod0" value="NaN">-Виберіть-тип-продукту-</option>
                 <c:forEach items="${prods}" var="item">
-                    <option name="prodName" id="${item.id}" value="${item.coeff}">${item.name}</option>
+                    <option customerName="prodName" id="${item.id}" value="${item.coeff}">${item.customerName}</option>
                 </c:forEach>
             </select>
             <input type="number" id="amount" min="1" max="999999" onchange="changeAmount()" required>
-            <select id="dimension" name="dimension" size="1"  onchange="changeDim()">
+            <select id="dimension" customerName="dimension" size="1"  onchange="changeDim()">
                 <option id="dim0" value="NaN">-виберiть-розмiрнiсть-</option>
                 <option value="1">кв.м</option>
                 <option value="100">Ар</option>

@@ -4,9 +4,7 @@ import com.google.common.collect.Lists;
 import com.ximeo.nazaru.zhivorost365.domain.dto.OrderGrid;
 import com.ximeo.nazaru.zhivorost365.domain.dto.OrderInfo;
 import com.ximeo.nazaru.zhivorost365.domain.dto.UserInfo;
-import com.ximeo.nazaru.zhivorost365.domain.models.Customer;
-import com.ximeo.nazaru.zhivorost365.domain.models.Order;
-import com.ximeo.nazaru.zhivorost365.domain.models.Product;
+import com.ximeo.nazaru.zhivorost365.domain.models.*;
 import com.ximeo.nazaru.zhivorost365.service.OrderService;
 import com.ximeo.nazaru.zhivorost365.service.ProductService;
 import org.slf4j.Logger;
@@ -29,14 +27,25 @@ import java.util.List;
 
 @Controller
 public class OrderController {
+
     private final static Logger logger = LoggerFactory.getLogger(OrderController.class);
 
     private ProductService prodServ;
 
     private OrderService ordServ;
 
+    @RequestMapping(value = "/admins/orders", method = RequestMethod.GET)
+    public String showMainPage(Model uiModel, HttpServletRequest req, HttpSession session) {
+        logger.info("showStartPage(): user with host {} has entered on start admins page.", req.getHeader("host"));
+        User usr = new User("testuser", "test", UserRole.USER);
+        usr.setId(1L);
+        session.setAttribute("user", usr);
+        List<Order> ordrs = ordServ.getOrders();
+        uiModel.addAttribute("orders", ordrs);
+        return "admins/main";
+    }
 
-    @RequestMapping(value = "/order", method = RequestMethod.GET)
+    @RequestMapping(value = "/orders", method = RequestMethod.GET)
     public String showOrderForm(Model uiModel, @Param("amount") int amount, @Param("type") int type,
                                 HttpServletRequest req, HttpSession session) {
         List<Product> prods = prodServ.getAll();
@@ -49,10 +58,10 @@ public class OrderController {
         uiModel.addAttribute("orderForm", ordInfo);
         uiModel.addAttribute("prods", prods);
         session.setAttribute("prods", prods);
-        return "custom/orderform";
+        return "custom/ordrfrm";
     }
 
-    @RequestMapping(value = "/order", method = RequestMethod.POST)
+    @RequestMapping(value = "/orders", method = RequestMethod.POST)
     public String doOrdering(OrderInfo model, HttpServletRequest req, HttpSession session) {
         Customer cust = (Customer) session.getAttribute("customer");
         if (cust == null) {
@@ -60,15 +69,14 @@ public class OrderController {
             UserInfo usrInfo = (UserInfo) session.getAttribute("usrForm");
             cust = new Customer(phone, usrInfo.getName(), usrInfo.getSurname(), usrInfo.getEmail());
         }
-//        int prodId = model.getType();
         List<Product> products = (List<Product>) session.getAttribute("prods");
         Product prod = products.get(model.getType());
         Order ord = new Order(cust, prod, model.getAmount());
         ordServ.addOrder(ord);
-        return "redirect:/fork2";
+        return "redirect:/branch2";
     }
 
-    @RequestMapping(value = "/orders/listgrid", method = RequestMethod.GET, produces="application/json")
+    @RequestMapping(value = "/admins/orders/listgrid", method = RequestMethod.GET, produces="application/json")
     @ResponseBody
     public OrderGrid listGrid(@RequestParam(value = "page", required = false) Integer page,
                                 @RequestParam(value = "rows", required = false) Integer rows,
@@ -95,7 +103,7 @@ public class OrderController {
 
         // Constructs page request for current page
         // Note: page number for Spring Data JPA starts with 0, while jqGrid starts with 1
-        PageRequest pageRequest = null;
+        PageRequest pageRequest;
 
         if (sort != null) {
             pageRequest = new PageRequest(page - 1, rows, sort);

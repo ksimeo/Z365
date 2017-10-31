@@ -9,10 +9,10 @@ import java.util.Date;
 public class Question implements Serializable {
     private static final long serialVersionUID = -6242110760472438895L;
     private Long id;
-    private String name;
+    private String customerName;
     private String phoneNumber;
     private String eMail;
-    private String message;
+    private String messageBody;
     private boolean regularCustomer;
     private Date createDate;
     private Date reviewDate;
@@ -23,7 +23,7 @@ public class Question implements Serializable {
     }
 
     public Question(String name, String phoneNumber, String eMail) {
-        this.name = name;
+        this.customerName = name;
         this.phoneNumber = phoneNumber;
         this.eMail = eMail;
         this.createDate = new Date();
@@ -40,12 +40,12 @@ public class Question implements Serializable {
         this.id = id;
     }
     @Column(name = "NAME")
-    public String getName() {
-        return name;
+    public String getCustomerName() {
+        return customerName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
     }
     @Column(name = "PHONE_NUMBER")
     public String getPhoneNumber() {
@@ -66,12 +66,12 @@ public class Question implements Serializable {
     }
 
     @Column(name = "MESSAGE")
-    public String getMessage() {
-        return message;
+    public String getMessageBody() {
+        return messageBody;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setMessageBody(String messageBody) {
+        this.messageBody = messageBody;
     }
 
     @Column(name = "IS_REGULAR_CUSTOMER")
@@ -116,10 +116,10 @@ public class Question implements Serializable {
     public String toString() {
         return "Question{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", customerName='" + customerName + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", eMail='" + eMail + '\'' +
-                ", message='" + message + '\'' +
+                ", messageBody='" + messageBody + '\'' +
                 ", isRegularCustomer=" + regularCustomer +
                 '}';
     }

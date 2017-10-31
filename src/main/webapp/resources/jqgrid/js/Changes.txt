@@ -133,13 +133,13 @@ This method update the existing data in the grid by given id rowname.
 Syntax: updateGridRows (data, rowidname, jsonreader)
 
 data is a array of data in format
-[{name:value,name1:value1...},{name:value,name2:value2...}]
-where the name is the name from colModel and value is the actuall value.
+[{customerName:value,name1:value1...},{customerName:value,name2:value2...}]
+where the customerName is the customerName from colModel and value is the actuall value.
 It is not neccessary that all columns are present in the data item object
 (the same as setRowData method)
 
-rowidname (string) - is the name of the row which should acts as id.
-If not set the name "id" is used.
+rowidname (string) - is the customerName of the row which should acts as id.
+If not set the customerName "id" is used.
 
 jsonreader (boolean) default false. If set to true a jsonReader definition
 is used to set the data. Note that this work only of the item in jsonReader
@@ -214,10 +214,10 @@ is set to true, otherwise you will lost the sorting.
 Fixes
 =====
 - Fixed bug in filterToolbar. We search now by index and when not found by 
-name. 
+customerName.
 
 - Fix in searchGrid method. We search now by index and when not found by 
-name. 
+customerName.
 
 - Fixed bug in IE when resizing columns. The function getOffset is changed
 so that the resizing speed is the same as in Safari and FF.
@@ -253,7 +253,7 @@ deleted.
 
 - Fixed bug when rownumbers and subgrid are used together 
 
-- Fixed bug in row editing when the column name contain dot.
+- Fixed bug in row editing when the column customerName contain dot.
 
 - Fixing bug in viewGridRow - also the id manes of the form are changed in order
 to be not equal of those in editGridRow
@@ -269,7 +269,7 @@ Also available in add and edit mode.
 When this option is set to true the behaviour as follow:
 When something is changed in the form and the user click on
 Cancel button, navigator buttons, close button (on upper right corner of the
-form), in overlay (if available) or press Esc key (if set) a message box apper
+form), in overlay (if available) or press Esc key (if set) a messageBody box apper
 asking the user to save the changes, not to save the changes and go back in the
 form or cancel all changes (this will close the modal form)
 Note that checkOnSubmit option will work only when a submit button is clicked.
@@ -285,14 +285,14 @@ the form. In order to style easy these rows a class 'contentinfo' is set.
 - added new items in the language files to support the checkOnUpdate option
 
 - added class 'delmsg' in the delGridRow method. This allow us to change the
-message dynamically using a beforeShow or afterSow eventrs. The class is added
+messageBody dynamically using a beforeShow or afterSow eventrs. The class is added
 to a element td.
 
 Fixes
 =====
 - fix in Bulgarian translations files.
 - fix in searchGrid method. Now we search by index (from colModel) and only if
-it is not available we search by name.
+it is not available we search by customerName.
 - Fix for date parser in the base module. Now we can sort locally on
 dates that contain month names
 - Fixed bug in searchGrid. The translation messages for the operations does not 
@@ -325,21 +325,21 @@ footer table with one row below the gird records and above the pager.
 The number of columns equal of these from colModel
 
 -added option userDataOnFooter(default false) which directly place the user data
-array at footer. The rules are as follow: If the userData array contain name
+array at footer. The rules are as follow: If the userData array contain customerName
 which is equal to those of colModel then the value is placed in that column.
 If there are no such values nothing is palced. Note that if this option
 is used we use the current formatter options (if available) for that column.
 
 -Added method getCol(colname). Colname can be either number which represents
-the index of the column or name from colModel. The method return array with
+the index of the column or customerName from colModel. The method return array with
 the values of the coulmn.
 
 - Added method footerData ( action, data, format). This method get or set data
 on footer.
 
 action - can be 'get' or 'set'. If not set default is get.
-When set to 'get' - the result is object of type name:value, where the name is
-a name from colModel. This will return a data from the footer. The other two
+When set to 'get' - the result is object of type customerName:value, where the customerName is
+a customerName from colModel. This will return a data from the footer. The other two
 options  does not have effect in this case.
 
 When set to 'set' a data array (object) should be set. This will place
@@ -376,7 +376,7 @@ Form Editing
 aded option in editGridRow - checkOnSubmit (default false)
 This option only work in editing mode and not in add.
 When set to true - the method looks if any data is changed in the form and
-if this is a case a dilog message appear where the user is asked to confirm the
+if this is a case a dilog messageBody appear where the user is asked to confirm the
 changes or cancel it. Pressing cancel will return to the form, but does not
 set the values to its original state.
 
@@ -398,7 +398,7 @@ onSelectCell not to behave correct.
 order get them from Language file.
 - Fix in bulgarian trnslations.
 - Fix on sorting column. The initial sort check first for index and then for 
-column name. Before the checking for the index was missed.
+column customerName. Before the checking for the index was missed.
 Sortorder converted to lower case in order to avoid some cofusions.
 - Fix in set columns module. The modal does not appear correctly due to 
 missed parameter 
@@ -409,7 +409,7 @@ missed parameter
 
 Base
 ====
-- To the loading message is added ui-state-active class from Theme roller.
+- To the loading messageBody is added ui-state-active class from Theme roller.
 This is more natural, indicating that the grid is active when data is loaded.
 
 Form Editing
@@ -500,7 +500,7 @@ Fixes
 function 
 - Spelling error in all language files, which cause not to set the default 
 value correct
-- Fixed bug when creating warning message. Fixed bug when determining the 
+- Fixed bug when creating warning messageBody. Fixed bug when determining the
 number column element in the form
 - Fixed bug - clientSide datatype should be converted to lower case
 according to the new improvements 
@@ -661,8 +661,8 @@ column if multiselect is set to true.
 rownumbers: boolean, Default false. If this option is set to true, a new column
 at left of the grid is added. The purpose of this column is to count the number
 of available rows, beginning from 1. In this case colModel is extended
-automatically with new element with name - 'rn'. Also, be careful not to use
-the name 'rn' in colModel
+automatically with new element with customerName - 'rn'. Also, be careful not to use
+the customerName 'rn' in colModel
 
 rownumWidth: numeric, Default 25. Determines the width of the row number column
 if rownumbers option is set to true.
@@ -712,8 +712,8 @@ restored.
 JSON data providers are encouraged to use one or both of these methods to
 prevent data execution. Such JSON response may then look like this: 
 while(1);/*{[
-    {"name":"safe value 1"},
-    {"name":"safe value 2"},
+    {"customerName":"safe value 1"},
+    {"customerName":"safe value 2"},
    ...
 ]}*/
 jqGrid uses this function when obtaining a data with datatype:'json', also used
@@ -887,12 +887,12 @@ to add/delete as many conditions as we want 2. The posted data to the server is
 string (actually a json array converted to string)
 
 sFilter: 'filters', This option has an effect only when the multipleSearch is
-set to true; it describes the name of the posted string. By default this, i.e.
+set to true; it describes the customerName of the posted string. By default this, i.e.
 the posted data, can look like this
 
 filters ={
  "groupOp":"AND","rules":[{"field":"id","op":"gt","data":"1"},
-{"field":"name","op":"bw","data":"Client"}]
+{"field":"customerName","op":"bw","data":"Client"}]
 }
 
 groupOp determines the logical operator that can be used in the where statement
@@ -900,14 +900,14 @@ of the select. The value can be AND or OR. This can be changed used a select box
 which is created at bottom of the search filter.
 
 The rules array describes actually which fields and how they are included in the
-where clause The field element describes the name of the field The op element
+where clause The field element describes the customerName of the field The op element
 describes the operator that should be used in the search The data element is the
 data that we want to search.
 
 The above example (if getted and constructed correctly) should generate the
 following where clause
 
-SELECT .... FROM table,... WHERE id > 1 AND name LIKE 'Client%'
+SELECT .... FROM table,... WHERE id > 1 AND customerName LIKE 'Client%'
 -------------------------------------------------------------------------------
 As described above the search is constructed according to the searchoptions in
 colModel
@@ -1014,7 +1014,7 @@ Elemprefix: if set, a text or html content appears before the input element
 
 Elemsuffix: if set, a text or html content appears after the input element
 
-Label: if set, this replace the name from colNames array that appears as label
+Label: if set, this replace the customerName from colNames array that appears as label
 in the form.
 
 rowpos : number determines the row position of the element (again with the
@@ -1154,7 +1154,7 @@ formatter
   default is false. To enable this option globally you can change this value in
   the language file
 
-- the showLink now can accept custom name for the id The parameter is idName :
+- the showLink now can accept custom customerName for the id The parameter is idName :
   'id' The default is id. Can be changed in formatoptions or in the language
   file.
 

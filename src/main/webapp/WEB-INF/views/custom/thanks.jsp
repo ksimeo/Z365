@@ -4,30 +4,22 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="us" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 <%@ page isELIgnored="false" %>
 
-<html>
+<!DOCTYPE html>
+<html lang="uk">
 
 <jsp:include page="fragments/header.jsp" />
 
-<body>
-<div>
-    <div>
-        <br/>
-        <h2>Желаете заказать что-то еще?!</h2>
-        <br/>
-        <br/>
-    </div>
-    <div>
-        <span>
-            <input type="button" value="Пожалуй, да!" onclick="document.location='fork1'"/>
-            &nbsp; &nbsp;
-            <input type="button" value="Нет, пока это все!" onclick="document.location='gratitude'"/>
-        </span>
-    </div>
+<div class="container">
+    <jsp:include page="fragments/logo.jsp"/>
+    <br/>
+    <br/>
+    <h1>Спасибо, за ваш заказ! Мы свяжемся с вами в ближайшее время.</h1>
+    <button type="button" class="btn btn-link" onclick="document.location='http://zhivorost.com.ua/'">Перейти на главную
+        страницу</button>
 </div>
-
 <jsp:include page="fragments/footer.jsp" />
-
-</body>
 </html>

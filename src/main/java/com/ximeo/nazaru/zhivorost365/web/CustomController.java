@@ -13,30 +13,30 @@ import javax.servlet.http.HttpSession;
 
 import static com.ximeo.nazaru.zhivorost365.utilities.SessionHelper.*;
 
-@Controller(value = "/customers")
-public class CustomerController {
-    private final static Logger logger = LoggerFactory.getLogger(CustomerController.class);
+@Controller
+public class CustomController {
+    private final static Logger logger = LoggerFactory.getLogger(CustomController.class);
 
-    @RequestMapping(value = "", method = RequestMethod.GET)
+    @RequestMapping(value = "/customers", method = RequestMethod.GET, params = "form")
     public String showCustomerForm(Model uiModel) {
         UserInfo usrForm = new UserInfo();
         uiModel.addAttribute("usrForm", usrForm);
-        return "custom/regcustomerform";
+        return "custom/rgcustfrm";
     }
 
-    @RequestMapping(value = "", method = RequestMethod.POST)
+    @RequestMapping(value = "/customers", method = RequestMethod.POST)
     public String enterUserForm(UserInfo model, HttpServletRequest req, HttpSession session) {
         String res;
         if ((res = checkPoint1(req)) != null) return res;
         logger.info("User has entered name: {}, surname: {}, email: {}, region: {}", model.getName(), model.getSurname(),
                 model.getEmail(), model.getRegion());
         session.setAttribute("user", model);
-        return "redirect:/fork1";
+        return "redirect:/branch1";
     }
 
     private static String checkPoint1(HttpServletRequest req) {
         if (checkSessionExists(req)) {
-            if (isIdentifiedUser(req)) return "index";
+            if (isIdentifiedUser(req)) return "/";
             if (checkPhoneEntered(req)) return null;
         }
         return null;

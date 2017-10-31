@@ -6,7 +6,7 @@
     <artifactId>zhivorost365</artifactId>
     <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
-    <name>Zhivorost365 Maven Webapp</name>
+    <customerName>Zhivorost365 Maven Webapp</customerName>
     <url>http://maven.apache.org</url>
 
     <properties>

@@ -14,11 +14,11 @@ import static com.ximeo.nazaru.zhivorost365.utilities.SessionHelper.*;
 public class RedirectController {
     private final static Logger logger = LoggerFactory.getLogger(RedirectController.class);
 
-    @RequestMapping(value = "fork1", method = RequestMethod.GET)
+    @RequestMapping(value = "/branch1", method = RequestMethod.GET)
     public String showFork1(HttpServletRequest req) {
         String res;
         if ((res = checkPoint2(req)) != null) return res;
-        return "custom/fork1";
+        return "custom/branch1";
     }
 
     @RequestMapping(value = "/calc", method = RequestMethod.GET)
@@ -28,11 +28,11 @@ public class RedirectController {
         return "custom/calc";
     }
 
-    @RequestMapping(value = "/fork2", method = RequestMethod.GET)
+    @RequestMapping(value = "/branch2", method = RequestMethod.GET)
     public String showFork2(HttpServletRequest req) {
         String res;
         if ((res = checkPoint2(req)) != null) return res;
-        return "custom/fork2";
+        return "custom/branch2";
     }
 
     @RequestMapping(value = "/gratitude", method = RequestMethod.GET)
@@ -40,14 +40,14 @@ public class RedirectController {
         String res;
         if ((res = checkPoint2(req)) != null) return res;
         req.getSession().invalidate();
-        return "custom/gratitude";
+        return "custom/thanks";
     }
 
 
     private static String checkPoint2(HttpServletRequest req) {
         if (checkSessionExists(req)) {
-            if (isIdentifiedUser(req)) return "fork1";
-            if (checkUserForm(req)) return "fork1";
+            if (isIdentifiedUser(req)) return "branch1";
+            if (checkUserForm(req)) return "branch1";
         }
         return null;
     }

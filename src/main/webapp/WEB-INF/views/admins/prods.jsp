@@ -36,7 +36,7 @@
                 <tr>
                     <td>${prod.id}</td>
                         <%--<td><fmt:formatDate pattern="dd.MM.yy HH:mm" value="${order.createDate}"/></td>--%>
-                        <%--<td><c:if test="${not empty order.customer.name}">${order.customer.name}</c:if></td>--%>
+                        <%--<td><c:if test="${not empty order.customer.customerName}">${order.customer.customerName}</c:if></td>--%>
                         <%--<td><c:if test="${not empty order.customer.surname}">${order.customer.surname}</c:if></td>--%>
                         <%--<td>${order.customer.phoneNumber}</td>--%>
                         <%--<td><c:if test="${not empty order.customer.email}">${order.customer.email}</c:if></td>--%>
@@ -45,11 +45,11 @@
                     <td>${prod.currency.c}</td>
                     <td>${prod.units.name}</td>
                     <td>${prod.actual == true ? "Да" : "Нет"}</td>
-                    <td><input type="button" class="btn-warning btn-lg pull-right" value="Изменить"
-                               onclick="document.location='/admin/prods/${prod.id}'">
-                    </td>
-                    <td><input type="button" class="btn-danger btn-lg pull-right" value="Удалить"
-                               onclick="document.location='/admin/prods/${prod.id}/delete'"></td>
+                    <td><div class="btn-group-xs"><input type="button" class="btn-warning" value="Изменить"
+                               onclick="document.location='/admins/prods/${prod.id}'">
+
+                  <input type="button" class="btn-danger" value="Удалить"
+                               onclick="document.location='/admins/prods/${prod.id}/delete'"></div></td>
                 </tr>
             </c:forEach>
             </tbody>
@@ -62,9 +62,11 @@
         <h4><i>Продукты еще не добавлены в систему.</i></h4>
         </c:if>
         <br/>
-        <button class="btn-success btn-lg btn-primary pull-right" onclick="document.location = '/admin/prods?new'">
-            Добавить продукт</button> &nbsp;
-        <button class="btn-success btn-lg btn-primary pull-right" onclick="document.location='/admin'">На главную
+        <button class="btn-success btn-sm btn-default pull-right" onclick="document.location='/admins/orders'">
+            На главную
+        </button> &nbsp;
+        <button class="btn-success btn-sm btn-success pull-right" onclick="document.location = '/admins/prods?form'">
+            Добавить продукт
         </button>
 
         <jsp:include page="fragments/footer.jsp" />

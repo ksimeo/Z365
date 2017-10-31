@@ -35,13 +35,13 @@
                 <tr>
                     <td>${user.id}</td>
                         <%--<td><fmt:formatDate pattern="dd.MM.yy HH:mm" value="${order.createDate}"/></td>--%>
-                        <%--<td><c:if test="${not empty order.customer.name}">${order.customer.name}</c:if></td>--%>
+                        <%--<td><c:if test="${not empty order.customer.customerName}">${order.customer.customerName}</c:if></td>--%>
                         <%--<td><c:if test="${not empty order.customer.surname}">${order.customer.surname}</c:if></td>--%>
                         <%--<td>${order.customer.phoneNumber}</td>--%>
                         <%--<td><c:if test="${not empty order.customer.email}">${order.customer.email}</c:if></td>--%>
                     <td>${user.login}</td>
                     <td>${user.password}</td>
-                    <td>${user.role.name}</td>
+                    <td>${user.role.customerName}</td>
                     <td>${user.regDate}</td>
                     <td><input type="button" value="Изменить" class="btn-warning btn-lg pull-right"
                     ${user.id == id ? "disabled" : ""} onclick="document.location='/admin/users/${user.id}'"></td>

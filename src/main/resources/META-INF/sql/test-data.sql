@@ -5,7 +5,7 @@ insert into user (login, password, role, reg_date) values ('gost', 'test', 'USER
 insert into product (name, orders_id, measure_units, currency_type, price, is_actual) values
        ('Product type 1', 1, 'CANISTER','UAH', 2.99, '1');
 insert into product (name, orders_id, measure_units, currency_type, price, is_actual) values
-       ('Product type 2', 2, 'CANISTER','UAH', 0.99, '0');
+       ('Product type 2', 2, 'CANISTER','UAH', 0.99, '1');
 
 insert into customer (phone_number, orders_id, name, surname, email, reg_date)
        values ('+380997510598', 1, 'Alexei', 'Em', 'ksimeo@gmail.com', '2017-10-03');
@@ -25,16 +25,16 @@ insert into orders (amount, create_date, review_date, customer_id, product_id)
 insert into orders (amount, create_date, review_date, customer_id, product_id)
        values (16, '2017-10-15 19:09:02', '2017-10-19 17:04:32', '+380503222345', 2);
 
--- insert into customer (phone_number, orders_id, name, surname, email, reg_date)
+-- insert into customer (phone_number, orders_id, customerName, surname, email, reg_date)
 -- values ('+380997510598', 1, 'Алексей', 'Эм', 'ksimeo@gmail.com', '2017-10-03');
--- insert into customer (phone_number, orders_id, name, surname, email, reg_date)
+-- insert into customer (phone_number, orders_id, customerName, surname, email, reg_date)
 -- values ('+380938181491', 2, 'Евгений', 'Поляков', 'evg@mail.ru', '2017-10-15');
--- insert into customer (phone_number, orders_id, name, surname, email, reg_date)
+-- insert into customer (phone_number, orders_id, customerName, surname, email, reg_date)
 -- values ('+380657550989', 3, 'Михаил', 'Мудаков', 'mih@hotmail.com', '2017-10-15');
--- insert into customer (phone_number, orders_id, name, surname, email, reg_date)
+-- insert into customer (phone_number, orders_id, customerName, surname, email, reg_date)
 -- values ('+380503222345', 4, 'Стас', 'Попов', 's.popov@yandex.ua', '2017-10-15');
 --
--- insert into product (name, orders_id, measure_units, currency_type, price, is_actual) values
+-- insert into product (customerName, orders_id, measure_units, currency_type, price, is_actual) values
 --   ('Продукт типа 1', 1, 'CANISTER','UAH', 2.99, '1');
--- insert into product (name, orders_id, measure_units, currency_type, price, is_actual) values
+-- insert into product (customerName, orders_id, measure_units, currency_type, price, is_actual) values
 --   ('Продукт типа 2', 2, 'CANISTER','UAH', 0.99, '0');
