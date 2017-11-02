@@ -41,11 +41,11 @@
                         <%--<td><c:if test="${not empty order.customer.email}">${order.customer.email}</c:if></td>--%>
                     <td>${user.login}</td>
                     <td>${user.password}</td>
-                    <td>${user.role.customerName}</td>
+                    <td>${user.role.name}</td>
                     <td>${user.regDate}</td>
-                    <td><input type="button" value="Изменить" class="btn-warning btn-lg pull-right"
+                    <td><input type="button" value="Изменить" class="btn-warning btn-xs pull-right"
                     ${user.id == id ? "disabled" : ""} onclick="document.location='/admin/users/${user.id}'"></td>
-                    <td><input type="button" value="Удалить" class="btn-danger btn-lg pull-right"
+                    <td><input type="button" value="Удалить" class="btn-danger btn-xs pull-right"
                      ${user.id == id ? "disabled" : ""}
                                onclick="document.location='/admin/users/' + ${user.id} + '/delete'"></td>
                 </tr>
@@ -61,10 +61,10 @@
         </c:if>
         <br/>
         <br/>
-        <button class="btn-success btn-lg pull-right" onclick="document.location = '/admin/users?new'">
+        <button class="btn btn-success btn-md" onclick="document.location = '/admins/users?form'">
             Добавить пользователя</button>
-        <button class="btn-success btn-lg pull-right" onclick="document.location='/admin'">Назад, на главную</button>
+        <button class="btn btn-md" onclick="document.location='/admins'">Назад, на главную</button>
 
-        <jsp:include page="fragments/footer.jsp" />
+        <jsp:include page="../fragments/footer.jsp" />
 </body>
 </html>

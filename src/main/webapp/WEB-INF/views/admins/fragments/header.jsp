@@ -13,6 +13,7 @@
     <link href="../../../../resources/styles/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <link rel="shortcut icon" href="../../../../resources/images/ico/favicon.ico"/>
     <link rel="javascript" type="text/javascript" href="../../../../resources/scripts/admins.js"/>
+    <link rel="javascript" type="text/javascript" href="../../../../resources/scripts/jquery-3.2.1.min.js" />
     <link href="${bootstrapCss}" rel="stylesheet" />
     <link href="${coreCss}" rel="stylesheet" />
 </head>
@@ -21,6 +22,8 @@
 <spring:url value="/admins/calc" var="urlCalculation" />
 <spring:url value="/admins/prods" var="urlProducts" />
 <spring:url value="/admins/users" var="urlUsers" />
+<spring:url value="/admins/questions" var="urlQuestions" />
+
 <spring:url value="/admins/users/1/pswrd" var="urlChangePassword" />
 <spring:url value="/admins/logout" var="urlLogout" />
 <spring:url value="username" var="userName" />
@@ -41,7 +44,8 @@
                         <button class="btn btn-default btn-sm" onclick="document.location='${urlProducts}'">
                             <img src="../../../../resources/images/png/list.png"/>&nbsp;Перечень продукции</button>
                         <button class="btn btn-default btn-sm" onclick="document.location='${urlUsers}'">
-                            <img src="../../../../resources/images/png/messages.png"/>&nbsp;Cообщения от пользователей<span class="badge">2</span></button>
+                            <img src="../../../../resources/images/png/messages.png"/>&nbsp;Cообщения от пользователей
+                            <span class="badge">2</span></button>
                     </span>
                 </li>
             <%--</ul>--%>

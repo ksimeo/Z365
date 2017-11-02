@@ -8,13 +8,13 @@
 <!DOCTYPE html>
 <html lang="uk">
 
-<jsp:include page="fragments/header.jsp" />
+<jsp:include page="../fragments/header.jsp" />
 
 <body onload="checkParams()">
 <spring:url value="/orders" var="userActionUrl" />
 
 <div class="container">
-    <jsp:include page="fragments/logo.jsp"/>
+    <jsp:include page="../fragments/logo.jsp"/>
         <br/>
         <br/>
     <div class="well">
@@ -54,7 +54,7 @@
     <br/>
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" id="submit" class="btn btn-success btn-md pull-left">
+            <button type="submit" id="submit" class="btn btn-success btn-md">
                 Здійснити замовлення
             </button>
             &nbsp;
@@ -76,7 +76,7 @@
 </form:form>
         </div>
 </div>
-<jsp:include page="fragments/footer.jsp" />
+<jsp:include page="../fragments/footer.jsp" />
 
 </body>
 </html>

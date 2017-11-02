@@ -13,7 +13,7 @@ public class Question implements Serializable {
     private String phoneNumber;
     private String eMail;
     private String messageBody;
-    private boolean regularCustomer;
+    private Customer customer;
     private Date createDate;
     private Date reviewDate;
     private int version;
@@ -74,17 +74,18 @@ public class Question implements Serializable {
         this.messageBody = messageBody;
     }
 
-    @Column(name = "IS_REGULAR_CUSTOMER")
-    public boolean isRegularCustomer() {
-        return regularCustomer;
+    @ManyToOne()
+    @JoinColumn(name = "CUSTOMER_ID")
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setRegularCustomer(boolean regularCustomer) {
-        this.regularCustomer = regularCustomer;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     @Temporal(TemporalType.DATE)
-    @Column(name = "REG_DATE")
+    @Column(name = "CREATE_DATE")
     public Date getCreateDate() {
         return createDate;
     }
@@ -120,7 +121,9 @@ public class Question implements Serializable {
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", eMail='" + eMail + '\'' +
                 ", messageBody='" + messageBody + '\'' +
-                ", isRegularCustomer=" + regularCustomer +
+                ", customer=" + customer +
+                ", createDate=" + createDate +
+                ", reviewDate=" + reviewDate +
                 '}';
     }
 }

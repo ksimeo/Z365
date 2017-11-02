@@ -11,15 +11,15 @@
 <!DOCTYPE html>
 <html lang="uk">
 
-<jsp:include page="fragments/header.jsp" />
+<jsp:include page="../fragments/header.jsp" />
 
 <div class="container">
-  <jsp:include page="fragments/logo.jsp"/>
+  <jsp:include page="../fragments/logo.jsp"/>
   <br/>
   <br/>
   <h1>Спасибо, за ваше cообщение! Мы свяжемся с вами в ближайшее время.</h1>
-  <button type="button" class="btn btn-link" onclick="document.location='http://zhivorost.com.ua/'">Перейти на главную
+  <button type="button" class="btn btn-link pull-right" onclick="document.location='http://zhivorost.com.ua/'">Перейти на главную
     страницу</button>
 </div>
-<jsp:include page="fragments/footer.jsp" />
+<jsp:include page="../fragments/footer.jsp" />
 </html>

@@ -10,10 +10,10 @@
 <!DOCTYPE html>
 <html lang="uk">
 
-<jsp:include page="fragments/header.jsp"/>
+<jsp:include page="../fragments/header.jsp"/>
 
 <div class="container">
-    <jsp:include page="fragments/logo.jsp"/>
+    <jsp:include page="../fragments/logo.jsp"/>
     <br/>
     <br/>
     <div class="well">
@@ -93,7 +93,7 @@
             </div>
         </spring:bind>
                 <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" id="submit" class="btn btn-success btn-md pull-left">ОК</button>
+                    <button type="submit" id="submit" class="btn btn-success btn-md">ОК</button>
                     <button type="button" onclick="document.location='/'" class="btn btn-md">
                         Вернуться на главную
                     </button>
@@ -105,5 +105,5 @@
     </form:form>
     </div>
 </div>
-<jsp:include page="fragments/footer.jsp"/>
+<jsp:include page="../fragments/footer.jsp"/>
 </html>

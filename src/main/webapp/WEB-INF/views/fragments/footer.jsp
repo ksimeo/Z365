@@ -2,7 +2,7 @@
 <div class="container" style="position: absolute; bottom: 0px;">
   <hr>
   <footer>
-    <p>&copy; 2017 <span style="font: bold italic 110% serif;">4each Inc.</span></p>
+    <p>&copy; 2018 <b><i><a href="mailto:ksimeo@gmail.com" style="color: #2b542c">Ximeo<span style="color: black">:code</span></a></i></b></p>
   </footer>
 </div>
 </body>

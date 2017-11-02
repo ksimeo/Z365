@@ -11,10 +11,11 @@
 <!DOCTYPE html>
 <html lang="uk">
 
-<jsp:include page="fragments/header.jsp" />
+<jsp:include page="../fragments/header.jsp" />
 
 <body>
     <div class="container">
+        <jsp:include page="../fragments/lang.jsp"/>
         <br/>
         <br/>
         <div class="well">
@@ -62,6 +63,6 @@
 
 </body>
 
-<jsp:include page="fragments/footer.jsp" />
+<jsp:include page="../fragments/footer.jsp" />
 
 </html>

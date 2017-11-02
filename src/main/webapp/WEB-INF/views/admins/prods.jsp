@@ -62,14 +62,12 @@
         <h4><i>Продукты еще не добавлены в систему.</i></h4>
         </c:if>
         <br/>
-        <button class="btn-success btn-sm btn-default pull-right" onclick="document.location='/admins/orders'">
-            На главную
-        </button> &nbsp;
-        <button class="btn-success btn-sm btn-success pull-right" onclick="document.location = '/admins/prods?form'">
-            Добавить продукт
+        <button class="btn btn-success btn-md" onclick="document.location = '/admins/prods?form'">
+            Добавить новый продукт
         </button>
-
-        <jsp:include page="fragments/footer.jsp" />
-
+        <button class="btn btn-md" onclick="document.location='/admins/orders'">
+            Вернуться на главную
+        </button> &nbsp;
+        <jsp:include page="../fragments/footer.jsp" />
 </body>
 </html>

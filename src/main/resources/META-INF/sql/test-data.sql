@@ -25,16 +25,11 @@ insert into orders (amount, create_date, review_date, customer_id, product_id)
 insert into orders (amount, create_date, review_date, customer_id, product_id)
        values (16, '2017-10-15 19:09:02', '2017-10-19 17:04:32', '+380503222345', 2);
 
--- insert into customer (phone_number, orders_id, customerName, surname, email, reg_date)
--- values ('+380997510598', 1, 'Алексей', 'Эм', 'ksimeo@gmail.com', '2017-10-03');
--- insert into customer (phone_number, orders_id, customerName, surname, email, reg_date)
--- values ('+380938181491', 2, 'Евгений', 'Поляков', 'evg@mail.ru', '2017-10-15');
--- insert into customer (phone_number, orders_id, customerName, surname, email, reg_date)
--- values ('+380657550989', 3, 'Михаил', 'Мудаков', 'mih@hotmail.com', '2017-10-15');
--- insert into customer (phone_number, orders_id, customerName, surname, email, reg_date)
--- values ('+380503222345', 4, 'Стас', 'Попов', 's.popov@yandex.ua', '2017-10-15');
---
--- insert into product (customerName, orders_id, measure_units, currency_type, price, is_actual) values
---   ('Продукт типа 1', 1, 'CANISTER','UAH', 2.99, '1');
--- insert into product (customerName, orders_id, measure_units, currency_type, price, is_actual) values
---   ('Продукт типа 2', 2, 'CANISTER','UAH', 0.99, '0');
+insert into question (name, phone_number, e_mail, message, customer_id, create_date, review_date)
+      values ('Alex', '+380938181491', 'ksimeo@gmail.com', 'Hello!', '+380657550989', '2017-10-19 17:04:21', NULL);
+insert into question (name, phone_number, e_mail,  message, customer_id, create_date, review_date)
+      values ('Maks', '+380997517095', 'maksym.fedorenko@gmail.com', 'Nichego ne rabotaet!', NULL, '2017-10-19 17:04:32',
+              '2017-10-19 17:04:21');
+
+insert into culture (name, coefficient) values ('Beans', 9.52);
+insert into culture (name, coefficient) values ('Carrot', 5.48);

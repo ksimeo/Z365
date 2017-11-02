@@ -5,11 +5,11 @@
 <!DOCTYPE html>
 <html lang="uk">
 
-    <jsp:include page="fragments/header.jsp" />
+    <jsp:include page="../fragments/header.jsp" />
 
     <body class="main">
     <div class="container">
-        <jsp:include page="fragments/logo.jsp"/>
+        <jsp:include page="../fragments/logo.jsp"/>
         <br/>
         <h3 class="title">Розрахунок потрібної кiлькостi</h3>
         <br/>
@@ -92,7 +92,7 @@
     <br/>
     <br/>
 
-<jsp:include page="fragments/footer.jsp" />
+<jsp:include page="../fragments/footer.jsp" />
 
 </body>
 </html>

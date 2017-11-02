@@ -8,14 +8,14 @@
 <!DOCTYPE html>
 <html lang="uk">
 
-<jsp:include page="fragments/header.jsp" />
+<jsp:include page="../fragments/header.jsp" />
 
 <body class="main" onload="checkParams()">
 
 <spring:url value="/questions" var="userActionUrl" />
 
 <div class="container">
-    <jsp:include page="fragments/logo.jsp"/>
+    <jsp:include page="../fragments/lang.jsp"/>
         <br/>
         <br/>
     <div class="well">
@@ -24,7 +24,10 @@
         введите ваш вопрос или пожелание в текстовое поле:</h3>
     <hr/>
 
-<form:form class="form-horizontal" method="POST" modelAttribute="questionForm" action="${userActionUrl}">
+    <form:form class="form-horizontal" method="POST" modelAttribute="questionForm" action="${userActionUrl}">
+
+    <form:hidden path="id" />
+
 
     <spring:bind path="customerName">
         <div class="form-group ${status.error ? 'has-error' : ''}" >
@@ -76,7 +79,7 @@
     </spring:bind>
     <%--<div class="form-group">--%>
         <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" id="submit" class="btn btn-success btn-md pull-left">Отправить</button> &nbsp;
+            <button type="submit" id="submit" class="btn btn-success btn-md">Отправить</button>
             <button type="button" onclick="document.location='/'" class="btn btn-md">
                 Вернуться на главную
             </button>
@@ -87,7 +90,7 @@
         </div>
 </div>
 
-<jsp:include page="fragments/footer.jsp" />
+<jsp:include page="../fragments/footer.jsp" />
 
 </body>
 </html>
