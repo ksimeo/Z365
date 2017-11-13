@@ -15,10 +15,11 @@
 
 <body>
     <div class="container">
-        <jsp:include page="../fragments/lang.jsp"/>
+        <jsp:include page="fragments/lang.jsp"/>
         <br/>
         <br/>
         <div class="well">
+            <h1>Добрый день!</h1>
             <h1>Вас приветствует <img src="../../../resources/images/png/logo_mini.png"/></h1>
             <h2>- круглосуточная служба заказа Биогумата Живорост&trade;!</h2>
             <hr/>
@@ -63,6 +64,6 @@
 
 </body>
 
-<jsp:include page="../fragments/footer.jsp" />
+<jsp:include page="fragments/footer.jsp" />
 
 </html>

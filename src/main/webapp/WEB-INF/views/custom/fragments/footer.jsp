@@ -1,8 +1,13 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<div class="container" style="position: absolute; bottom: 0px;">
-  <hr>
+
+
+<div class="container" style="position: absolute; bottom: 0;">
+
   <footer>
-    <p>&copy; 2018 <b><i><a href="mailto:ksimeo@gmail.com" style="color: #2b542c">Ximeo<span style="color: black">:code</span></a></i></b></p>
+      &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
+    <p><span style="color: lightgreen;">&copy;2018</span>&nbsp;
+        <b><i><a href="mailto:ksimeo@gmail.com" style="color: yellowgreen">Ximeo<span style="color: #dff7c7">:code
+        </span></a></i></b></p>
   </footer>
 </div>
 </body>

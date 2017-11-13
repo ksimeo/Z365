@@ -14,6 +14,11 @@ import static com.ximeo.nazaru.zhivorost365.utilities.SessionHelper.*;
 public class RedirectController {
     private final static Logger logger = LoggerFactory.getLogger(RedirectController.class);
 
+    @RequestMapping(value = "/test", method = RequestMethod.GET)
+    public String showTest() {
+        return "admins/fragments/header2";
+    }
+
     @RequestMapping(value = "/branch1", method = RequestMethod.GET)
     public String showFork1(HttpServletRequest req) {
         String res;

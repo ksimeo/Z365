@@ -24,7 +24,9 @@
 <form:form class="form-horizontal" method="POST" modelAttribute="prodForm" action="${userActionUrl}">
 
     <form:input path="id" type="hidden" id="id" />
-
+    <c:if test="${not empty message}">
+        <div id="message" class="${message.type}">${message.message}</div>
+    </c:if>
     <br/>
     <spring:bind path="name">
         <div class="form-group ${status.error ? 'has-error' : ''}">
@@ -109,7 +111,7 @@
     <%-- TODO Предварительный подсчёт цены (on-line) --%>
 </form:form>
 </div>
-<jsp:include page="../fragments/footer.jsp" />
+<jsp:include page="../custom/fragments/footer.jsp" />
 
 </body>
 </html>

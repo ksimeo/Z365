@@ -12,6 +12,7 @@
 
     <import resource="datasource-context.xml"/>
     <import resource="mvc-context.xml"/>
+    <!--<import resource="security-context.xml"/>-->
 
     <!--<mvc:resources mapping="/resources/**" location="/resources/" />-->
 

@@ -1,5 +1,7 @@
 .custom {
-    background-color: #b4ffc5;
+    /*background-color: #b4ffc5;*/
+    /*background-color: #245f37;*/
+    background-color: #5B735B;
     background-image: url(../images/png/logo_background.png) !important;
     background-repeat: repeat !important;
     background-size: 25%;
@@ -20,6 +22,10 @@
     /*font-family: sans-serif;*/
 }
 
+
+.sdf {
+    background: #E3F8FF;
+}
 
 .error {
     background-color: #ffd3d3;

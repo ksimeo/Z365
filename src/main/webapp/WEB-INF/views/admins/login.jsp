@@ -18,7 +18,7 @@
     <spring:url var="authUrl" value="/static/j_spring_security_check" /><!--<co id="co_securityCheckPath"/>-->
 
     <div class="container">
-        <jsp:include page="../fragments/lang.jsp"/>
+        <jsp:include page="fragments/lang.jsp"/>
         <br/>
         <br/>
         <div class="well">
@@ -72,7 +72,7 @@
                 <br/>
     </form>
 
-    <jsp:include page="../fragments/footer.jsp"/>
+    <jsp:include page="../custom/fragments/footer.jsp"/>
 
     <script type="text/javascript">
         document.getElementById('username_or_email').focus();

@@ -89,7 +89,7 @@
   <h4><i>На данный момент заказов не поступало.</i></h4>
   </c:if>
 
-  <jsp:include page="../fragments/footer.jsp" />
+  <jsp:include page="../custom/fragments/footer.jsp" />
 
 
   <%--<!-- Trigger the modal with a button -->--%>

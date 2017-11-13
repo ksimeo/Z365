@@ -4,6 +4,8 @@ import com.ximeo.nazaru.zhivorost365.domain.dto.PasswInfo;
 import com.ximeo.nazaru.zhivorost365.domain.models.User;
 import com.ximeo.nazaru.zhivorost365.domain.models.UserRole;
 import com.ximeo.nazaru.zhivorost365.service.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,12 +19,16 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class UserController {
 
+    private static final Logger logger = LoggerFactory.getLogger(UserController.class);
+
     private UserService usrServ;
 
     @RequestMapping(value="/admins/users" ,method = RequestMethod.GET)
-    public String showAllUsers(Model uiModel) {
+    public String showUsersPage(Model uiModel) {
+        logger.info("showUsersPage()");
         uiModel.addAttribute("id", "2");
         uiModel.addAttribute("users", usrServ.getAllUsers());
+        uiModel.addAttribute("usrForm", new User());
         return "admins/usrs";
     }
 

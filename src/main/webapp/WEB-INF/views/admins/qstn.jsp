@@ -15,7 +15,7 @@
 <spring:url value="/questions" var="userActionUrl" />
 
 <div class="container">
-    <jsp:include page="../fragments/lang.jsp"/>
+    <jsp:include page="../custom/fragments/lang.jsp"/>
         <br/>
         <br/>
     <div class="well">
@@ -24,9 +24,17 @@
         введите ваш вопрос или пожелание в текстовое поле:</h3>
     <hr/>
 
-    <form:form class="form-horizontal" method="POST" modelAttribute="questionForm" action="${userActionUrl}">
+        <c:if test="${not empty msg}">
+            <div class="alert alert-${css} alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <strong>${msg}</strong>
+            </div>
+        </c:if>
 
-      <spring:bind path="id">
+
+        <spring:bind path="id">
         <div class="form-group ${status.error ? 'has-error' : ''}" >
           <div class="col-sm-10 pull-left">
             <label class="col-sm-2 control-label">Ваше имя:</label>
@@ -103,7 +111,7 @@
 </div>
 </div>
 
-<jsp:include page="../fragments/footer.jsp" />
+<jsp:include page="../custom/fragments/footer.jsp" />
 
 </body>
 </html>

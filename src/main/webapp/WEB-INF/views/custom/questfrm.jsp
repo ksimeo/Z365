@@ -15,7 +15,7 @@
 <spring:url value="/questions" var="userActionUrl" />
 
 <div class="container">
-    <jsp:include page="../fragments/lang.jsp"/>
+    <jsp:include page="fragments/lang.jsp"/>
         <br/>
         <br/>
     <div class="well">
@@ -90,7 +90,7 @@
         </div>
 </div>
 
-<jsp:include page="../fragments/footer.jsp" />
+<jsp:include page="fragments/footer.jsp" />
 
 </body>
 </html>

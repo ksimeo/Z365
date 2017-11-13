@@ -26,6 +26,9 @@
     </div>
 
     <form:form customerName="form" class="form-horizontal" method="POST" modelAttribute="userForm" action="${userActionUrl}">
+        <c:if test="${not empty message}">
+            <div id="message" class="${message.type}">${message.message}</div>
+        </c:if>
 
         <form:input path="id" type="hidden" id="id" />
 
@@ -95,13 +98,9 @@
                     Отмена</button>
             </div>
         </div>
-        <div>
-            <output id="price"></output>
-        </div>
-        <%--TODO Предварительный подсчёт цены (on-line) --%>
     </form:form>
 
-<jsp:include page="../fragments/footer.jsp" />
+<jsp:include page="../custom/fragments/footer.jsp" />
 
 </body>
 </html>

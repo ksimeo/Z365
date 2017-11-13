@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Date;
 
 @Controller
-public class QuestionController {
-    private static final Logger logger = LoggerFactory.getLogger(QuestionController.class);
+public class QuestionsController {
+    private static final Logger logger = LoggerFactory.getLogger(QuestionsController.class);
     private QuestionService questServ;
 
     @RequestMapping(value = "/questions", method = RequestMethod.GET, params = "form")

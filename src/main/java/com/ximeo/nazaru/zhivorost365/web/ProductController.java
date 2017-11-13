@@ -4,6 +4,8 @@ import com.ximeo.nazaru.zhivorost365.domain.models.CurrencyType;
 import com.ximeo.nazaru.zhivorost365.domain.models.MeasureUnit;
 import com.ximeo.nazaru.zhivorost365.domain.models.Product;
 import com.ximeo.nazaru.zhivorost365.service.ProductService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,18 +19,17 @@ import java.util.List;
 @Controller
 public class ProductController {
 
+    private static final Logger logger = LoggerFactory.getLogger(ProductController.class);
+
     private ProductService prodServ;
 
-//    @Inject
-//    public ProductController(ProductService prodServ) {
-//        this.prodServ = prodServ;
-//    }
-
     @RequestMapping(value = "/admins/prods", method = RequestMethod.GET)
-    public String showAllProducts(Model uiModel) {
-        System.err.println("Запрос поступил!!!");
+    public String showProductsPage(Model uiModel) {
+        logger.info("showProductsPage()");
+//        System.err.println("Запрос поступил!!!");
         List<Product> prods = prodServ.getAll();
         uiModel.addAttribute("products", prods);
+        uiModel.addAttribute("prodForm", new Product());
         return "admins/prods";
     }
 
@@ -53,6 +54,7 @@ public class ProductController {
     @RequestMapping(value = "/admins/prods", method = RequestMethod.POST)
     public String saveProduct(Product prod, HttpServletResponse resp) {
 //        try {
+        logger.info("saveProduct(): {}", prod);
             prodServ.addProduct(prod);
             return "redirect:/admins/prods";
 //            resp.sendRedirect("/admin/prods");

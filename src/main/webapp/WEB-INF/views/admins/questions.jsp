@@ -82,7 +82,7 @@
   <div id="pager"></div>
 </div>
 
-<jsp:include page="../fragments/footer.jsp" />
+<jsp:include page="fragments/footer.jsp" />
 
 
 <%--<!-- Trigger the modal with a button -->--%>

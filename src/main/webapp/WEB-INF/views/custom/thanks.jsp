@@ -22,5 +22,5 @@
             onclick="document.location='http://zhivorost.com.ua/'">Перейти на главную
         страницу</button>
 </div>
-<jsp:include page="../fragments/footer.jsp" />
+<jsp:include page="fragments/footer.jsp" />
 </html>

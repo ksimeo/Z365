@@ -13,14 +13,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 
 @Controller
-public class CultureController {
-    private static final Logger logger = LoggerFactory.getLogger(CultureController.class);
+public class CulturesController {
+
+    private static final Logger logger = LoggerFactory.getLogger(CulturesController.class);
     private CultureService cultServ;
 
     @RequestMapping(value = "/admins/cultures", method = RequestMethod.GET)
-    public String showCultures(Model uiModel) {
-        logger.info("showCultures()");
-        uiModel.addAttribute("cults", cultServ.getCultures());
+    public String showCulturesList(Model uiModel) {
+        logger.info("showCulturesList()");
+//        uiModel.addAttribute("cults", cultServ.getCultures());
+        uiModel.addAttribute("cultForm", new Culture());
         return "admins/cults";
     }
 

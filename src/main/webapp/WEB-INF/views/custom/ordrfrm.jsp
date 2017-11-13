@@ -76,7 +76,7 @@
 </form:form>
         </div>
 </div>
-<jsp:include page="../fragments/footer.jsp" />
+<jsp:include page="fragments/footer.jsp" />
 
 </body>
 </html>
