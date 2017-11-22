@@ -1,7 +1,8 @@
-package com.ximeo.nazaru.zhivorost365.web;
+package com.ximeo.nazaru.zhivorost365.web.controllers;
 
 import com.ximeo.nazaru.zhivorost365.domain.dto.PhoneInfo;
 import com.ximeo.nazaru.zhivorost365.domain.models.Customer;
+import com.ximeo.nazaru.zhivorost365.domain.models.Question;
 import com.ximeo.nazaru.zhivorost365.service.CustomerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,6 +32,7 @@ public class PhoneController {
                                 @CookieValue(value = "parth4", required = false) Cookie cookieParth4) {
         logger.info("showStartPage(): user with host {} has entered on start custom page.", req.getHeader("host"));
         PhoneInfo phoneform = new PhoneInfo();
+        uiModel.addAttribute("questForm", new Question());
         if (cookieParth1 != null && cookieParth2 != null && cookieParth3 != null && cookieParth4 != null) {
             String parth1 = cookieParth1.getValue();
             String parth2 = cookieParth2.getValue();
@@ -46,7 +48,8 @@ public class PhoneController {
     }
 
     @RequestMapping(value = {"/phone"}, method = RequestMethod.POST)
-    public String enterPhoneNumber(PhoneInfo phoneInfo, HttpServletRequest req, HttpServletResponse resp, HttpSession session) {
+    public String enterPhoneNumber(Model uiModel, PhoneInfo phoneInfo, HttpServletRequest req, HttpServletResponse resp,
+                                   HttpSession session) {
         String phone = phoneInfo.toString();
         logger.info("showResultPage(): the phone number {} has been entered.");
 //        HttpSession session = req.getSession();
@@ -68,6 +71,7 @@ public class PhoneController {
         if (cust != null) {
             session.setAttribute("customer", cust);
             logger.info("showResultPage(): The visitor has been recognised as a identified customer.");
+            uiModel.addAttribute("questForm", new Question());
             return "custom/branch1";
         }
         session.setAttribute("phone", phone);

@@ -97,12 +97,17 @@
                     <button type="button" onclick="document.location='/'" class="btn btn-md">
                         Вернуться на главную
                     </button>
-                    <button type="button" class="btn btn-md btn-info" onclick="document.location='/questions?form'">
+                    <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal1">
                         <img src="../../../resources/images/png/question.png">&nbsp;Задать вопрос</button>
+                    <%--<button type="button" class="btn btn-md btn-info" onclick="document.location='/questions?form'">--%>
+                        <%--<img src="../../../resources/images/png/question.png">&nbsp;Задать вопрос</button>--%>
                 </div>
             <br/>
             <br/>
     </form:form>
+
+    <jsp:include page="fragments/messageform.jsp"/>
+
     </div>
 </div>
 <jsp:include page="fragments/footer.jsp"/>

@@ -20,6 +20,19 @@
 <script type="text/javascript" src="${jqgrid_locale_url}"><jsp:text/></script>
 <script type="text/javascript" src="${jqgrid_url}"><jsp:text/></script>
 
+<spring:url value="/admins" var="urlHome" />
+<spring:url value="/admins/cultures" var="urlCalculation" />
+<spring:url value="/admins/prods" var="urlProducts" />
+<spring:url value="/admins/users" var="urlUsers" />
+<spring:url value="/admins/questions" var="urlQuestions" />
+<spring:url value="/admins/stat" var="urlStat" />
+<spring:url value="/admins/mailing" var="urlMailing" />
+<spring:url value="/static/j_spring_security_logout" var="urlExit" />
+
+<spring:url value="/admins/users/1/pswrd" var="urlChangePassword" />
+<%--<spring:url value="/j_spring_security_logout" var="logoutUrl" />--%>
+<spring:url value="username" var="userName" />
+
 <%--<spring:message code="label_contact_list" var="labelID"/>--%>
 <%--<spring:message code="label_contact_first_name" var="labelContactFirstName"/>--%>
 <%--<spring:message code="label_contact_last_name" var="labelContactLastName"/>--%>
@@ -36,7 +49,7 @@
 //            'Фамилия', 'Тел.', 'e-mail', 'Тип продукции', 'Кол-во', 'Единицы изм.', '', ''
       colModel :[
         {name:'customerName', index:'customerName', width:150},
-        {name:'messageBody', index:'messageBody', width:100},
+        {name:'messageBody', index:'messageBody', width:100}
 //        {name:'createDate', index:'createDate', width:100}
       ],
       jsonReader : {

@@ -23,10 +23,10 @@ public class OrderServiceMock implements OrderService {
         Customer cust4 = new Customer("+380503222345", "Стас", "Попов", "s.popov@yandex.ua");
         Product prod1 = new Product(1L, "Продукт типа 1");
         Product prod2 = new Product(2L, "Продукт типа 2");
-        orders.add(new Order(cust1, prod1, 23));
-        orders.add(new Order(cust2, prod2, 4));
-        orders.add(new Order(cust3, prod1, 5));
-        orders.add(new Order(cust4,prod2, 16));
+//        orders.add(new Order(cust1, prod1, 23));
+//        orders.add(new Order(cust2, prod2, 4));
+//        orders.add(new Order(cust3, prod1, 5));
+//        orders.add(new Order(cust4,prod2, 16));
     }
 
     @Override

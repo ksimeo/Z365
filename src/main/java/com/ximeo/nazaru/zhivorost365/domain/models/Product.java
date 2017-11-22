@@ -2,20 +2,19 @@ package com.ximeo.nazaru.zhivorost365.domain.models;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Table(name = "product")
 public class Product implements Serializable {
-    private static final long serialVersionUID = -5579174309345318350L;
+    private static final long serialVersionUID = -3192531151646206490L;
 
     private Long id;
     private String name;
     private float price;
     private CurrencyType currency;
     private MeasureUnit units;
-    private Set<Order> orders = new HashSet<>();
+    private float coeff;
+//    private Set<Order> orders = new HashSet<>();
     private boolean actual;
 
     private int version;
@@ -94,6 +93,14 @@ public class Product implements Serializable {
         this.units = units;
     }
 
+    public float getCoeff() {
+        return coeff;
+    }
+
+    public void setCoeff(float coeff) {
+        this.coeff = coeff;
+    }
+
     @Version
     public int getVersion() {
         return version;
@@ -103,23 +110,23 @@ public class Product implements Serializable {
         this.version = version;
     }
 
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
-    public Set<Order> getOrders() {
-        return orders;
-    }
+//    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+//    public Set<Order> getOrders() {
+//        return orders;
+//    }
+//
+//    public void setOrders(Set<Order> orders) {
+//        this.orders = orders;
+//    }
 
-    public void setOrders(Set<Order> orders) {
-        this.orders = orders;
-    }
-
-    public void addOrder(Order order) {
-        order.setProduct(this);
-        getOrders().add(order);
-    }
-
-    public void removeOrder(Order order) {
-        getOrders().remove(order);
-    }
+//    public void addOrder(Order order) {
+////        order.setProduct(this);
+//        getOrders().add(order);
+//    }
+//
+//    public void removeOrder(Order order) {
+//        getOrders().remove(order);
+//    }
 
     @Column(name = "IS_ACTUAL")
     public boolean isActual() {
@@ -138,6 +145,8 @@ public class Product implements Serializable {
                 ", price=" + price +
                 ", currency=" + currency +
                 ", units=" + units +
+                ", coeff=" + coeff +
+                ", actual=" + actual +
                 ", version=" + version +
                 '}';
     }

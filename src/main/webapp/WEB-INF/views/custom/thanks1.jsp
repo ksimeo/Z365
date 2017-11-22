@@ -11,15 +11,19 @@
 <!DOCTYPE html>
 <html lang="uk">
 
-<jsp:include page="../fragments/header.jsp" />
+<jsp:include page="fragments/header2.jsp" />
 
 <div class="container">
-  <jsp:include page="../fragments/logo.jsp"/>
-  <br/>
-  <br/>
-  <h1>Спасибо, за ваше cообщение! Мы свяжемся с вами в ближайшее время.</h1>
-  <button type="button" class="btn btn-link pull-right" onclick="document.location='http://zhivorost.com.ua/'">Перейти на главную
-    страницу</button>
+    <jsp:include page="../fragments/logo.jsp"/>
+    <br/>
+    <br/>
+    <h1>Спасибо, за ваше cообщение! Мы свяжемся с вами в ближайшее время.</h1>
+    <hr/>
+    <button type="button" class="btn btn-success btn-md pull-right" onclick="document.location='/'">
+        Выполнить заказ
+    </button>
+    <button type="button" class="btn btn-default pull-right" onclick="document.location='http://zhivorost.com.ua/'">
+        Перейти на Главную &nbsp;<img src="../../../resources/images/png/logo1.png"/></button>
 </div>
 <jsp:include page="fragments/footer.jsp" />
 </html>

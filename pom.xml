@@ -31,6 +31,9 @@
         <!--U T I L I T E S-->
         <guava.version>14.0.1</guava.version>
         <jackson-mapper.version>1.9.13</jackson-mapper.version>
+        <commons.io.version>2.4</commons.io.version>
+        <joda.time.version>2.9.9</joda.time.version>
+        <joda.time.jsptags.version>1.1.1</joda.time.jsptags.version>
         <!--T E S T I N G-->
         <junit.version>4.7</junit.version>
         <mockito.version>1.9.5</mockito.version>
@@ -94,6 +97,12 @@
             <artifactId>jstl</artifactId>
             <version>${jstl.version}</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/javax.servlet/jstl -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
         <!--<dependency>-->
             <!--<groupId>javax.validation</groupId>-->
             <!--<artifactId>validation-api</artifactId>-->
@@ -140,27 +149,6 @@
             <version>${h2.database.version}</version>
             <scope>runtime</scope>
         </dependency>
-        <!--<dependency>-->
-            <!--<groupId>org.hibernate</groupId>-->
-            <!--<artifactId>hibernate-validator</artifactId>-->
-            <!--<version>${hibernate.validator.version}</version>-->
-        <!--</dependency>-->
-        <!--U T I L I T E S-->
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>${guava.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.codehaus.jackson</groupId>
-            <artifactId>jackson-mapper-asl</artifactId>
-            <version>${jackson-mapper.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.codehaus.jackson</groupId>
-            <artifactId>jackson-mapper-lgpl</artifactId>
-            <version>${jackson-mapper.version}</version>
-        </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-dbcp2</artifactId>
@@ -191,6 +179,59 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-tx</artifactId>
         </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.hibernate</groupId>-->
+            <!--<artifactId>hibernate-validator</artifactId>-->
+            <!--<version>${hibernate.validator.version}</version>-->
+        <!--</dependency>-->
+        <!--U T I L I T E S-->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
+        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.codehaus.jackson</groupId>-->
+            <!--<artifactId>jackson-mapper-asl</artifactId>-->
+            <!--<version>${jackson-mapper.version}</version>-->
+        <!--</dependency>-->
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-mapper-lgpl</artifactId>
+            <version>${jackson-mapper.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons.io.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.2.4</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.jadira.usertype/usertype.core -->
+        <!--<dependency>-->
+            <!--<groupId>org.jadira.usertype</groupId>-->
+            <!--<artifactId>usertype.core</artifactId>-->
+            <!--<version>3.0.0.GA</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.jadira.usertype</groupId>-->
+            <!--<artifactId>usertype.spi</artifactId>-->
+            <!--<version>3.0.0.GA</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>joda-time</groupId>-->
+            <!--<artifactId>joda-time</artifactId>-->
+            <!--<version>${joda.time.version}</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>joda-time</groupId>-->
+            <!--<artifactId>joda-time-jsptags</artifactId>-->
+            <!--<version>${joda.time.jsptags.version}</version>-->
+        <!--</dependency>-->
         <!--T E S T I N G-->
         <dependency>
             <groupId>junit</groupId>

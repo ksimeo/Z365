@@ -1,10 +1,13 @@
-package com.ximeo.nazaru.zhivorost365.web;
+package com.ximeo.nazaru.zhivorost365.web.controllers;
 
 import com.google.common.collect.Lists;
 import com.ximeo.nazaru.zhivorost365.domain.dto.OrderGrid;
 import com.ximeo.nazaru.zhivorost365.domain.dto.OrderInfo;
 import com.ximeo.nazaru.zhivorost365.domain.dto.UserInfo;
-import com.ximeo.nazaru.zhivorost365.domain.models.*;
+import com.ximeo.nazaru.zhivorost365.domain.models.Customer;
+import com.ximeo.nazaru.zhivorost365.domain.models.Order;
+import com.ximeo.nazaru.zhivorost365.domain.models.Product;
+import com.ximeo.nazaru.zhivorost365.domain.models.Question;
 import com.ximeo.nazaru.zhivorost365.service.OrderService;
 import com.ximeo.nazaru.zhivorost365.service.ProductService;
 import org.slf4j.Logger;
@@ -36,13 +39,13 @@ public class OrderController {
 
     @RequestMapping(value = "/admins/orders", method = RequestMethod.GET)
     public String showMainPage(Model uiModel, HttpServletRequest req, HttpSession session) {
-        logger.info("showStartPage(): user with host {} has entered on start admins page.", req.getHeader("host"));
-        User usr = new User("testuser", "test", UserRole.USER);
-        usr.setId(1L);
-        session.setAttribute("user", usr);
-        List<Order> ordrs = ordServ.getOrders();
-        uiModel.addAttribute("orders", ordrs);
-        return "admins/main";
+//        logger.info("showStartPage(): user with host {} has entered on start admins page.", req.getHeader("host"));
+//        User usr = new User("testuser", "test", UserRole.USER);
+//        usr.setId(1L);
+//        session.setAttribute("user", usr);
+//        List<Order> ordrs = ordServ.getOrders();
+//        uiModel.addAttribute("orders", ordrs);
+        return "admins/ordrs";
     }
 
     @RequestMapping(value = "/orders", method = RequestMethod.GET)
@@ -57,6 +60,7 @@ public class OrderController {
         }
         uiModel.addAttribute("orderForm", ordInfo);
         uiModel.addAttribute("prods", prods);
+        uiModel.addAttribute("questForm", new Question());
         session.setAttribute("prods", prods);
         return "custom/ordrfrm";
     }
@@ -71,28 +75,26 @@ public class OrderController {
         }
         List<Product> products = (List<Product>) session.getAttribute("prods");
         Product prod = products.get(model.getType());
-        Order ord = new Order(cust, prod, model.getAmount());
-        ordServ.addOrder(ord);
+//        Order ord = new Order(cust, prod, model.getAmount());
+//        ordServ.addOrder(ord);
         return "redirect:/branch2";
     }
 
-    @RequestMapping(value = "/admins/orders/listgrid", method = RequestMethod.GET, produces="application/json")
+    @RequestMapping(value = "admins/orders/listgrid", method = RequestMethod.GET, produces="application/json")
     @ResponseBody
     public OrderGrid listGrid(@RequestParam(value = "page", required = false) Integer page,
                                 @RequestParam(value = "rows", required = false) Integer rows,
                                 @RequestParam(value = "sidx", required = false) String sortBy,
                                 @RequestParam(value = "sord", required = false) String order) {
 
-        System.err.println("Запрос получен!!!");
-
-        logger.info("Listing contacts for grid with page: {}, rows: {}", page, rows);
-        logger.info("Listing contacts for grid with sort: {}, order: {}", sortBy, order);
+        logger.info("Listing orders for grid with page: {}, rows: {}", page, rows);
+        logger.info("Listing orders for grid with sort: {}, order: {}", sortBy, order);
 
         // Process order by
         Sort sort = null;
         String orderBy = sortBy;
-        if (orderBy != null && orderBy.equals("birthDateString"))
-            orderBy = "birthDate";
+        if (orderBy != null && orderBy.equalsIgnoreCase("createDate"))
+            orderBy = "createDate";
 
         if (orderBy != null && order != null) {
             if (order.equals("desc")) {
@@ -111,18 +113,70 @@ public class OrderController {
             pageRequest = new PageRequest(page - 1, rows);
         }
 
-        Page<Order> contactPage = ordServ.getOrderPage(pageRequest);
+        Page<Order> ordersPage = ordServ.getOrderPage(pageRequest);
+        List<Order> ordrs2 = Lists.newArrayList(ordersPage.iterator());
 
-        // Construct the grid data that will return as JSON data
-        OrderGrid contactGrid = new OrderGrid();
+        for (Order ord : ordrs2) {
+            System.out.println(ord);
+        }
 
-        contactGrid.setCurrentPage(contactPage.getNumber() + 1);
-        contactGrid.setTotalPages(contactPage.getTotalPages());
-        contactGrid.setTotalRecords(contactPage.getTotalElements());
 
-        contactGrid.setOrderData(Lists.newArrayList(contactPage.iterator()));
+        OrderGrid ordGrid1 = new OrderGrid();
+//        ordGrid1.setOrderData(ordrs2);
+//        ordGrid.setCurrentPage();
 
-        return contactGrid;
+//        // Construct the grid data that will return as JSON data
+//        OrderGrid ordGrid = new OrderGrid();
+
+        ordGrid1.setCurrentPage(ordersPage.getNumber() + 1);
+        ordGrid1.setTotalPages(ordersPage.getTotalPages());
+        ordGrid1.setTotalRecords(ordersPage.getTotalElements());
+        ordGrid1.setOrderData(ordrs2);
+        return ordGrid1;
+
+//        Customer cust1 = new Customer();
+//        cust1.setName("Вася");
+//        cust1.setSurname("Орлов");
+//        cust1.setEmail("ksimeo@gmail.com");
+//        cust1.setPhoneNumber("+380997517095");
+//        Customer cust2 = new Customer();
+//        cust2.setName("Коля");
+//        cust2.setPhoneNumber("+380938181491");
+//        cust2.setEmail("maksym.fedorenko@gmail.com");
+//        Product prod1 = new Product();
+//        prod1.setName("Product type 1");
+//        prod1.setUnits(MeasureUnit.PIECE);
+//        Product prod2 = new Product();
+//        prod2.setName("Product type 1");
+//        prod2.setUnits(MeasureUnit.CANISTER);
+//        Order order1 = new Order();
+//        order1.setId(1L);
+//        order1.setCreateDate(new Date());
+//        order1.setAmount(23);
+//        order1.setCustomer(cust1);
+//        order1.setProduct(prod1);
+//        order1.setReviewDate(new Date());
+//        Order order2 = new Order();
+//        order2.setId(2L);
+//        order2.setAmount(14);
+//        order2.setCustomer(cust2);
+//        order2.setProduct(prod2);
+//        Order order3 = new Order();
+//        order3.setId(3L);
+//        order3.setAmount(18);
+//        order3.setCustomer(cust2);
+//        order3.setProduct(prod2);
+//        List<Order> ordrs = new ArrayList<>();
+//        ordrs.add(order1);
+//        ordrs.add(order2);
+//        ordrs.add(order3);
+//
+//        OrderGrid ordGrid = new OrderGrid();
+//        ordGrid.setCurrentPage(1);
+//        ordGrid.setTotalPages(1);
+//        ordGrid.setTotalRecords(2);
+//        ordGrid.setOrderData(ordrs);
+//        return ordGrid;
     }
 
     @Autowired

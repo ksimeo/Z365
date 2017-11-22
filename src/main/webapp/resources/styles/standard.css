@@ -11,6 +11,18 @@
     /*font-family: sans-serif;*/
 }
 
+.gratitude {
+    background-image: url(../images/jpg/background.jpg);
+    color: #f7fff3;
+    font-family: Lucida Grande, Lucida Sans, Arial, sans-serif !important;
+}
+
+.gratitude2 {
+    background-image: url(../images/jpg/background1.jpeg);
+    color: #f7fff3;
+    font-family: Lucida Grande, Lucida Sans, Arial, sans-serif !important;
+}
+
 .admins {
     background-color: #E0FFFF;
     /*background-image: url(../images/png/logo_background.png) !important;*/

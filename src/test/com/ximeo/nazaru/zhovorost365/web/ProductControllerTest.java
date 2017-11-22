@@ -2,7 +2,7 @@
 //
 //import com.ximeo.nazaru.zhivorost365.domain.models.Product;
 //import com.ximeo.nazaru.zhivorost365.service.ProductService;
-//import com.ximeo.nazaru.zhivorost365.web.ProductController;
+//import com.ximeo.nazaru.zhivorost365.web.controllers.ProductController;
 //import org.junit.Test;
 //import org.springframework.ui.Model;
 //

@@ -1,6 +1,7 @@
-package com.ximeo.nazaru.zhivorost365.web;
+package com.ximeo.nazaru.zhivorost365.web.controllers;
 
 import com.ximeo.nazaru.zhivorost365.domain.dto.UserInfo;
+import com.ximeo.nazaru.zhivorost365.domain.models.Question;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -21,6 +22,7 @@ public class CustomController {
     public String showCustomerForm(Model uiModel) {
         UserInfo usrForm = new UserInfo();
         uiModel.addAttribute("usrForm", usrForm);
+        uiModel.addAttribute("questForm", new Question());
         return "custom/rgcustfrm";
     }
 

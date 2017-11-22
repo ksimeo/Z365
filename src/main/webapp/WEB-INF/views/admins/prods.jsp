@@ -191,7 +191,7 @@
                                 <div class="col-sm-10">
                                     <label class="col-sm-2 control-label">Наименование продукта: &nbsp;
                                         <form:input path="name" type="text" class="form-control"
-                                                    id="name" style='width: 2em important;' min="0" max="1000"
+                                                    id="name" style='width: 2em important;'
                                                     onchange="checkParams()"/>
                                         <form:errors path="name" class="control-label" />
                                     </label>

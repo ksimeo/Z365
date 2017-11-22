@@ -1,4 +1,4 @@
-package com.ximeo.nazaru.zhivorost365.web;
+package com.ximeo.nazaru.zhivorost365.web.controllers;
 
 import com.google.common.collect.Lists;
 import com.ximeo.nazaru.zhivorost365.domain.dto.QuestionGrid;
@@ -13,8 +13,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Date;
 
 @Controller
 public class QuestionsController {
@@ -35,11 +33,11 @@ public class QuestionsController {
         return "custom/thanks1";
     }
 
-    @RequestMapping(value = "/admins/questions", method = RequestMethod.GET)
-    public String getQuestionsList(Model uiModel) {
+    @RequestMapping(value = "/admins/quests", method = RequestMethod.GET)
+    public String getQuestionsList() {
         logger.info("getQuestionsList()");
-        uiModel.addAttribute("qstns", questServ.getQuestions());
-        return "admins/questions";
+//        uiModel.addAttribute("qstns", questServ.getQuestions());
+        return "admins/qstns";
     }
 
     @RequestMapping(value = "/admins/question/{id}", method = RequestMethod.GET)
@@ -53,18 +51,16 @@ public class QuestionsController {
     public void setViewed(@PathVariable("id") long id) {
         logger.info("setViewed()");
         Question qstn = questServ.getQuestion(id);
-        qstn.setReviewDate(new Date());
+//        qstn.setReviewDate(new Date());
         questServ.addQuestion(qstn);
     }
 
-    @RequestMapping(value = "/admins/questions/listgrid", method = RequestMethod.GET, produces="application/json")
+    @RequestMapping(value = "admins/questions/listgrid", method = RequestMethod.GET, produces="application/json;charset=UTF-8")
     @ResponseBody
     public QuestionGrid listGrid(@RequestParam(value = "page", required = false) Integer page,
                               @RequestParam(value = "rows", required = false) Integer rows,
                               @RequestParam(value = "sidx", required = false) String sortBy,
                               @RequestParam(value = "sord", required = false) String order) {
-
-        System.err.println("Запрос получен!!!");
 
         logger.info("Listing contacts for grid with page: {}, rows: {}", page, rows);
         logger.info("Listing contacts for grid with sort: {}, order: {}", sortBy, order);
@@ -72,8 +68,8 @@ public class QuestionsController {
         // Process order by
         Sort sort = null;
         String orderBy = sortBy;
-        if (orderBy != null && orderBy.equals("birthDateString"))
-            orderBy = "birthDate";
+        if (orderBy != null && orderBy.equals("customerName"))
+            orderBy = "customerName";
 
         if (orderBy != null && order != null) {
             if (order.equals("desc")) {
@@ -92,17 +88,17 @@ public class QuestionsController {
             pageRequest = new PageRequest(page - 1, rows);
         }
 
-        Page<Question> contactPage = questServ.getQuestionPage(pageRequest);
+        Page<Question> questionPage = questServ.getQuestionPage(pageRequest);
 
         // Construct the grid data that will return as JSON data
         QuestionGrid questionGrid = new QuestionGrid();
 
-        questionGrid.setCurrentPage(contactPage.getNumber() + 1);
-        questionGrid.setTotalPages(contactPage.getTotalPages());
-        questionGrid.setTotalRecords(contactPage.getTotalElements());
+        questionGrid.setCurrentPage(questionPage.getNumber() + 1);
+        questionGrid.setTotalPages(questionPage.getTotalPages());
+        questionGrid.setTotalRecords(questionPage.getTotalElements());
+        questionGrid.setQuestionData(Lists.newArrayList(questionPage.iterator()));
 
-        questionGrid.setQuestionData(Lists.newArrayList(contactPage.iterator()));
-
+//        questionGrid.setQuestionData(Lists.newArrayList(questionPage));
         return questionGrid;
     }
 

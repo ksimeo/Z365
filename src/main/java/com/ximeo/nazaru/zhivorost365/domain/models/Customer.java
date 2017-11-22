@@ -3,8 +3,6 @@ package com.ximeo.nazaru.zhivorost365.domain.models;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Table(name="customer")
@@ -17,7 +15,7 @@ public class Customer implements Serializable {
     private String email;
     private Date regDate;
 //    private Date lastDate;
-    private Set<Order> orders = new HashSet<>();
+//    private Set<Order> orders = new HashSet<>();
     private int version;
 
     public Customer() {
@@ -69,23 +67,23 @@ public class Customer implements Serializable {
         this.email = email;
     }
 
-    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
-    public Set<Order> getOrders() {
-        return orders;
-    }
+//    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
+//    public Set<Order> getOrders() {
+//        return orders;
+//    }
+//
+//    public void setOrders(Set<Order> orders) {
+//        this.orders = orders;
+//    }
 
-    public void setOrders(Set<Order> orders) {
-        this.orders = orders;
-    }
-
-    public void addOrder(Order order) {
-        order.setCustomer(this);
-        getOrders().add(order);
-    }
-
-    public void removeOrder(Order order) {
-        getOrders().remove(order);
-    }
+//    public void addOrder(Order order) {
+//        order.setCustomer(this);
+//        getOrders().add(order);
+//    }
+//
+//    public void removeOrder(Order order) {
+//        getOrders().remove(order);
+//    }
 
     @Column(name = "REG_DATE")
     @Temporal(TemporalType.DATE)
@@ -126,8 +124,6 @@ public class Customer implements Serializable {
                 ", surname='" + surname + '\'' +
                 ", email='" + email + '\'' +
                 ", regDate=" + regDate +
-                ", orders=" + orders +
-                ", version=" + version +
                 '}';
     }
 }

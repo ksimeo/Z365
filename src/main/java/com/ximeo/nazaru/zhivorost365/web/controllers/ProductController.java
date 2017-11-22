@@ -1,4 +1,4 @@
-package com.ximeo.nazaru.zhivorost365.web;
+package com.ximeo.nazaru.zhivorost365.web.controllers;
 
 import com.ximeo.nazaru.zhivorost365.domain.models.CurrencyType;
 import com.ximeo.nazaru.zhivorost365.domain.models.MeasureUnit;

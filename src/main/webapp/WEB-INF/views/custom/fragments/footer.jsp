@@ -20,3 +20,5 @@
 
 <script src="${coreJs}"></script>
 <script src="${bootstrapJs}"></script>
+
+</html>

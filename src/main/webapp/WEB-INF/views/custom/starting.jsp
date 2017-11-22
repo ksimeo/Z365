@@ -39,8 +39,11 @@
             <sf:input type="text" path="parth4" customerName="parth4" size="1" placeholder="--"
                   maxlength="2"  tabindex="4" style="width: 35px;" /> &nbsp;
             <button class="btn btn-md btn-success" type="submit">OK</button>
-            <button type="button" class="btn btn-md btn-info" onclick="document.location='/questions?form'">
+                <!-- Trigger the modal with a button -->
+            <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal1">
                     <img src="../../../resources/images/png/question.png">&nbsp;Задать вопрос</button>
+            <%--<button type="button" class="btn btn-md btn-info" onclick="document.location='/questions?form'">--%>
+                    <%--<img src="../../../resources/images/png/question.png">&nbsp;Задать вопрос</button>--%>
             </sf:form>
             </h3>
             <br/>
@@ -48,20 +51,8 @@
         </div>
         </div>
     </div>
-    <%--<div class="action-form" data-name="action-form">--%>
-        <%--<div>--%>
-            <%--<form data-name="form" action="/phone" method="post" class="form login">--%>
-                <%--<div class="form-line">--%>
-                    <%--<div class="label">Для начала, совершения заказа введите Ваш контактный номер телефона</div>--%>
-                <%--</div>--%>
-                <%--<div class="form-line">--%>
-                    <%--<div class="input">--%>
-                        <%--<input name="login" type="tel" autofocus="" value="+380" autocomplete="off" placeholder="Ваш телефон">--%>
-                    <%--</div>--%>
-                <%--</div>--%>
-                <%--<div class="form-line"><button type="submit" class="button">Далі</button></div>--%>
-            <%--</form>--%>
 
+   <jsp:include page="fragments/messageform.jsp"/>
 </body>
 
 <jsp:include page="fragments/footer.jsp" />

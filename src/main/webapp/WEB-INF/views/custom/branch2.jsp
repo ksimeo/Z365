@@ -20,12 +20,13 @@
         <h2>Желаете заказать что-нибудь еще?!</h2>
         <br/>
         <br/>
-            <button type="button" class="btn btn-md btn-info" onclick="document.location='/questions?form'">
-                <img src="../../../resources/images/png/question.png">&nbsp;Задать вопрос</button>
             <input type="button" class="btn btn-md btn-success" value="Пожалуй, да!"
                    onclick="document.location='branch1'"/>
             <input type="button" class="btn btn-md" value="Нет, пока это все"
                    onclick="document.location='gratitude'"/>
+            <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal1">
+                <img src="../../../resources/images/png/question.png">&nbsp;Задать вопрос</button>
+        <jsp:include page="fragments/messageform.jsp"/>
     </div>
 </div>
 

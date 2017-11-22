@@ -1,6 +1,9 @@
 package com.ximeo.nazaru.zhivorost365.domain.models;
 
-public enum MeasureUnit {
+import java.io.Serializable;
+
+public enum MeasureUnit implements Serializable {
+
     LITER("liter"), CUBIC_METER("cubic_meter"), GALLON("gallon"), CANISTER("canister"), BARREL("barrel"), PIECE("piece");
 
     public String name;

@@ -16,10 +16,11 @@ public class Question implements Serializable {
     private Customer customer;
     private Date createDate;
     private Date reviewDate;
+//    private static final SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy HH:mm");
     private int version;
 
     public Question() {
-        this.createDate = new Date();
+//        this.createDate = new Date();
     }
 
     public Question(String name, String phoneNumber, String eMail) {
@@ -27,6 +28,11 @@ public class Question implements Serializable {
         this.phoneNumber = phoneNumber;
         this.eMail = eMail;
         this.createDate = new Date();
+    }
+
+    public Question(String messageBody, String customerName) {
+        this.messageBody = messageBody;
+        this.customerName = customerName;
     }
 
     @Id
@@ -39,6 +45,7 @@ public class Question implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
+
     @Column(name = "NAME")
     public String getCustomerName() {
         return customerName;
@@ -84,17 +91,26 @@ public class Question implements Serializable {
         this.customer = customer;
     }
 
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "CREATE_DATE")
     public Date getCreateDate() {
         return createDate;
     }
 
+//    @Transient
+//    public String getCreateDateString() {
+//        String createDateString = "";
+//        if (createDate != null) {
+//            createDateString = sdf.format(createDate);
+//        }
+//        return createDateString;
+//    }
+
     public void setCreateDate(Date createDate) {
         this.createDate = createDate;
     }
 
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "REVIEW_DATE")
     public Date getReviewDate() {
         return reviewDate;

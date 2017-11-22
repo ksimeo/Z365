@@ -43,10 +43,10 @@
 
     <bean id="emf" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="dataSource" ref="dataSource" />
-        <property name="jpaVendorAdapter">
-            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
-        </property>
-        <!--<property customerName="jpaVendorAdapter" ref="jpaVendorAdapter" />-->
+        <!--<property name="jpaVendorAdapter">-->
+            <!--<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />-->
+        <!--</property>-->
+        <property name="jpaVendorAdapter" ref="jpaVendorAdapter" />
         <property name="packagesToScan" value="com.ximeo.nazaru.zhivorost365.domain.models" />
         <property name="jpaProperties">
             <props>

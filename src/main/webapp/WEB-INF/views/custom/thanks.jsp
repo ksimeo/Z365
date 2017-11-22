@@ -11,16 +11,21 @@
 <!DOCTYPE html>
 <html lang="uk">
 
-<jsp:include page="../fragments/header.jsp" />
+<jsp:include page="fragments/header1.jsp" />
 
 <div class="container">
-    <jsp:include page="../fragments/logo.jsp"/>
     <br/>
     <br/>
-    <h1>Спасибо, за ваш заказ! Мы свяжемся с вами в ближайшее время.</h1>
-    <button type="button" class="btn btn-link pull-right"
-            onclick="document.location='http://zhivorost.com.ua/'">Перейти на главную
-        страницу</button>
+    <h1>Спасибо, за ваш заказ! Мы свяжемся с вами в ближайшее время</h1>
+    <hr/>
+    <button type="button" class="btn btn-success btn-md pull-right" onclick="document.location='/'">
+        Выполнить еще заказ
+    </button>
+    <button type="button" class="btn btn-default pull-right" onclick="document.location='http://zhivorost.com.ua/'">
+        Перейти на Главную &nbsp;<img src="../../../resources/images/png/logo1.png"/></button>
+    <button type="button" class="btn btn-info btn-md pull-right" data-toggle="modal" data-target="#myModal1">
+        <img src="../../../resources/images/png/question.png">&nbsp;Задать вопрос</button>
+    <jsp:include page="fragments/messageform.jsp"/>
 </div>
 <jsp:include page="fragments/footer.jsp" />
 </html>

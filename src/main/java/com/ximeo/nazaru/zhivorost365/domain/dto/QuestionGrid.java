@@ -11,6 +11,17 @@ public class QuestionGrid implements Serializable {
     private long totalRecords;
     private List<Question> questionData;
 
+    public QuestionGrid() {
+        // NOP
+    }
+
+    public QuestionGrid(int totalPages, int currentPage, long totalRecords, List<Question> questionData) {
+        this.totalPages = totalPages;
+        this.currentPage = currentPage;
+        this.totalRecords = totalRecords;
+        this.questionData = questionData;
+    }
+
     public int getTotalPages() {
         return totalPages;
     }

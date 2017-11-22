@@ -1,6 +1,8 @@
 package com.ximeo.nazaru.zhivorost365.domain.models;
 
-public enum CurrencyType {
+import java.io.Serializable;
+
+public enum CurrencyType implements Serializable {
     UAH("UAH", '₴'), USD("USD", '$'), EUR("EUR", '€'), GBP("GBP", '£'), CHF("CHF", '₣'), JPY("JPY",'¥'),
     RUR("RUR", '\u20BD');
 

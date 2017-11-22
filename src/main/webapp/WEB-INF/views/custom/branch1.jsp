@@ -6,11 +6,10 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page isELIgnored="false" %>
 
-<html>
+<html lang="uk">
 
     <jsp:include page="../fragments/header.jsp" />
 
-    <body>
     <div class="container">
         <jsp:include page="../fragments/logo.jsp" />
         <br/>
@@ -20,19 +19,19 @@
                 <h2>Необходим ли Вам предварительный расчет количества продукта?!</h2>
                 <br/>
                 <br/>
-            <%--<div class="btn-group">--%>
                 <button type="button" class="btn btn-md btn-success"
                         onclick="document.location='/calc'">Да, необходим</button>
                     &nbsp;
                 <button type="button" class="btn btn-md" onclick="document.location='/orders?amount=0&type=0'">
-                    Нет, сразу к заказу
+                    Нет, перейти сразу к заказу
                 </button>
                     &nbsp;
-                <button type="button" class="btn btn-md btn-info" onclick="document.location='/questions?form'">
+                <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal1">
                     <img src="../../../resources/images/png/question.png">&nbsp;Задать вопрос</button>
-            <%--</div>--%>
+
         </div>
     </div>
-        <jsp:include page="fragments/footer.jsp" />
-    </body>
+    <jsp:include page="fragments/messageform.jsp"/>
+    <jsp:include page="fragments/footer.jsp" />
+
 </html>

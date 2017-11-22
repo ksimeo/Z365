@@ -102,11 +102,12 @@ public class Order implements Serializable {
     public String toString() {
         return "Order{" +
                 "id=" + id +
-                ", customer=" + customer +
-                ", product=" + product +
+//                ", customer=" + customer +
+//                ", product=" + product +
                 ", amount=" + amount +
-                ", createDate=" + createDate +
-                ", version=" + version +
+//                ", createDate=" + createDate +
+//                ", reviewDate=" + reviewDate +
+//                ", version=" + version +
                 '}';
     }
 }

@@ -62,10 +62,13 @@
                 Повернутися на головну
             </button>
             &nbsp;
-            <button type="button" class="btn btn-info btn-md" onclick="document.location='/questions?form'">
-                <img src="../../../resources/images/png/question.png">&nbsp;Задать вопрос
-            </button>
-            </div>
+            <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal1">
+                <img src="../../../resources/images/png/question.png">&nbsp;Задать вопрос</button>
+            <%--<button type="button" class="btn btn-info btn-md" onclick="document.location='/questions?form'">--%>
+                <%--<img src="../../../resources/images/png/question.png">&nbsp;Задать вопрос--%>
+            <%--</button>--%>
+            <jsp:include page="fragments/messageform.jsp"/>
+        </div>
     </div>
     <%--</div>--%>
     <div>

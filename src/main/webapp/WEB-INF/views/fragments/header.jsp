@@ -18,6 +18,11 @@
     <link rel="javascript" type="text/javascript" href="../../../resources/scripts/bootstrap.min.js" />
     <link rel="javascript" type="text/javascript" href="../../../resources/scripts/jquery-3.2.1.min.js" />
     <link rel="shortcut icon" href="../../../resources/images/ico/favicon.ico">
+    <link rel="javascript" type="text/javascript" href="../../../resources/scripts/calc.js" />
+    <script type="text/javascript" src="../../../resources/core/js/move-top.js.download"></script>
+    <script type="text/javascript" src="../../../resources/core/js/easing.js.download"></script>
+
+
     <link href="${bootstrapCss}" rel="stylesheet" />
     <link href="${coreCss}" rel="stylesheet" />
 </head>

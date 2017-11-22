@@ -8,12 +8,14 @@ import com.ximeo.nazaru.zhivorost365.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
 
 @Transactional
+@Repository
 @Service("questServ")
 public class QuestionServiceImpl implements QuestionService {
 

@@ -1,4 +1,4 @@
-package com.ximeo.nazaru.zhivorost365.web;
+package com.ximeo.nazaru.zhivorost365.web.controllers;
 
 import com.ximeo.nazaru.zhivorost365.domain.models.Culture;
 import com.ximeo.nazaru.zhivorost365.service.CultureService;
