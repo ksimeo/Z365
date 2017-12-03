@@ -14,6 +14,7 @@
         <jsp:include page="../fragments/logo.jsp" />
         <br/>
         <br/>
+        <br/>
         <div class="well">
                 <br/>
                 <h2>Необходим ли Вам предварительный расчет количества продукта?!</h2>
@@ -23,7 +24,7 @@
                         onclick="document.location='/calc'">Да, необходим</button>
                     &nbsp;
                 <button type="button" class="btn btn-md" onclick="document.location='/orders?amount=0&type=0'">
-                    Нет, перейти сразу к заказу
+                    Нет, перейти к заказу
                 </button>
                     &nbsp;
                 <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal1">

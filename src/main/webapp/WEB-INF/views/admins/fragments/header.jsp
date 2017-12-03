@@ -5,7 +5,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-
 <head>
     <title>Администрирование системы - Живорост365</title>
     <meta charset="utf-8">
@@ -27,10 +26,11 @@
 </head>
 
 <spring:url value="/admins" var="urlHome" />
-<spring:url value="/admins/cultures" var="urlCalculation" />
+<spring:url value="/admins/cultures" var="urlCults" />
 <spring:url value="/admins/prods" var="urlProducts" />
 <spring:url value="/admins/users" var="urlUsers" />
 <spring:url value="/admins/quests" var="urlQuestions" />
+<spring:url value="/admins/irrs" var="urlIrrs" />
 <spring:url value="/admins/stat" var="urlStat" />
 <spring:url value="/admins/mailing" var="urlMailing" />
 <spring:url value="/static/j_spring_security_logout" var="urlExit" />
@@ -49,11 +49,11 @@
                 <li class="navbar-brand" style="padding-left: 5px; padding-top: 1px;">
                     <div class="btn-group pull-right" style="padding-left: 5px; padding-top: 1.1%;">
                         <button class="btn btn-basic btn-md" onclick="document.location='${urlHome}'">
-                            <img src="../../../../resources/images/png/home.png">&nbsp;На главную</button>
+                            <img src="../../../../resources/images/png/home.png">&nbsp;На Главную</button>
                         <button class="btn btn-basic btn-md" onclick="document.location='${urlProducts}'">
                             <img src="../../../../resources/images/png/list.png"/>&nbsp;Продукция</button>
                         <button class="btn btn-basic btn-md" onclick="document.location='${urlQuestions}'">
-                            <img src="../../../../resources/images/png/messages.png"/>&nbsp;Cообщения от клиентов
+                            <img src="../../../../resources/images/png/messages.png"/>&nbsp;Сообщения клиентов
                             <span class="badge">2</span></button>
                     </div>
                 </li>
@@ -69,33 +69,29 @@
                         </button>
                         <ul class="dropdown-menu dropdown-menu-right">
                             <li>
-                                <%--<a href="#">Сменить пароль</a>--%>
                                 <a data-toggle="modal" data-target="#myModal">
-                                    <img src="../../../../resources/images/png/passw.png"/>&nbsp;Сменить пароль
+                                    <img src="../../../../resources/images/png/passw.png"/>&nbsp;Изменение пароля
                                 </a>
                             </li>
-                            <li>
-                                <%--<a href="${urlCalculation}"><img src="../../../../resources/images/png/calc.png"/>--%>
-                                <%--Редактировать расчетные данные</a>--%>
-                                    <div class="dropdown pull-right" style="padding-top: 10%;">
-                                        <button class="btn btn-link dropdown-toggle" data-toggle="dropdown">
-                                            <img src="../../../../resources/images/png/calc.png"/>
-                                            Редактировать расчетные данные</button>
-                                            <%--Настройки--%>
-                                            <ul class="dropdown-menu dropdown-menu-right">
-                                                <li><a href="#">Сельхоз. культуры</a></li>
-                                                <li><a href="#">Ирригация</a></li>
-                                            </ul>
-                                    </div>
-                            </li>
                             <li><a href="${urlUsers}"><img src="../../../../resources/images/png/users.png"/>
-                                Редактировать список пользователей</a></li>
-                            <li><a href="${urlMailing}"><img src="../../../../resources/images/png/mail.png"/>
+                                Редактирование списка пользователей</a></li>
+                            <li>
+                                <hr/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <img src="../../../../resources/images/png/calc.png"/>&nbsp;Изменение расчетных данных...
+                            </li>
+                            <li><a href="${urlCults}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...растительных культур</a></li>
+                            <li><a href="${urlIrrs}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;....ирригации</a></li>
+                            <li>
+                                <hr/>
+                                <a href="${urlMailing}"><img src="../../../../resources/images/png/mail.png"/>
                                 Управление рассылками</a></li>
                             <li><a href="${urlStat}"><img src="../../../../resources/images/png/stat.png"/>&nbsp;
-                                Статистика</a></li>
-                            <li><a href="${urlExit}"><img src="../../../../resources/images/png/exit.png"/>&nbsp;
-                                Выйти из сеанса</a></li>
+                                Статистическая информация</a></li>
+                            <li>
+                                <hr/>
+                                <a href="${urlExit}"><img src="../../../../resources/images/png/exit.png"/>&nbsp;
+                                Выход из сеанса</a></li>
                         </ul>
                     </div>
                 </li>

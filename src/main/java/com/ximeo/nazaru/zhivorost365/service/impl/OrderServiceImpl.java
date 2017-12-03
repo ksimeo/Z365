@@ -34,6 +34,7 @@ public class OrderServiceImpl implements OrderService {
         return ordDAO.findOne(id);
     }
 
+    @Transactional(readOnly = true)
     @Override
     public List<Order> getOrders() {
         return Lists.newArrayList(ordDAO.findAll());

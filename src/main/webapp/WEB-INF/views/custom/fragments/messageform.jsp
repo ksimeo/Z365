@@ -25,59 +25,55 @@
 
                     <spring:bind path="customerName">
                         <div class="form-group ${status.error ? 'has-error' : ''}">
-                            <div class="col-sm-10">
-                                <label class="col-sm-2 control-label">Имя: &nbsp;
+                            <div class="col-sm-10 pull-left">
+                                <label class="col-sm-2 control-label">Имя:&nbsp;</label>
                                     <form:input path="customerName" type="text" class="form-control"
-                                                id="customerName" style='width: 2em important;'
+                                                id="customerName" style='width: 500px;'
                                                 placeholder="Как к вам обращаться?"
                                                 onchange="checkParams()"/>
                                     <form:errors path="customerName" class="control-label" />
-                                </label>
                             </div>
                         </div>
                     </spring:bind>
-
+                    <br/>
                     <spring:bind path="phoneNumber">
                         <div class="form-group ${status.error ? 'has-error' : ''}">
-                            <div class="col-sm-10">
-                                <label class="col-sm-2 control-label">Телефон: &nbsp;
+                            <div class="col-sm-10 pull-left">
+                                <label class="col-sm-2 control-label">Телефон:&nbsp;</label>
                                     <form:input path="phoneNumber" type="text" class="form-control"
-                                                id="phoneNumber" style='width: 2em important;' onkeyup="checkParams()"
+                                                id="phoneNumber" style='width: 500px;' onkeyup="checkParams()"
                                                 placeholder="Необходимое количество продукта" min="0" max="1000"
                                                 onchange="checkParams()"/>
                                     <form:errors path="phoneNumber" class="control-label" />
-                                </label>
                             </div>
                         </div>
                     </spring:bind>
-
+                    <br/>
                     <spring:bind path="eMail">
                         <div class="form-group" >
-                            <div class="col-sm-10">
-                                <label class="col-sm-2 control-label">E-mail: &nbsp;
+                            <div class="col-sm-10 pull-left">
+                                <label class="col-sm-2 control-label">E-mail:&nbsp;</label>
                                     <form:input path="eMail" type="text" class="form-control"
-                                                id="eMail" style='width: 2em important;' onkeyup="checkParams()"
+                                                id="eMail" style='width: 500px;' onkeyup="checkParams()"
                                                 placeholder="Ваш электронный адрес" min="0" max="1000"
                                                 onchange="checkParams()"/>
                                     <form:errors path="eMail" class="control-label" />
-                                </label>
                             </div>
                         </div>
                     </spring:bind>
-
+                    <br/>
                     <spring:bind path="messageBody">
                         <div class="form-group" >
-                            <div class="col-sm-10">
-                                <label class="col-sm-2 control-label">Текст сообщения: &nbsp;
+                            <div class="col-sm-10 pull-left">
+                                <label class="col-sm-2 control-label">Текст сообщения:&nbsp;</label>
                                     <form:textarea path="messageBody" type="textarea" class="form-control" cols="50" rows="6"
-                                                   id="messageBody" maxlength="1000" style="width: 200px; height: 70px;"
+                                                   id="messageBody" maxlength="1000" style="width: 500px; height: 150px;"
                                                    placeholder="Введите текст вашего сообщения" onchange="checkParams()"/>
                                     <form:errors path="messageBody" class="control-label" />
-                                </label>
                             </div>
                         </div>
                     </spring:bind>
-
+                    <br/>
                     <div class="modal-footer">
                         <button type="submit" id="submit" class="btn btn-success btn-md">Отправить</button>
                         <button type="button" class="btn btn-default btn-md" data-dismiss="modal">Отмена</button>

@@ -23,11 +23,13 @@ public class ProductServiceImpl implements ProductService {
         prodDAO.save(prod);
     }
 
+    @Transactional(readOnly = true)
     @Override
     public Product getById(long id) {
         return prodDAO.findOne(id);
     }
 
+    @Transactional(readOnly = true)
     @Override
     public List<Product> getAll() {
         return Lists.newArrayList(prodDAO.findAll());

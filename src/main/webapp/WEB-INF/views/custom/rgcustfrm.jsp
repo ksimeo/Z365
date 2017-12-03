@@ -16,6 +16,7 @@
     <jsp:include page="../fragments/logo.jsp"/>
     <br/>
     <br/>
+    <br/>
     <div class="well">
         <h2>Вы у нас впервые?!</h2>
         <h3>Пожалуйста, заполните по возможности поля нашей <br/>
@@ -93,7 +94,7 @@
             </div>
         </spring:bind>
                 <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" id="submit" class="btn btn-success btn-md">ОК</button>
+                    <button type="submit" id="submit" class="btn btn-success btn-md">Готово</button>
                     <button type="button" onclick="document.location='/'" class="btn btn-md">
                         Вернуться на главную
                     </button>

@@ -1,3 +1,6 @@
+var res = 0;
+var prodId = 0;
+
 function irrTypeChange(){
 
     var irrigationType = document.getElementById('irrigation').options[document.getElementById('irrigation')
@@ -178,34 +181,37 @@ function changeAmount() {
 
 
     var pes = coeff1 * coeff2 * coeff3 * coeff4 * amount;
-    var res = Math.round(pes);
+    res = Math.round(pes);
 
-    var prodId = document.getElementById('prodType').options[document.getElementById('prodType').selectedIndex].id;
+    prodId = document.getElementById('prodType').options[document.getElementById('prodType').selectedIndex].id;
 
 
     if ("" + res != "NaN") {
         if (res > 1) {
             document.getElementById('result').innerHTML =
-                "<br/><h3><p style=\"color:#0EB956;\">Вам знадобиться " + res + " л обраної марки бiогумату</p></h3> " +
-                "&nbsp; <br/><input type=\"button\" class=\"btn btn-md btn-success\" value=\"Замовити\" " +
-                "onclick=\"document.location = \'/orders?amount=" +
-                res + "&type=" + prodId + "\'\"/>" +
-                "&nbsp;<input type=\"button\" class=\"btn btn-md\" value=\"Повернутися на головну\" " +
-                "onclick=\"document.location = \'/\'\"/>" +
-                "<button type=\"button\" class=\"btn btn-md btn-info\" data-toggle=\"modal\" data-target=\"#myModal1\">" +
-                "<img src=\"../../resources/images/png/question.png\">&nbsp;Задать вопрос</button>";
-                //+ "<br/><br/><br/>";
+                "<br/><h3><p style=\"color:#0EB956;\">Вам знадобиться " + res + " л обраної марки бiогумату</p></h3>";
+            document.getElementById('prodoutput').removeAttribute('hidden');
+            document.getElementById('filler3').setAttribute('hidden', "hidden");
+                //+ "&nbsp; <br/><input type=\"button\" class=\"btn btn-md btn-success\" value=\"Замовити\" " +
+                //"onclick=\"document.location = \'/orders?amount=" +
+                //res + "&type=" + prodId + "\'\"/>" +
+                //"&nbsp;<input type=\"button\" class=\"btn btn-md\" value=\"Повернутися на головну\" " +
+                //"onclick=\"document.location = \'/\'\"/>" +
+                //"<button type=\"button\" class=\"btn btn-md btn-info\" data-toggle=\"modal\" data-target=\"#myModal1\">" +
+                //"<img src=\"../../resources/images/png/question.png\">&nbsp;Задать вопрос</button>";
+                ////+ "<br/><br/><br/>";
         } else if (res == 0 || res == 1) {
             document.getElementById('result').innerHTML =
-                "<br/>" +
-                "<h3><p style=\"color:#0EB956;\">Вам вистачить 1 литру обраної марки бiогумату</p></h3> &nbsp;" +
-                "<br/><input type=\"button\" class=\"btn btn-md btn-success pull-right\" value=\"Замовити\" " +
-                "onclick=\"document.location = \'/orders?amount=1&type=" + prodId + "\'\"/> &nbsp; &nbsp; &nbsp; " +
-                "&nbsp; <input type=\"button\" class=\"btn btn-md btn-basic pull-right \"" +
-                "value=\"Повернутися на головну\" onclick=\"document.location = \'/\'\"/>&nbsp;" +
-                "<button type=\"button\" class=\"btn btn-info btn-md pull-right\" data-toggle=\"modal\"" +
-                " data-target=\"#myModal1\"> <img src=\"../../resources/images/png/question.png\">&nbsp;Задать вопрос</button>" +
-                "<jsp:include page=\"messageform.jsp\"/>";
+                "<br/><h3><p style=\"color:#0EB956;\">Вам вистачить 1 литру обраної марки бiогумату</p></h3>";
+            document.getElementById('prodoutput').removeAttribute('hidden');
+            document.getElementById('filler3').setAttribute('hidden', "hidden");
+                //+ "&nbsp;<br/><input type=\"button\" class=\"btn btn-md btn-success pull-right\" value=\"Замовити\" " +
+                //"onclick=\"document.location = \'/orders?amount=1&type=" + prodId + "\'\"/> &nbsp; &nbsp; &nbsp; " +
+                //"&nbsp; <input type=\"button\" class=\"btn btn-md btn-basic pull-right \"" +
+                //"value=\"Повернутися на головну\" onclick=\"document.location = \'/\'\"/>&nbsp;" +
+                //"<button type=\"button\" class=\"btn btn-info btn-md pull-right\" data-toggle=\"modal\"" +
+                //" data-target=\"#myModal1\"> <img src=\"../../resources/images/png/question.png\">&nbsp;Задать вопрос</button>" +
+                //"<jsp:include page=\"messageform.jsp\"/>";
                 //"<br/><br/><br/>";
         } else {
             document.getElementById('result').innerHTML = "" +
@@ -237,8 +243,26 @@ jQuery(document).ready(function($) {
     });
 });
 
+
+
+function goOrder() {
+    document.location='/orders?amount=' + res + '&type=' + prodId;
+}
+
+
+function irrTypeSelect() {
+    //var irrigationType = document.getElementById('irrigation').options[document.getElementById('irrigation')
+    //    .selectedIndex].id;
+    document.getElementById('i0').setAttribute('hidden', "hidden");
+    document.getElementById('cults').removeAttribute('hidden');
+    document.getElementById('filler1').setAttribute('hidden', "hidden");
+    //changeAmount();
+    //document.getElementById('cults2').removeAttribute('hidden');
+}
+
 function selCultType() {
     document.getElementById('producttype').removeAttribute('hidden');
     document.getElementById('proxy').setAttribute('hidden', "hidden");
+    document.getElementById('filler2').setAttribute('hidden', "hidden");
     changeAmount();
 }

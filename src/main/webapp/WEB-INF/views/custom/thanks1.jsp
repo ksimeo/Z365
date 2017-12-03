@@ -11,19 +11,37 @@
 <!DOCTYPE html>
 <html lang="uk">
 
-<jsp:include page="fragments/header2.jsp" />
+<head>
+    <title>Живорост365 - круглосуточная служба заказа биогумата</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <spring:url value="/resources/styles/standard.css" var="coreCss" />
+    <spring:url value="/resources/styles/bootstrap.min.css" var="bootstrapCss" />
+    <link href="../../../resources/styles/standard.css" rel="stylesheet" />
+    <link href="../../../resources/styles/bootstrap.min.css" rel="stylesheet" />
+    <%--<link rel="javascript" type="text/javascript" href="../../../../resources/scripts/custom.js" />--%>
+    <link rel="javascript" type="text/javascript" href="../../../resources/scripts/bootstrap.min.js" />
+    <%--<link rel="javascript" type="text/javascript" href="../../../resources/scripts/jquery-3.2.1.min.js" />--%>
+    <link rel="shortcut icon" href="../../../resources/images/ico/favicon.ico">
+    <link rel="javascript" type="text/javascript" href="../../../resources/scripts/calc.js" />
+    <%--<script type="text/javascript" src="../../../../resources/core/js/move-top.js.download"></script>--%>
+    <%--<script type="text/javascript" src="../../../../resources/core/js/easing.js.download"></script>--%>
+    <link href="${bootstrapCss}" rel="stylesheet" />
+    <link href="${coreCss}" rel="stylesheet" />
+</head>
+
+<body class="custom gratitude">
 
 <div class="container">
-    <jsp:include page="../fragments/logo.jsp"/>
     <br/>
     <br/>
-    <h1>Спасибо, за ваше cообщение! Мы свяжемся с вами в ближайшее время.</h1>
-    <hr/>
-    <button type="button" class="btn btn-success btn-md pull-right" onclick="document.location='/'">
-        Выполнить заказ
-    </button>
-    <button type="button" class="btn btn-default pull-right" onclick="document.location='http://zhivorost.com.ua/'">
-        Перейти на Главную &nbsp;<img src="../../../resources/images/png/logo1.png"/></button>
+    <h1 class="title" style="color: #f7fff3;">Спасибо, за ваше обращение!<br/>Мы свяжемся с вами в ближайшее время
+        <span style="color: lawngreen !important;">:)</span></h1>
+    <br/>
+    <div class="col-sm-offset-2 col-sm-10 pull-right">
+        <button type="button" class="btn btn-success btn-md" onclick="document.location='/'">Заказать ещё</button>
+        <button type="button" class="btn btn-default btn-md" onclick="document.location='http://zhivorost.com.ua/'">
+            Перейти на Главную &nbsp;<img src="../../../resources/images/png/logo1.png"/></button>
+    </div>
 </div>
 <jsp:include page="fragments/footer.jsp" />
 </html>

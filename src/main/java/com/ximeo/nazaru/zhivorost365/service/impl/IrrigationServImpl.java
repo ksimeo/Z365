@@ -17,11 +17,13 @@ import java.util.List;
 public class IrrigationServImpl implements IrrigationService {
     private IrrigationRepository irrRepo;
 
+    @Transactional(readOnly = true)
     @Override
     public List<Irrigation> getAll() {
         return Lists.newArrayList(irrRepo.findAll());
     }
 
+    @Transactional(readOnly = true)
     @Override
     public Irrigation getById(long id) {
         return irrRepo.findOne(id);

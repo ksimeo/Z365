@@ -23,4 +23,4 @@
   <link href="${coreCss}" rel="stylesheet" />
 </head>
 
-<body class="gratitude">
+<body class="custom gratitude">

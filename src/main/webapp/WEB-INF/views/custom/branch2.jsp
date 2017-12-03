@@ -15,6 +15,7 @@
     <jsp:include page="../fragments/logo.jsp"/>
     <br/>
     <br/>
+    <br/>
     <div class="well">
         <br/>
         <h2>Желаете заказать что-нибудь еще?!</h2>

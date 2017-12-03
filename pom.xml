@@ -109,26 +109,26 @@
             <!--<version>${jsr349.version}</version>-->
         <!--</dependency>-->
         <!--S E C U R I T Y-->
-        <!--<dependency>-->
-            <!--<groupId>org.springframework.security</groupId>-->
-            <!--<artifactId>spring-security-core</artifactId>-->
-            <!--<version>${spring-security.version}</version>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-            <!--<groupId>org.springframework.security</groupId>-->
-            <!--<artifactId>spring-security-web</artifactId>-->
-            <!--<version>${spring-security.version}</version>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-            <!--<groupId>org.springframework.security</groupId>-->
-            <!--<artifactId>spring-security-config</artifactId>-->
-            <!--<version>${spring-security.version}</version>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-            <!--<groupId>org.springframework.security</groupId>-->
-            <!--<artifactId>spring-security-taglibs</artifactId>-->
-            <!--<version>${spring-security.version}</version>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-core</artifactId>
+            <version>${spring-security.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>${spring-security.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>${spring-security.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-taglibs</artifactId>
+            <version>${spring-security.version}</version>
+        </dependency>
         <!--D A T A B A S E-->
         <dependency>
             <groupId>org.springframework</groupId>

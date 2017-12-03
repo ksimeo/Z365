@@ -25,12 +25,4 @@
   <link href="${coreCss}" rel="stylesheet" />
 </head>
 
-<body class="gratitude2">
-
-<spring:url value="/admin/" var="urlHome" />
-<spring:url value="/admin/calc" var="urlCalculation" />
-<spring:url value="/admin/prods" var="urlProducts" />
-<spring:url value="/admin/users" var="urlUsers" />
-<spring:url value="/admin/users/1/pswrd" var="urlChangePassword" />
-<spring:url value="/admin/logout" var="urlLogout" />
-<spring:url value="username" var="userName" />
+<body class="custom gratitude2">
