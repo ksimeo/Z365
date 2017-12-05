@@ -20,8 +20,8 @@ public class IrrigationController {
     @RequestMapping(value="/admins/irrs", method = RequestMethod.GET)
     public String showIrrigations(Model uiModel) {
         logger.info("showIrrigation()");
-        uiModel.addAttribute("irrForm", irrServ.getAll());
-        uiModel.addAttribute("newIrrForm", new Irrigation());
+        uiModel.addAttribute("irrs", irrServ.getAll());
+        uiModel.addAttribute("irrForm", new Irrigation());
         return "admins/irrs";
     }
 

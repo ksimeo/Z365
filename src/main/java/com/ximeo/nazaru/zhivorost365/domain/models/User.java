@@ -10,6 +10,8 @@ public class User implements Serializable {
     private static final long serialVersionUID = -6895249234865774622L;
     private Long id;
     private String login;
+    private String name;
+    private String surname;
     private String password;
     private UserRole role;
     private Date regDate;
@@ -45,6 +47,24 @@ public class User implements Serializable {
 
     public void setLogin(String login) {
         this.login = login;
+    }
+
+    @Column(name = "NAME")
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Column(name = "SURNAME")
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
     @Column(name = "PASSWORD")
@@ -85,16 +105,16 @@ public class User implements Serializable {
         this.version = version;
     }
 
-
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
                 ", login='" + login + '\'' +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
                 ", password='" + password + '\'' +
                 ", role=" + role +
                 ", regDate=" + regDate +
-                ", version=" + version +
                 '}';
     }
 }

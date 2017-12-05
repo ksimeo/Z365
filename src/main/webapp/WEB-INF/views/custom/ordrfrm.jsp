@@ -32,12 +32,11 @@
             <option name="name" id="prod0" value="NaN">-Виберіть-тип-продукту-</option>
             <c:forEach items="${prods}" var="item">
                 <c:if test="${item.actual}">
-                    <option name="type" value="${item.id}" ${item.id == prodType ? 'selected="selected"' : ''}/>
+                    <option name="type" value="${item.id}" ${item.id == prodType ? 'selected="selected"' : ''} />
                     ${item.name}</option>
                 </c:if>
             </c:forEach>
         </select>
-            <%--</div>--%>
     </div>
     <br/>
     <br/>
@@ -63,7 +62,7 @@
                 Повернутися на головну
             </button>
             &nbsp;
-            <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal1">
+            <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal">
                 <img src="../../../resources/images/png/question.png">&nbsp;Задать вопрос</button>
             <%--<button type="button" class="btn btn-info btn-md" onclick="document.location='/questions?form'">--%>
                 <%--<img src="../../../resources/images/png/question.png">&nbsp;Задать вопрос--%>

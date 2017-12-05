@@ -50,6 +50,11 @@ public class QuestionServiceImpl implements QuestionService {
         questDAO.delete(id);
     }
 
+    @Override
+    public long countUnreaded() {
+        return questDAO.countUnreaded().longValue();
+    }
+
     @Autowired
     public void setQuestDAO(QuestionsRepository questDAO) {
         this.questDAO = questDAO;

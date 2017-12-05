@@ -24,11 +24,12 @@ public class UserController {
     private UserService usrServ;
 
     @RequestMapping(value="/admins/users" ,method = RequestMethod.GET)
-    public String showUsersPage(Model uiModel) {
-        logger.info("showUsersPage()");
-        uiModel.addAttribute("id", "2");
+    public String showUsersList(Model uiModel) {
+        logger.info("showUsersList()");
+//        uiModel.addAttribute("id", "2");
         uiModel.addAttribute("users", usrServ.getAllUsers());
         uiModel.addAttribute("usrForm", new User());
+        uiModel.addAttribute("roles", UserRole.values());
         return "admins/usrs";
     }
 

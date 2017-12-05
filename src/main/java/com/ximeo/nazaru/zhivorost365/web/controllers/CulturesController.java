@@ -21,7 +21,7 @@ public class CulturesController {
     @RequestMapping(value = "/admins/cultures", method = RequestMethod.GET)
     public String showCulturesList(Model uiModel) {
         logger.info("showCulturesList()");
-//        uiModel.addAttribute("cults", cultServ.getCultures());
+        uiModel.addAttribute("cults", cultServ.getCultures());
         uiModel.addAttribute("cultForm", new Culture());
         return "admins/cults";
     }

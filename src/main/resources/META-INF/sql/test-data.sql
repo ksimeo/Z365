@@ -1,6 +1,11 @@
-insert into user (login, password, role, reg_date) values ('testuser', 'test', 'USER', '2017-10-15');
-insert into user (login, password, role, reg_date) values ('nazarz', 'samarchuk', 'ADMIN', '2017-10-15');
-insert into user (login, password, role, reg_date) values ('gost', 'test', 'USER', '2017-10-15');
+insert into user (login, name, surname, password, role, reg_date)
+      values ('testuser@test.org', 'test', 'test', 'test', 'USER', '2017-10-15');
+insert into user (login, name, surname, password, role, reg_date)
+      values ('ksimeo@gmail.com', 'Maksym', 'Fedorenko', 'gorOD312', 'ADMIN', '2017-10-15');
+insert into user (login, name, surname, password, role, reg_date)
+      values ('nazarz@meta.ua', 'Nazar', 'Zatyshnyak', 'samarchuk', 'ADMIN', '2017-10-15');
+insert into user (login, name, surname, password, role, reg_date)
+      values ('gost', 'Host', '','test', 'USER', '2017-10-15');
 
 insert into product (name, measure_units, currency_type, price, coeff, is_actual) values
        ('Product type 1', 'CANISTER','UAH', 2.99, 0.59, '1');
@@ -138,10 +143,10 @@ insert into question (create_date, name, phone_number, e_mail, message, review_d
        values ('2017-10-15 19:05:34', 'Maks', '+380997510598', 'mudak@hotmail.com', 'Nichego ne rabotaet!',
         '2017-10-15 21:05:34');
 insert into question (create_date, name, phone_number, e_mail, message, review_date)
-       values ('2017-10-15 19:07:18', 'Alex', '+380657550989', 'evg@mail.ru','Hello!..', '2017-10-15 20:05:44');
+       values ('2017-10-15 19:07:18', 'Alex', '+380657550989', 'evg@mail.ru','Hello!..', NULL);
 insert into question (create_date, name, phone_number, e_mail, message, review_date)
        values ('2017-10-15 19:05:34', 'Maks', '+380997510598', 'mudak@hotmail.com', 'Nichego ne rabotaet!',
-        '2017-10-15 21:05:34');
+        NULL);
 
 insert into culture (name, coefficient) values ('Cereals', 1.23);
 insert into culture (name, coefficient) values ('Carrot', 2.84);

@@ -12,24 +12,25 @@
 <jsp:include page="fragments/header.jsp" />
 
 <div class="container">
-    <spring:url value="/users" var="userActionUrl" />
+    <spring:url value="/admins/users" var="userActionUrl" />
 
-        <c:if test="${not empty message}">
+    <c:if test="${not empty message}">
         <div id="message" class="${message.type}">${message.message}</div>
-        </c:if>
+    </c:if>
 
     <h3>Список пользователей системы</h3>
 
-        <c:if test="${not empty users}">
+    <c:if test="${not empty users}">
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>№</th>
+                <th>#ID</th>
                 <th>Логин</th>
-                <%--<th>Пароль</th>--%>
-                <th>Роль</th>
+                <th>Имя</th>
+                <th>Фамилия</th>
+                <th>Статус</th>
                 <th>Зарегистрирован</th>
-                <th> &nbsp; </th>
+                <th>&nbsp;</th>
             </tr>
             </thead>
             <tbody>
@@ -37,183 +38,231 @@
                 <tr>
                     <td>${user.id}</td>
                         <%--<td><fmt:formatDate pattern="dd.MM.yy HH:mm" value="${order.createDate}"/></td>--%>
-                        <%--<td><c:if test="${not empty order.customer.customerName}">${order.customer.customerName}</c:if></td>--%>
+                        <%--<td><c:if test="${not empty order.customer.name}">${order.customer.customerName}</c:if></td>--%>
                         <%--<td><c:if test="${not empty order.customer.surname}">${order.customer.surname}</c:if></td>--%>
                         <%--<td>${order.customer.phoneNumber}</td>--%>
                         <%--<td><c:if test="${not empty order.customer.email}">${order.customer.email}</c:if></td>--%>
                     <td>${user.login}</td>
-                    <%--<td>${user.password}</td>--%>
+                    <td>${user.name}</td>
+                    <td>${user.surname}</td>
                     <td>${user.role.name}</td>
                     <td>${user.regDate}</td>
-                    <td><!-- Trigger the modal with a button -->
-                        <button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#myModal1">
-                            Изменить</button>
-                        <button class="btn btn-danger btn-xs" onclick="document.location='/admins/orders'">
-                            Удалить</button> &nbsp;
-                    <div class="modal fade" id="myModal1" role="dialog">
-                        <div class="modal-dialog modal-lg">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    <h4 class="modal-title">Редактирование пользователя</h4>
-                                </div>
-                                <div class="modal-body">
-                                    <form:form class="form-horizontal" method="POST" modelAttribute="usrForm" action="${userActionUrl}">
+                    <td>
+                        <!-- Trigger the modal with a button -->
+                        <button type="button" class="btn btn-warning btn-xs" data-toggle="modal"
+                                data-target="#myModal${user.id}">Изменить</button>
+                        <button class="btn btn-danger btn-xs" onclick="document.location='/admins/users/'+ ${user.id} +
+                                '/delete'">Удалить</button> &nbsp;
+                        <div class="modal fade" id="myModal${user.id}" role="dialog">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">Редактирование пользователя</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form:form class="form-horizontal" method="POST" modelAttribute="usrForm"
+                                                   action="${userActionUrl}">
 
-                                    <form:input path="id" type="hidden" id="id" />
+                                            <form:input path="id" type="hidden" id="id"/>
 
-                                    <spring:bind path="login">
-                                        <div class="form-group ${status.error ? 'has-error' : ''}">
-                                            <div class="col-sm-10">
-                                                <label class="col-sm-2 control-label">Логин: &nbsp;
+                                            <spring:bind path="login">
+                                            <div class="form-group ${status.error ? 'has-error' : ''}">
+                                                <div class="col-sm-10">
+                                                    <label class="col-sm-2 control-label">Логин: &nbsp;</label>
                                                     <form:input path="login" type="text" class="form-control"
-                                                                id="login" style='width: 2em important;' min="0" max="1000" onchange="checkParams()"/>
+                                                                id="login" style='width: 200px;' min="0"
+                                                                max="1000" onchange="checkParams()"
+                                                                value="${user.login}"
+                                                                disabled="true"/>
                                                     <form:errors path="login" class="control-label" />
-                                                </label>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </spring:bind>
+                                            </spring:bind>
 
-                                    <spring:bind path="password">
-                                        <div class="form-group ${status.error ? 'has-error' : ''}">
-                                            <div class="col-sm-10">
-                                                <label class="col-sm-2 control-label">Пароль: &nbsp;
-                                                    <form:input path="password" type="text" class="form-control"
-                                                                id="password" style='width: 2em important;' onkeyup="checkParams()"
-                                                                placeholder="Необходимое количество продукта" min="0" max="1000" onchange="checkParams()"/>
-                                                    <form:errors path="password" class="control-label" />
-                                                </label>
+                                            <spring:bind path="name">
+                                            <div class="form-group ${status.error ? 'has-error' : ''}">
+                                                <div class="col-sm-10">
+                                                    <label class="col-sm-2 control-label">Имя:&nbsp;</label>
+                                                    <form:input path="name" type="text" class="form-control"
+                                                                id="name" style='width: 200px;'
+                                                                onkeyup="checkParams()"
+                                                                placeholder="Имя" min="0"
+                                                                max="1000" onchange="checkParams()"
+                                                                value="${user.name}"/>
+                                                    <form:errors path="name" class="control-label" />
+                                                </div>
                                             </div>
-                                        </div>
-                                    </spring:bind>
+                                            </spring:bind>
 
-                                    <div class="col-sm-10">
-                                        <label class="col-sm-2 control-label">Подтверждение пароля:
-                                            <input type="password" class="form-control" id="pass2" customerName="pass2" style='width: 12em !important;'
-                                                   onkeyup="isRavno('form','pass1','pass2','pass22','submit')" />
-                                            <span id="pass22"></span><br/>
-                                        </label>
-                                    </div>
-                                </div>
+                                            <spring:bind path="surname">
+                                            <div class="form-group ${status.error ? 'has-error' : ''}">
+                                                <div class="col-sm-10">
+                                                    <label class="col-sm-2 control-label">Фамилия:&nbsp;</label>
+                                                    <form:input path="surname" type="text" class="form-control"
+                                                                id="surname" style='width: 200px;'
+                                                                onkeyup="checkParams()"
+                                                                placeholder="Фамилия" min="0"
+                                                                max="1000" onchange="checkParams()"
+                                                                value="${user.surname}"/>
+                                                    <form:errors path="surname" class="control-label" />
+                                                </div>
+                                            </div>
+                                            </spring:bind>
 
-                                <spring:bind path="role">
-                                <div class="form-group" >
-                                    <div class="col-sm-10">
-                                        <label class="col-sm-2 control-label">Статус пользователя:
-                                            <select id="role" name="product" size="1" onchange="checkParams3()">
-                                                <option name="role" id="role0" value="NaN">-Виберіть-статус-</option>
-                                                <c:forEach items="${roles}" var="item">
-                                                    <option name="type" value="${item}">
-                                                            ${item.customerName}
-                                                    </option>
-                                                </c:forEach>
-                                            </select>
-                                        </label>
-                                    </div>
-                                </div>
-                                </spring:bind>
-                                <div class="modal-footer">
-                                    <button type="submit" id="submit" class="btn btn-success btn-md">Добавить</button>
-                                    <button type="button" class="btn btn-default btn-md" data-dismiss="modal">Отмена</button>
-                                </div>
-                                </form:form>
+                                        <%--<div class="col-sm-10">--%>
+                                            <%--<label class="col-sm-2 control-label">Подтверждение пароля:&nbsp;</label>--%>
+                                            <%--<input type="password" class="form-control" id="pass2" name="pass2"--%>
+                                                   <%--style='width: 12em !important;'--%>
+                                                   <%--onkeyup="isRavno('form','pass1','pass2','pass22','submit')"/>--%>
+                                            <%--<span id="pass22"></span><br/>--%>
+                                        <%--</div>--%>
+
+                                            <spring:bind path="role">
+                                            <div class="form-group" >
+                                                <div class="col-sm-10">
+                                                    <label class="col-sm-2 control-label">Статус пользователя:&nbsp;</label>
+                                                    <select id="role" name="product" size="1" onchange="checkParams3()">
+                                                        <option name="role" id="role0" value="NaN">-Виберіть-статус-</option>
+                                                        <c:forEach items="${roles}" var="item">
+                                                            <option name="type" value="${item}"
+                                                                ${item == user.role ? 'selected' : ''}>${item.name}</option>
+                                                            </c:forEach>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </spring:bind>
+                            <div class="modal-footer">
+                                <button type="submit" id="submit" class="btn btn-success btn-md">Сохранить</button>
+                                <button type="button" class="btn btn-default btn-md" data-dismiss="modal">Отмена</button>
+                            </div>
+                        </form:form>
+                    </td>
                 </tr>
             </c:forEach>
             </tbody>
         </table>
-        </c:if>
-        <c:if test="${empty users}">
+    </c:if>
+    <c:if test="${empty users}">
         <br/>
         <br/>
         <br/>
         <h4><i>На данный момент пользователем системы являетесь только вы.</i></h4>
-        </c:if>
-        <br/>
-        <br/>
-        <%--<button class="btn btn-success btn-md" onclick="document.location = '/admins/users?form'">--%>
-            <%--Добавить пользователя</button>--%>
-        <%--<button class="btn btn-default btn-md" onclick="document.location='/admins/orders'">Назад, на главную</button>--%>
+    </c:if>
+    <br/>
+    <br/>
+    <%--<button class="btn btn-success btn-md" onclick="document.location = '/admins/users?form'">--%>
+    <%--Добавить пользователя</button>--%>
+    <%--<button class="btn btn-default btn-md" onclick="document.location='/admins/orders'">Назад, на главную</button>--%>
 
-        <!-- Trigger the modal with a button -->
-        <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#myModal1">
-            Добавить пользователя</button>
-        <button class="btn btn-default btn-md" onclick="document.location='/admins/orders'">Вернуться на главную
-        </button> &nbsp;
-        <!-- Modal -->
-        <div class="modal fade" id="myModal1" role="dialog">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Добавление нового пользователя</h4>
-                    </div>
-                    <div class="modal-body">
-                        <form:form class="form-horizontal" method="POST" modelAttribute="usrForm" action="${userActionUrl}">
+    <!-- Trigger the modal with a button -->
+    <div class="col-sm-offset-2 col-sm-10">
+        <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#myModal0">Добавить</button>
+        <button type="button" class="btn btn-default btn-md" onclick="document.location='/admins/orders'">
+            Вернуться на Главную</button>
+    </div>
+    &nbsp;
+    <!-- Modal -->
+    <div class="modal fade" id="myModal0" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Добавление нового пользователя</h4>
+                </div>
+                <div class="modal-body">
+                    <form:form class="form-horizontal" method="POST" modelAttribute="usrForm"
+                               action="${userActionUrl}">
 
-                            <form:input path="id" type="hidden" id="id" />
+                    <form:input path="id" type="hidden" id="id" />
 
-                            <spring:bind path="login">
-                                <div class="form-group ${status.error ? 'has-error' : ''}">
-                                    <div class="col-sm-10">
-                                        <label class="col-sm-2 control-label">Логин: &nbsp;
-                                            <form:input path="login" type="text" class="form-control"
-                                                        id="login" style='width: 2em important;' min="0" max="1000" onchange="checkParams()"/>
-                                            <form:errors path="login" class="control-label" />
-                                        </label>
-                                    </div>
+                        <spring:bind path="login">
+                            <div class="form-group ${status.error ? 'has-error' : ''}">
+                                <div class="col-sm-10">
+                                    <label class="col-sm-2 control-label">Логин:&nbsp;</label>
+                                    <form:input path="login" type="text" class="form-control" id="login"
+                                                style='width: 200px;' min="0" max="1000"
+                                                placeholder="Ваш логин"
+                                                onchange="checkParams()"/>
+                                    <form:errors path="login" class="control-label" />
                                 </div>
-                            </spring:bind>
+                            </div>
+                        </spring:bind>
 
-                            <spring:bind path="password">
-                                <div class="form-group ${status.error ? 'has-error' : ''}">
-                                    <div class="col-sm-10">
-                                        <label class="col-sm-2 control-label">Пароль: &nbsp;
-                                            <form:input path="password" type="text" class="form-control"
-                                                        id="password" style='width: 2em important;' onkeyup="checkParams()"
-                                                        placeholder="Необходимое количество продукта" min="0" max="1000" onchange="checkParams()"/>
-                                            <form:errors path="password" class="control-label" />
-                                        </label>
-                                    </div>
+                        <spring:bind path="name">
+                            <div class="form-group ${status.error ? 'has-error' : ''}">
+                                <div class="col-sm-10">
+                                    <label class="col-sm-2 control-label">Имя:&nbsp;</label>
+                                    <form:input path="name" type="text" class="form-control"
+                                                id="name" style='width: 200px;'
+                                                onkeyup="checkParams()"
+                                                placeholder="Ваше имя" min="0"
+                                                max="1000" onchange="checkParams()" />
+                                    <form:errors path="name" class="control-label" />
                                 </div>
-                            </spring:bind>
+                            </div>
+                        </spring:bind>
 
-                            <div class="col-sm-10">
-                                <label class="col-sm-2 control-label">Подтверждение пароля:
-                                    <input type="password" class="form-control" id="pass2" customerName="pass2" style='width: 12em !important;'
-                                           onkeyup="isRavno('form','pass1','pass2','pass22','submit')" />
-                                    <span id="pass22"></span><br/>
-                                </label>
+                        <spring:bind path="surname">
+                            <div class="form-group ${status.error ? 'has-error' : ''}">
+                                <div class="col-sm-10">
+                                    <label class="col-sm-2 control-label">Фамилия:&nbsp;</label>
+                                    <form:input path="surname" type="text" class="form-control"
+                                                id="surname" style='width: 200px;'
+                                                onkeyup="checkParams()"
+                                                placeholder="Ваша фамилия" min="0"
+                                                max="1000" onchange="checkParams()" />
+                                    <form:errors path="surname" class="control-label" />
+                                </div>
                             </div>
-                            </div>
+                        </spring:bind>
 
-                    <spring:bind path="role">
-                        <div class="form-group" >
-                            <div class="col-sm-10">
-                                <label class="col-sm-2 control-label">Статус пользователя:
-                                    <select id="role" name="product" size="1" onchange="checkParams3()">
-                                        <option name="role" id="role0" value="NaN">-Виберіть-статус-</option>
-                                        <c:forEach items="${roles}" var="item">
-                                            <option name="type" value="${item}">
-                                                    ${item.customerName}
-                                            </option>
-                                        </c:forEach>
-                                    </select>
-                                </label>
+                        <spring:bind path="password">
+                            <div class="form-group ${status.error ? 'has-error' : ''}">
+                                <div class="col-sm-10">
+                                    <label class="col-sm-2 control-label">Пароль:&nbsp;</label>
+                                    <form:input path="password" type="text" class="form-control" id="password"
+                                                style='width: 200px;' onkeyup="checkParams()"
+                                                placeholder="Ваш пароль" min="0" max="1000"
+                                                onchange="checkParams()"/>
+                                    <form:errors path="password" class="control-label" />
+                                </div>
                             </div>
+                        </spring:bind>
+
+                        <div class="col-sm-10">
+                            <label class="col-sm-2 control-label">Подтверждение пароля: &nbsp;</label>
+                            <input type="password" class="form-control" id="pass2" name="pass2"
+                                   style='width: 200px;' placeholder="Еще раз пароль"
+                                   onkeyup="isRavno('form','pass1','pass2','pass22','submit')" />
+                            <span id="pass22"></span><br/>
                         </div>
-                    </spring:bind>
-                    <div class="modal-footer">
-                        <button type="submit" id="submit" class="btn btn-success btn-md pull-left">Добавить пользователя
-                        </button>
-                        <button type="button" class="btn btn-default btn-md" data-dismiss="modal">Отмена</button>
+
+                <spring:bind path="role">
+                    <div class="form-group" >
+                        <div class="col-sm-10">
+                            <label class="col-sm-2 control-label">Статус пользователя:&nbsp;</label>
+                            <select id="role" name="product" size="1" onchange="checkParams3()">
+                                <option name="role" id="role0" value="NaN">-Виберіть-статус-</option>
+                                <c:forEach items="${roles}" var="item">
+                                    <option name="type" value="${item}">
+                                            ${item.name}
+                                    </option>
+                                </c:forEach>
+                            </select>
+                        </div>
                     </div>
-                        </form:form>
-                    </div>
+                </spring:bind>
+                <br/>
+                <div class="modal-footer">
+                    <button type="submit" id="submit" class="btn btn-success btn-md">Сохранить</button>
+                    <button type="button" class="btn btn-default btn-md" data-dismiss="modal">Отмена</button>
+                </div>
+                </form:form>
                 </div>
             </div>
-
-
-        <jsp:include page="fragments/footer.jsp" />
         </div>
-</body>
+    </div>
+</div>
+<jsp:include page="fragments/footer.jsp" />
 </html>

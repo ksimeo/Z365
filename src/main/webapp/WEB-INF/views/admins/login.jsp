@@ -22,9 +22,9 @@
         <br/>
         <br/>
         <div class="well">
-            <h2>Для входа в систему администрирования &nbsp;<img src="../../../resources/images/png/logo_mini.png"><br/>
-                введите ваши логин и пароль</h2>
-            <hr/>
+            <%--<h2>Для входа в систему администрирования &nbsp;<img src="../../../resources/images/png/logo_mini.png"><br/>--%>
+                <%--введите ваши логин и пароль</h2>--%>
+            <%--<hr/>--%>
             <form method="post" class="form-horizontal" action="${authUrl}">
 
             <%--<spring:bind path="login">--%>

@@ -81,11 +81,9 @@
         <div class="col-sm-offset-2 col-sm-10">
             <button type="submit" id="submit" class="btn btn-success btn-md">Отправить</button>
             <button type="button" onclick="document.location='/'" class="btn btn-md">
-                Вернуться на главную
+                Вернуться на Главную
             </button>
         </div>
-    <%--</div>--%>
-    <%--TODO Предварительный подсчёт цены (on-line) --%>
 </form:form>
         </div>
 </div>

@@ -54,7 +54,8 @@
                             <img src="../../../../resources/images/png/list.png"/>&nbsp;Продукция</button>
                         <button class="btn btn-basic btn-md" onclick="document.location='${urlQuestions}'">
                             <img src="../../../../resources/images/png/messages.png"/>&nbsp;Сообщения клиентов
-                            <span class="badge">2</span></button>
+                            <span class="badge">${count}</span>
+                            </button>
                     </div>
                 </li>
                 <li>

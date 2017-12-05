@@ -10,6 +10,7 @@ import com.ximeo.nazaru.zhivorost365.domain.models.Product;
 import com.ximeo.nazaru.zhivorost365.domain.models.Question;
 import com.ximeo.nazaru.zhivorost365.service.OrderService;
 import com.ximeo.nazaru.zhivorost365.service.ProductService;
+import com.ximeo.nazaru.zhivorost365.service.QuestionService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +35,7 @@ public class OrderController {
     private final static Logger logger = LoggerFactory.getLogger(OrderController.class);
 
     private ProductService prodServ;
-
+    private QuestionService questServ;
     private OrderService ordServ;
 
     @RequestMapping(value = "/admins/orders", method = RequestMethod.GET)
@@ -45,6 +46,7 @@ public class OrderController {
 //        session.setAttribute("user", usr);
 //        List<Order> ordrs = ordServ.getOrders();
 //        uiModel.addAttribute("orders", ordrs);
+        uiModel.addAttribute("count", questServ.countUnreaded());
         return "admins/ordrs";
     }
 
@@ -177,6 +179,11 @@ public class OrderController {
 //        ordGrid.setTotalRecords(2);
 //        ordGrid.setOrderData(ordrs);
 //        return ordGrid;
+    }
+
+    @Autowired
+    public void setQuestServ(QuestionService questServ) {
+        this.questServ = questServ;
     }
 
     @Autowired

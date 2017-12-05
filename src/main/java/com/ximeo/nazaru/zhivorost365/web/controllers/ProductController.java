@@ -24,11 +24,13 @@ public class ProductController {
     private ProductService prodServ;
 
     @RequestMapping(value = "/admins/prods", method = RequestMethod.GET)
-    public String showProductsPage(Model uiModel) {
+    public String showProductsList(Model uiModel) {
         logger.info("showProductsPage()");
 //        System.err.println("Запрос поступил!!!");
         List<Product> prods = prodServ.getAll();
         uiModel.addAttribute("products", prods);
+        uiModel.addAttribute("units", MeasureUnit.values());
+        uiModel.addAttribute("currencies", CurrencyType.values());
         uiModel.addAttribute("prodForm", new Product());
         return "admins/prods";
     }
