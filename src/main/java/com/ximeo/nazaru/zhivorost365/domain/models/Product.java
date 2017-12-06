@@ -46,6 +46,11 @@ public class Product implements Serializable {
         this.version = version;
     }
 
+    @Transient
+    public boolean isNew() {
+        return (this.id == null || this.id == 0);
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")

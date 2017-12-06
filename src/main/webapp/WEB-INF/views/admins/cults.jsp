@@ -14,9 +14,15 @@
 <div class="container">
     <spring:url value="/admins/cultures" var="userActionUrl" />
 
-    <c:if test="${not empty message}">
-        <div id="message" class="${message.type}">${message.message}</div>
+        <c:if test="${not empty msg}">
+        <div class="alert alert-${msg.type} alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <strong>${msg.message}</strong>
+        </div>
         </c:if>
+
 
         <h3>Список культур для расчета количества продукта</h3>
 
@@ -56,7 +62,8 @@
                                             <spring:bind path="name">
                                                 <div class="form-group ${status.error ? 'has-error' : ''}">
                                                     <div class="col-sm-10">
-                                                        <label class="col-sm-2 control-label">Наименование:&nbsp;</label>
+                                                        <label class="col-sm-2 control-label">Наименование:&nbsp;&nbsp;
+                                                        </label>
                                                             <form:input path="name" type="text" class="form-control"
                                                                         id="name" style='width: 200px;'
                                                                         value="${cult.name}"
@@ -69,7 +76,8 @@
                                             <spring:bind path="coefficient">
                                                 <div class="form-group ${status.error ? 'has-error' : ''}">
                                                     <div class="col-sm-10">
-                                                        <label class="col-sm-2 control-label">Коэффициент:&nbsp;</label>
+                                                        <label class="col-sm-2 control-label">Коэффициент:&nbsp;&nbsp;
+                                                        </label>
                                                         <form:input path="coefficient" type="text"
                                                                         class="form-control"  id="coefficient"
                                                                         style='width: 200px;'
@@ -83,7 +91,7 @@
                                             <br/>
                                             <div class="modal-footer">
                                                 <button type="submit" id="submit" class="btn btn-success btn-md">
-                                                    Добавить</button>
+                                                    Сохранить</button>
                                                 <button type="button" class="btn btn-default btn-md"
                                                         data-dismiss="modal">Отмена</button>
                                             </div>
@@ -105,8 +113,6 @@
         <h4><i>В списке пока ничего нет.</i></h4>
         </c:if>
         <br/>
-        <br/>
-        <br/>
         <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#myModal0">Добавить</button>
         <button class="btn btn-md" onclick="document.location='/admins/orders'">Вернуться на Главную</button>
         <!-- Modal -->
@@ -120,14 +126,14 @@
                     <div class="modal-body">
                         <form:form class="form-horizontal" method="POST" modelAttribute="cultForm" action="${userActionUrl}">
 
-                        <form:input path="id" type="hidden" id="id" />
+                        <form:input path="id" type="hidden" id="id" value="0" />
 
                         <spring:bind path="name">
                             <div class="form-group ${status.error ? 'has-error' : ''}">
                                 <div class="col-sm-10">
-                                    <label class="col-sm-2 control-label"> Наименование:&nbsp;</label>
+                                    <label class="col-sm-2 control-label"> Наименование:&nbsp;&nbsp;</label>
                                         <form:input path="name" type="text" class="form-control"
-                                                    id="name" style='width: 2em important;' onchange="checkParams()"/>
+                                                    id="name" style='width: 200px;' onchange="checkParams()"/>
                                         <form:errors path="name" class="control-label" />
                                 </div>
                             </div>
@@ -136,9 +142,9 @@
                         <spring:bind path="coefficient">
                             <div class="form-group ${status.error ? 'has-error' : ''}">
                                 <div class="col-sm-10">
-                                    <label class="col-sm-2 control-label">Коэффициент:&nbsp;</label>
+                                    <label class="col-sm-2 control-label">Коэффициент:&nbsp;&nbsp;</label>
                                         <form:input path="coefficient" type="text" class="form-control"
-                                                    id="coefficient" style='width: 2em important;'
+                                                    id="coefficient" style='width: 200px;'
                                                     placeholder="Необходимое количество продукта" onchange="checkParams()"/>
                                         <form:errors path="coefficient" class="control-label" />
                                 </div>

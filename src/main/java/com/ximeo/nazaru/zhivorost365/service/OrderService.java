@@ -12,4 +12,5 @@ public interface OrderService {
     List<Order> getOrders();
     void delOrder(Long id);
     Page<Order> getOrderPage(Pageable pageable);
+    long getUnreadedOrderCount();
 }

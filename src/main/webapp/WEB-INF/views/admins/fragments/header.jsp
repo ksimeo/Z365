@@ -35,7 +35,8 @@
 <spring:url value="/admins/mailing" var="urlMailing" />
 <spring:url value="/static/j_spring_security_logout" var="urlExit" />
 
-<spring:url value="/admins/users/1/pswrd" var="urlChangePassword" />
+<%--<spring:url value="/admins/users/1/pswrd" var="urlChangePassword" />--%>
+<spring:url value="/admins/changepassw" var="urlChangePassword" />
 <spring:url value="username" var="userName" />
 
 <body class="admins">
@@ -49,13 +50,15 @@
                 <li class="navbar-brand" style="padding-left: 5px; padding-top: 1px;">
                     <div class="btn-group pull-right" style="padding-left: 5px; padding-top: 1.1%;">
                         <button class="btn btn-basic btn-md" onclick="document.location='${urlHome}'">
-                            <img src="../../../../resources/images/png/home.png">&nbsp;На Главную</button>
+                            <img src="../../../../resources/images/png/home.png">&nbsp;На Главную
+                            <span class="badge">${count1}</span>
+                        </button>
                         <button class="btn btn-basic btn-md" onclick="document.location='${urlProducts}'">
                             <img src="../../../../resources/images/png/list.png"/>&nbsp;Продукция</button>
                         <button class="btn btn-basic btn-md" onclick="document.location='${urlQuestions}'">
                             <img src="../../../../resources/images/png/messages.png"/>&nbsp;Сообщения клиентов
                             <span class="badge">${count}</span>
-                            </button>
+                        </button>
                     </div>
                 </li>
                 <li>
@@ -108,26 +111,33 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Смена пароля</h4>
+                    <h4 class="modal-title">Изменение вашего пароля</h4>
                 </div>
-                <form method="post" action="/admins/changepassw">
-                    <div class="modal-body">
-                        <label>Текущий пароль:</label>
-                        <input type="password" name="currpassw" />
-                        <br/>
-                        <br/>
-                        <label>Новый пароль:</label>
-                        <input type="password" name="newpassw" />
-                        <br/>
-                        <br/>
-                        <label>Подтверждение нового пароля:</label>
-                        <input type="password" name="newpassw2" />
+                <div class="modal-body">
+                    <form:form method="post" class="form-horizontal" modelAttribute="passwForm" action="${urlChangePassword}">
+                            <form:input path="userId" type="hidden" name="currusr" value="${userId}"/>
+
+                            <spring:bind path="oldPassword">
+                                <label>Текущий пароль:&nbsp;</label>
+                                <form:input path="oldPassword" type="password" style="width: 200px;" name="oldPassword"/>
+                                <form:errors path="oldPassword" class="control-label" />
+                            </spring:bind>
+                            <br/>
+                            <br/>
+                            <spring:bind path="newPassword">
+                                <label>Новый пароль:&nbsp;</label>
+                                <form:input path="newPassword" type="password" style="width: 200px;" name="newPassword"/>
+                                <form:errors path="newPassword" class="contol-label" />
+                            </spring:bind>
+                            <br/>
+                            <label>Подтверждение нового пароля:&nbsp;</label>
+                            <input type="password" style="width: 200px;" name="newpassw2" />
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-success">Сохранить</button>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
                     </div>
-                </form>
+                </form:form>
             </div>
         </div>
     </div>

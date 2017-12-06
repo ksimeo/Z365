@@ -12,10 +12,15 @@
 <jsp:include page="fragments/header.jsp" />
 
 <div class="container">
-    <spring:url value="/admins/orders" var="userActionUrl" />
+    <spring:url value="/admins/irrs" var="userActionUrl" />
 
-    <c:if test="${not empty message}">
-        <div id="message" class="${message.type}">${message.message}</div>
+        <c:if test="${not empty msg}">
+        <div class="alert alert-${msg.type} alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <strong>${msg.message}</strong>
+        </div>
         </c:if>
 
         <h3>Способы орошения</h3>
@@ -36,10 +41,10 @@
                     <td>${irr.id}</td>
                     <td>${irr.name}</td>
                     <td>${irr.coefficient}</td>
-                    <td><button type="button" class="btn btn-warning btn-xsd" data-toggle="modal" data-target="#myModal${irr.id}">
-                        Изменить</button>
-                        <input type="button" value="Удалить" class="btn btn-danger btn-xs" onclick="document.location='/admins/irrs/'
-                                + ${irr.id} + '/delete'">
+                    <td><button type="button" class="btn btn-warning btn-xs" data-toggle="modal"
+                                data-target="#myModal${irr.id}">Изменить</button>
+                        <input type="button" value="Удалить" class="btn btn-danger btn-xs"
+                               onclick="document.location='/admins/irrs/' + ${irr.id} + '/delete'">
                         <div class="modal fade" id="myModal${irr.id}" role="dialog">
                             <div class="modal-dialog modal-lg">
                                 <div class="modal-content">
@@ -113,7 +118,7 @@
                     <div class="modal-body">
                         <form:form class="form-horizontal" method="POST" modelAttribute="irrForm" action="${userActionUrl}">
 
-                            <form:input path="id" type="hidden" id="id" />
+                            <form:input path="id" type="hidden" id="id" value="0" />
 
                             <spring:bind path="name">
                                 <div class="form-group ${status.error ? 'has-error' : ''}">
@@ -138,7 +143,7 @@
                                 </div>
                             </spring:bind>
                             <div class="modal-footer">
-                                <button type="submit" id="submit" class="btn btn-success btn-md">Добавить новую культуру</button>
+                                <button type="submit" id="submit" class="btn btn-success btn-md">Сохранить</button>
                                 <button type="button" class="btn btn-default btn-md" data-dismiss="modal">Отмена</button>
                             </div>
                         </form:form>

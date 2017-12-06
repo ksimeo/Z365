@@ -51,6 +51,11 @@ public class OrderServiceImpl implements OrderService {
         return ordrPgrDAO.findAll(pageable);
     }
 
+    @Transactional(readOnly = true)
+    public long getUnreadedOrderCount() {
+        return ordDAO.countUreaded().longValue();
+    }
+
     @Autowired
     public void setOrdDAO(OrderRepository ordDAO) {
         this.ordDAO = ordDAO;

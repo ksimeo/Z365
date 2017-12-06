@@ -45,6 +45,11 @@ public class OrderServiceMock implements OrderService {
     }
 
     @Override
+    public long getUnreadedOrderCount() {
+        return 0;
+    }
+
+    @Override
     public void delOrder(Long id) {
         orders.remove((int) id.longValue() - 1);
     }

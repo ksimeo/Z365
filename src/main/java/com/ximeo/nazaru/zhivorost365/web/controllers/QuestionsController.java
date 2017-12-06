@@ -1,8 +1,10 @@
 package com.ximeo.nazaru.zhivorost365.web.controllers;
 
 import com.google.common.collect.Lists;
+import com.ximeo.nazaru.zhivorost365.domain.dto.PasswInfo;
 import com.ximeo.nazaru.zhivorost365.domain.dto.QuestionGrid;
 import com.ximeo.nazaru.zhivorost365.domain.models.Question;
+import com.ximeo.nazaru.zhivorost365.service.OrderService;
 import com.ximeo.nazaru.zhivorost365.service.QuestionService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 public class QuestionsController {
     private static final Logger logger = LoggerFactory.getLogger(QuestionsController.class);
     private QuestionService questServ;
+    private OrderService ordServ;
 
     @RequestMapping(value = "/questions", method = RequestMethod.GET, params = "form")
     public String showQuestionForm(Model uiModel) {
@@ -34,9 +37,12 @@ public class QuestionsController {
     }
 
     @RequestMapping(value = "/admins/quests", method = RequestMethod.GET)
-    public String getQuestionsList() {
+    public String getQuestionsList(Model uiModel) {
         logger.info("getQuestionsList()");
 //        uiModel.addAttribute("qstns", questServ.getQuestions());
+        uiModel.addAttribute("count", questServ.getUnreadedQuestionCount());
+        uiModel.addAttribute("count1", ordServ.getUnreadedOrderCount());
+        uiModel.addAttribute("passwForm", new PasswInfo());
         return "admins/qstns";
     }
 
@@ -102,9 +108,13 @@ public class QuestionsController {
         return questionGrid;
     }
 
-
     @Autowired
     public void setQuestServ(QuestionService questServ) {
         this.questServ = questServ;
+    }
+
+    @Autowired
+    public void setOrdServ(OrderService ordServ) {
+        this.ordServ = ordServ;
     }
 }

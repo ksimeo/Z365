@@ -13,5 +13,5 @@ public interface QuestionService {
     List<Question> getQuestions();
     Page<Question> getQuestionPage(Pageable pageable);
     void delQuestion(long id);
-    long countUnreaded();
+    long getUnreadedQuestionCount();
 }

@@ -19,21 +19,20 @@
 
     <div class="container">
         <jsp:include page="fragments/lang.jsp"/>
-        <br/>
-        <br/>
-        <div class="well">
+        <div class="well well-sm">
             <%--<h2>Для входа в систему администрирования &nbsp;<img src="../../../resources/images/png/logo_mini.png"><br/>--%>
                 <%--введите ваши логин и пароль</h2>--%>
             <%--<hr/>--%>
             <form method="post" class="form-horizontal" action="${authUrl}">
-
+                <div class="form-group">
             <%--<spring:bind path="login">--%>
             <%--<div class="form-group ${status.error ? 'has-error' : ''}" >--%>
                 <div class="col-sm-10">
-                    <label class="col-sm-2 control-label"  for="username_or_email">Логин(e-mail):</label>
+                    <label class="col-sm-2 control-label"  for="username_or_email">Логин:&nbsp;</label>
                     <input id="username_or_email"
                                 name="j_username"
                                 type="text" class="form-control"
+                                placeholder="Ваш е-mail"
                                 style="width: 200px;" onchange="checkParams()"/>
                     <%--<errors path="login" class="control-label" />--%>
                 </div>
@@ -43,10 +42,11 @@
             <%--<spring:bind path="password">--%>
                 <%--<div class="form-group ${status.error ? 'has-error' : ''}" >--%>
                     <div class="col-sm-10">
-                        <label class="col-sm-2 control-label" for="password">Пароль:</label>
+                        <label class="col-sm-2 control-label" for="password">Пароль:&nbsp;</label>
                         <input type="password" class="form-control"
                                         id="password" style="width: 200px;"
-                                    name="j_password" onchange="checkParams()"/>
+                                        placeholder="Ваш пароль"
+                                        name="j_password" onchange="checkParams()"/>
                         <%--<form:errors path="password" class="control-label" />--%>
                     </div>
                 <%--</div>--%>
@@ -60,16 +60,9 @@
             </div>
                 <!--<co id="co_rememberMe"/>-->
             <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" name="commit" class="btn btn-lg btn-success">Войти</button>
+                <button type="submit" name="commit" class="btn btn-xs btn-success">Войти</button>
             </div>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
+        </div>
     </form>
 
     <jsp:include page="../custom/fragments/footer.jsp"/>

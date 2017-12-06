@@ -12,30 +12,32 @@
     Automatically registers a login form, BASIC authentication, anonymous authentication,
     logout services, remember-me and servlet-api-integration.
     -->
-    <!--<http auto-config="true" use-expressions="true">-->
-        <!--<form-login login-page="/login"-->
-                    <!--login-processing-url="/static/j_spring_security_check"-->
-                    <!--authentication-failure-url="/login"/>-->
-        <!--<logout logout-url="/static/j_spring_security_logout"/>-->
+    <http auto-config="true" use-expressions="true">
+        <form-login login-page="/login"
+                    login-processing-url="/static/j_spring_security_check"
+                    authentication-failure-url="/login"/>
+        <logout logout-url="/static/j_spring_security_logout"/>
         <!--<intercept-url pattern="/admins/**" access="hasRole('ROLE_ADMIN') and hasRole('ROLE_USER')" />-->
-        <!--&lt;!&ndash;<intercept-url pattern="/login" requires-channel="https"/>&ndash;&gt;-->
-        <!--&lt;!&ndash;<remember-me key="spitterKey" token-validity-seconds="2419200" />&ndash;&gt;-->
-    <!--</http>-->
+        <!--<intercept-url pattern="/**" access="hasRole('ROLE_ADMIN') and hasRole('ROLE_USER')" />-->
+
+        <!--<intercept-url pattern="/admins/**" requires-channel="https"/>-->
+        <!--<remember-me key="spitterKey" token-validity-seconds="2419200" />-->
+    </http>
 
     <!--&lt;!&ndash;<start id="authentication_manager"/>&ndash;&gt;-->
-    <!--<authentication-manager alias="authenticationManager">-->
-        <!--<authentication-provider>-->
-            <!--<user-service>-->
-                <!--<user name="nazarz@meta.ua" password="samurchuk"-->
-                      <!--authorities="ROLE_ADMIN"/>-->
-                <!--<user name="ksimeo@gmail.com" password="gorOD312"-->
-                      <!--authorities="ROLE_ADMIN"/>-->
-                <!--<user name="testuser" password="test"-->
-                      <!--authorities="ROLE_USER"/>-->
-            <!--</user-service>-->
-        <!--</authentication-provider>-->
-        <!--&lt;!&ndash;<authentication-provider user-service-ref="userService" />&ndash;&gt;-->
-    <!--</authentication-manager>-->
+    <authentication-manager alias="authenticationManager">
+        <authentication-provider>
+            <user-service>
+                <user name="nazarz@meta.ua" password="samarchuk"
+                      authorities="ROLE_ADMIN"/>
+                <user name="ksimeo@gmail.com" password="gorOD312"
+                      authorities="ROLE_ADMIN"/>
+                <user name="testuser" password="test"
+                      authorities="ROLE_USER"/>
+            </user-service>
+        </authentication-provider>
+        <!--<authentication-provider user-service-ref="userService" />-->
+    </authentication-manager>
 
     <!--<user-service id="userService">-->
         <!--<user name="nazarz@meta.ua" password="samurchuk"-->

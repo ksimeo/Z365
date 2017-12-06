@@ -14,6 +14,11 @@ public class Irrigation {
         //NOP
     }
 
+    @Transient
+    public boolean isNew() {
+        return (this.id == null || this.id == 0);
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getId() {

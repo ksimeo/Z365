@@ -1,9 +1,13 @@
 package com.ximeo.nazaru.zhivorost365.web.controllers;
 
+import com.ximeo.nazaru.zhivorost365.domain.dto.Message;
+import com.ximeo.nazaru.zhivorost365.domain.dto.PasswInfo;
 import com.ximeo.nazaru.zhivorost365.domain.models.CurrencyType;
 import com.ximeo.nazaru.zhivorost365.domain.models.MeasureUnit;
 import com.ximeo.nazaru.zhivorost365.domain.models.Product;
+import com.ximeo.nazaru.zhivorost365.service.OrderService;
 import com.ximeo.nazaru.zhivorost365.service.ProductService;
+import com.ximeo.nazaru.zhivorost365.service.QuestionService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
@@ -20,6 +25,9 @@ import java.util.List;
 public class ProductController {
 
     private static final Logger logger = LoggerFactory.getLogger(ProductController.class);
+
+    private QuestionService questServ;
+    private OrderService ordServ;
 
     private ProductService prodServ;
 
@@ -32,6 +40,9 @@ public class ProductController {
         uiModel.addAttribute("units", MeasureUnit.values());
         uiModel.addAttribute("currencies", CurrencyType.values());
         uiModel.addAttribute("prodForm", new Product());
+        uiModel.addAttribute("count", questServ.getUnreadedQuestionCount());
+        uiModel.addAttribute("count1", ordServ.getUnreadedOrderCount());
+        uiModel.addAttribute("passwForm", new PasswInfo());
         return "admins/prods";
     }
 
@@ -54,26 +65,54 @@ public class ProductController {
     }
 
     @RequestMapping(value = "/admins/prods", method = RequestMethod.POST)
-    public String saveProduct(Product prod, HttpServletResponse resp) {
-//        try {
-        logger.info("saveProduct(): {}", prod);
-            prodServ.addProduct(prod);
+    public String saveProduct(Product model, Model uiModel, HttpServletResponse resp, RedirectAttributes redAttr) {
+        logger.info("saveProduct(): {}", model);
+        Message msg = new Message();
+        try {
+            prodServ.addProduct(model);
+            msg.setType("success");
+            if (model.isNew()) msg.setMessage("Новый продукт добален.");
+            else msg.setMessage("Изменения были сохранены.");
+        } catch (Exception e) {
+            logger.error("saveProduct()");
+            msg.setType("danger");
+            msg.setMessage("Ошибка. Попробуйте повторить позже.");
+            uiModel.addAttribute("msg", msg);
+            return "admins/prods";
+        }
+            redAttr.addFlashAttribute("msg", msg);
             return "redirect:/admins/prods";
-//            resp.sendRedirect("/admin/prods");
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            return null;
-//        }
     }
 
     @RequestMapping(value = "/admins/prods/{id}/delete", method = RequestMethod.GET)
-    public String delProduct(@PathVariable("id")long id, HttpServletResponse resp) {
+    public String deleteProduct(@PathVariable("id")long id, HttpServletResponse resp, RedirectAttributes redAttr) {
+        logger.info("deleteProduct()");
+        Message msg = new Message();
+        try {
             prodServ.delProduct(id);
+            msg.setType("success");
+            msg.setMessage("Продукт успешно удален.");
+        } catch (Exception e) {
+            e.printStackTrace();
+            logger.error("deleteProduct()");
+            return "admins/prods";
+        }
+            redAttr.addFlashAttribute("msg", msg);
             return "forward:/admins/prods";
     }
 
     @Autowired
     public void setProdServ(ProductService prodServ) {
         this.prodServ = prodServ;
+    }
+
+    @Autowired
+    public void setQuestServ(QuestionService questServ) {
+        this.questServ = questServ;
+    }
+
+    @Autowired
+    public void setOrdServ(OrderService ordServ) {
+        this.ordServ = ordServ;
     }
 }

@@ -51,7 +51,7 @@ public class QuestionServiceImpl implements QuestionService {
     }
 
     @Override
-    public long countUnreaded() {
+    public long getUnreadedQuestionCount() {
         return questDAO.countUnreaded().longValue();
     }
 

@@ -3,6 +3,7 @@ package com.ximeo.nazaru.zhivorost365.web.controllers;
 import com.google.common.collect.Lists;
 import com.ximeo.nazaru.zhivorost365.domain.dto.OrderGrid;
 import com.ximeo.nazaru.zhivorost365.domain.dto.OrderInfo;
+import com.ximeo.nazaru.zhivorost365.domain.dto.PasswInfo;
 import com.ximeo.nazaru.zhivorost365.domain.dto.UserInfo;
 import com.ximeo.nazaru.zhivorost365.domain.models.Customer;
 import com.ximeo.nazaru.zhivorost365.domain.models.Order;
@@ -40,13 +41,15 @@ public class OrderController {
 
     @RequestMapping(value = "/admins/orders", method = RequestMethod.GET)
     public String showMainPage(Model uiModel, HttpServletRequest req, HttpSession session) {
-//        logger.info("showStartPage(): user with host {} has entered on start admins page.", req.getHeader("host"));
+        logger.info("showStartPage(): user with host {} has entered on start admins page.", req.getHeader("host"));
 //        User usr = new User("testuser", "test", UserRole.USER);
 //        usr.setId(1L);
 //        session.setAttribute("user", usr);
 //        List<Order> ordrs = ordServ.getOrders();
 //        uiModel.addAttribute("orders", ordrs);
-        uiModel.addAttribute("count", questServ.countUnreaded());
+        uiModel.addAttribute("count", questServ.getUnreadedQuestionCount());
+        uiModel.addAttribute("count1", ordServ.getUnreadedOrderCount());
+        uiModel.addAttribute("passwForm", new PasswInfo());
         return "admins/ordrs";
     }
 
@@ -179,6 +182,12 @@ public class OrderController {
 //        ordGrid.setTotalRecords(2);
 //        ordGrid.setOrderData(ordrs);
 //        return ordGrid;
+    }
+
+    private void fillInModel(Model uiModel) {
+        uiModel.addAttribute("count", questServ.getUnreadedQuestionCount());
+        uiModel.addAttribute("count1", ordServ.getUnreadedOrderCount());
+        uiModel.addAttribute("passwForm", new PasswInfo());
     }
 
     @Autowired

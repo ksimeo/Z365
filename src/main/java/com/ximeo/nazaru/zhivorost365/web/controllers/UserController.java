@@ -3,6 +3,8 @@ package com.ximeo.nazaru.zhivorost365.web.controllers;
 import com.ximeo.nazaru.zhivorost365.domain.dto.PasswInfo;
 import com.ximeo.nazaru.zhivorost365.domain.models.User;
 import com.ximeo.nazaru.zhivorost365.domain.models.UserRole;
+import com.ximeo.nazaru.zhivorost365.service.OrderService;
+import com.ximeo.nazaru.zhivorost365.service.QuestionService;
 import com.ximeo.nazaru.zhivorost365.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,6 +24,8 @@ public class UserController {
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
     private UserService usrServ;
+    private OrderService ordServ;
+    private QuestionService questServ;
 
     @RequestMapping(value="/admins/users" ,method = RequestMethod.GET)
     public String showUsersList(Model uiModel) {
@@ -30,6 +34,9 @@ public class UserController {
         uiModel.addAttribute("users", usrServ.getAllUsers());
         uiModel.addAttribute("usrForm", new User());
         uiModel.addAttribute("roles", UserRole.values());
+        uiModel.addAttribute("count", questServ.getUnreadedQuestionCount());
+        uiModel.addAttribute("count1", ordServ.getUnreadedOrderCount());
+        uiModel.addAttribute("passwForm", new PasswInfo());
         return "admins/usrs";
     }
 
@@ -82,5 +89,15 @@ public class UserController {
     @Autowired
     public void setUsrServ(UserService usrServ) {
         this.usrServ = usrServ;
+    }
+
+    @Autowired
+    public void setOrdServ(OrderService ordServ) {
+        this.ordServ = ordServ;
+    }
+
+    @Autowired
+    public void setQuestServ(QuestionService questServ) {
+        this.questServ = questServ;
     }
 }
