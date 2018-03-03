@@ -31,19 +31,23 @@
     <link href="${coreCss}" rel="stylesheet" />
 </head>
 
+<spring:message code="label_thanks_for_order" var="labelThanksForOrder"/>
+<spring:message code="label_one_more_order" var="labelOneMoreOrder"/>
+<spring:message code="label_ask_a_question" var="labelAskAQuestion"/>
+
 <body class="gratitude2">
 
 <div class="container">
     <br/>
     <br/>
-    <h1 class="title" style="color: #f7fff3;">Спасибо, за ваш заказ! Мы свяжемся с вами в ближайшее время :)</h1>
+    <h1 class="title" style="color: #f7fff3;">${labelThanksForOrder} :)</h1>
     <br/>
     <div class="col-sm-offset-2 col-sm-10 pull-right">
-        <button type="button" class="btn btn-success btn-md" onclick="document.location='/'">Заказать ещё</button>
+        <button type="button" class="btn btn-success btn-md" onclick="document.location='/'">${labelOneMoreOrder}</button>
         <button type="button" class="btn btn-default btn-md" onclick="document.location='http://zhivorost.com.ua/'">
             Перейти на Главную &nbsp;<img src="../../../resources/images/png/logo1.png"/></button>
         <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal1">
-            <img src="../../../resources/images/png/question.png">&nbsp;Задать вопрос</button>
+            <img src="../../../resources/images/png/question.png">&nbsp;${labelAskAQuestion}</button>
     </div>
     <jsp:include page="fragments/messageform.jsp"/>
 </div>

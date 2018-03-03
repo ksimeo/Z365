@@ -13,6 +13,16 @@
 
 <jsp:include page="../fragments/header.jsp" />
 
+<spring:message code="label_good_day" var="labelGoodDay"/>
+<spring:message code="label_good_morning" var="labelGoodMorning"/>
+<spring:message code="label_good_evening" var="labelGoodEvening"/>
+<spring:message code="label_good_night" var="labelGoodNight"/>
+<spring:message code="label_welcome" var="labelWelcome"/>
+<spring:message code="label_round_the_clock" var="labelRoundTheClock"/>
+<spring:message code="label_for_begining" var="labelForBegining"/>
+<spring:message code="label_ask_a_question" var="labelAskAQuestion"/>
+<spring:message code="label_ok" var="labelOk"/>
+
 <body>
     <div class="container">
         <jsp:include page="fragments/lang.jsp"/>
@@ -23,22 +33,22 @@
                 <%--Добрый день!--%>
                 <script language="JavaScript"> day = new Date();
                 hour = day.getHours();
-                if (hour >= 5 && hour < 12) greeting = "Доброе утро!";
+                if (hour >= 5 && hour < 12) greeting = "${labelGoodMorning}";
                 else {
-                    if (hour >= 12 && hour < 18) greeting = "Добрый день!";
+                    if (hour >= 12 && hour < 18) greeting = "${labelGoodDay}";
                     else {
-                        if (hour >= 18 && hour < 24) greeting = "Добрый вечер!";
+                        if (hour >= 18 && hour < 24) greeting = "${labelGoodEvening}";
                         else {
-                            if (hour >= 0 && hour < 5) greeting = "Доброй ночи!";
+                            if (hour >= 0 && hour < 5) greeting = "${labelGoodNight}";
                         }
                     }
                 }
                 document.write(greeting); </script>
             </h1>
-            <h1>Вас приветствует <img src="../../../resources/images/png/logo_mini.png"/></h1>
-            <h2>- круглосуточная служба заказа Биогумата Живорост&trade;!</h2>
+            <h1>${labelWelcome}<img src="../../../resources/images/png/logo_mini.png"/></h1>
+            <h2>- ${labelRoundTheClock}!</h2>
             <hr/>
-            <h3>Для начала введите ваш номер телефона:</h3>
+            <h3>${labelForBegining}:</h3>
 
         <div class="btn-group">
             <h3>
@@ -53,12 +63,10 @@
                   maxlength="2" tabindex="3" style="width: 35px;" /> -
             <sf:input type="text" path="parth4" customerName="parth4" size="1" placeholder="--"
                   maxlength="2"  tabindex="4" style="width: 35px;" /> &nbsp;
-            <button class="btn btn-md btn-success" type="submit">OK</button>
+            <button class="btn btn-md btn-success" type="submit">${labelOk}</button>
                 <!-- Trigger the modal with a button -->
             <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal1">
-                    <img src="../../../resources/images/png/question.png">&nbsp;Задать вопрос</button>
-            <%--<button type="button" class="btn btn-md btn-info" onclick="document.location='/questions?form'">--%>
-                    <%--<img src="../../../resources/images/png/question.png">&nbsp;Задать вопрос</button>--%>
+                    <img src="../../../resources/images/png/question.png">&nbsp;${labelAskAQuestion}</button>
             </sf:form>
             </h3>
             <br/>

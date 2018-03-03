@@ -29,19 +29,26 @@
     <link href="${coreCss}" rel="stylesheet" />
 </head>
 
+<spring:message code="label_thanks_for_your_message" var="labelThanksForYourMessage"/>
+<spring:message code="label_do_order_biogumat" var="labelDoOrderBiogumat"/>
+<spring:message code="label_back_to_main" var="labelBackToAMain"/>
+
 <body class="gratitude">
 
 <div class="container">
     <br/>
     <br/>
-    <h1 class="title" style="color: #f7fff3;">Спасибо, за ваше обращение!<br/>Мы свяжемся с вами в ближайшее время
+    <h1 class="title" style="color: #f7fff3;">${labelThanksForYourMessage}
         <span style="color: lawngreen !important;">:)</span></h1>
     <br/>
     <div class="col-sm-offset-2 col-sm-10 pull-right">
-        <button type="button" class="btn btn-success btn-md" onclick="document.location='/'">Заказать биогумат</button>
+        <button type="button" class="btn btn-success btn-md" onclick="document.location='/'">${labelDoOrderBiogumat}
+        </button>
         <button type="button" class="btn btn-default btn-md" onclick="document.location='http://zhivorost.com.ua/'">
-            Перейти на Главную &nbsp;<img src="../../../resources/images/png/logo1.png"/></button>
+            ${labelBackToAMain}&nbsp;<img src="../../../resources/images/png/logo1.png"/></button>
     </div>
 </div>
+
 <jsp:include page="fragments/footer.jsp" />
+
 </html>
