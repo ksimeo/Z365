@@ -1,12 +1,21 @@
 package com.ximeo.nazaru.zhivorost365.domain.dto;
 
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 public class PhoneInfo implements Serializable {
-
+    @Size(min = 2, max = 2)
+    @Pattern(regexp = "0-9")
     String parth1;
+    @Size(min = 3, max = 3)
+    @Pattern(regexp = "0-9")
     String parth2;
+    @Size(min = 2, max = 2)
+    @Pattern(regexp = "0-9")
     String parth3;
+    @Size(min = 2, max = 2)
+    @Pattern(regexp = "0-9")
     String parth4;
 
     public PhoneInfo() {

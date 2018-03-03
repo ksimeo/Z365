@@ -31,7 +31,7 @@
     <link href="${coreCss}" rel="stylesheet" />
 </head>
 
-<body class="custom gratitude2">
+<body class="gratitude2">
 
 <div class="container">
     <br/>

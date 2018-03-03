@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class StartController {
 
-    private final static Logger logger = LoggerFactory.getLogger(StartController.class);
+    private final Logger logger = LoggerFactory.getLogger(StartController.class);
 
     @RequestMapping(value = {"/", "/index"}, method = RequestMethod.GET)
     public String showStartCustomPage() {

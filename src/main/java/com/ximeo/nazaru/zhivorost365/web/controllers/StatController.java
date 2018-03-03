@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class StatController {
     private static final Logger logger = org.slf4j.LoggerFactory.getLogger(StatController.class);
+
     private QuestionService questServ;
     private OrderService ordServ;
 

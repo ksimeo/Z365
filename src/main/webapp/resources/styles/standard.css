@@ -17,12 +17,22 @@
     background-attachment: fixed;
     /*color: #f7fff3;*/
     /*font-family: Lucida Grande, Lucida Sans, Arial, sans-serif !important;*/
+    background-color: #5B735B;
+    background-position: 25%, 20%;
+    color: #154e15;
+    text-align: center;
 }
 
 .gratitude2 {
     background-image: url(../images/jpg/background1.jpeg);
     background-size: cover;
     background-attachment: fixed;
+    /*background-repeat: repeat !important;*/
+    /*background-size: 25%;*/
+    background-color: #5B735B;
+    background-position: 25%, 20%;
+    color: #154e15;
+    text-align: center;
     /*color: #f7fff3;*/
     /*font-family: Lucida Grande, Lucida Sans, Arial, sans-serif !important;*/
 }

@@ -5,15 +5,16 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 public class User implements Serializable {
     private static final long serialVersionUID = -6895249234865774622L;
     private Long id;
-    private String login;
+    private String username;
     private String name;
     private String surname;
     private String password;
-    private UserRole role;
+    private UserRole authority;
+    private boolean enabled;
     private Date regDate;
     private int version;
 
@@ -22,10 +23,10 @@ public class User implements Serializable {
         //NOP
     }
 
-    public User(String login, String password, UserRole role) {
-        this.login = login;
+    public User(String username, String password, UserRole authority) {
+        this.username = username;
         this.password = password;
-        this.role = role;
+        this.authority = authority;
         this.regDate = new Date();
     }
 
@@ -40,13 +41,13 @@ public class User implements Serializable {
         this.id = id;
     }
 
-    @Column(name = "LOGIN")
-    public String getLogin() {
-        return login;
+    @Column(name = "USERNAME")
+    public String getUsername() {
+        return username;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     @Column(name = "NAME")
@@ -76,13 +77,22 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    @Column(name = "ROLE")
-    public UserRole getRole() {
-        return role;
+    @Column(name = "AUTHORITY")
+    public UserRole getAuthority() {
+        return authority;
     }
 
-    public void setRole(UserRole role) {
-        this.role = role;
+    public void setAuthority(UserRole authority) {
+        this.authority = authority;
+    }
+
+    @Column(name = "ENABLED")
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 
     @Temporal(TemporalType.DATE)
@@ -109,12 +119,14 @@ public class User implements Serializable {
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", login='" + login + '\'' +
+                ", username='" + username + '\'' +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", password='" + password + '\'' +
-                ", role=" + role +
+                ", authority=" + authority +
+                ", enabled=" + enabled +
                 ", regDate=" + regDate +
+                ", version=" + version +
                 '}';
     }
 }

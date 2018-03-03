@@ -15,7 +15,7 @@
     <spring:url value="/admins/cultures" var="userActionUrl" />
 
         <c:if test="${not empty msg}">
-        <div class="alert alert-${msg.type} alert-dismissible" role="alert">
+        <div class="alert alert-${msg.type} alert-dismissible" authority="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -46,7 +46,7 @@
                                 data-target="#myModal${cult.id}">Изменить</button>
                         <input type="button" value="Удалить" class="btn btn-danger btn-xs"
                                onclick="document.location='/admin/cultures/' + ${cult.id} + '/delete'">
-                        <div class="modal fade" id="myModal${cult.id}" role="dialog">
+                        <div class="modal fade" id="myModal${cult.id}" authority="dialog">
                             <div class="modal-dialog modal-lg">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -116,7 +116,7 @@
         <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#myModal0">Добавить</button>
         <button class="btn btn-md" onclick="document.location='/admins/orders'">Вернуться на Главную</button>
         <!-- Modal -->
-        <div class="modal fade" id="myModal0" role="dialog">
+        <div class="modal fade" id="myModal0" authority="dialog">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">

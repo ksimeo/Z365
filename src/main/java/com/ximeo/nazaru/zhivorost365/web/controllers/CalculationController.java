@@ -23,7 +23,6 @@ public class CalculationController {
 
     private ProductService prodServ;
     private CultureService cultServ;
-
     private IrrigationService irrServ;
 
     @RequestMapping(value = "/calc", method = RequestMethod.GET)

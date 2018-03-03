@@ -103,7 +103,7 @@
 <%--Open Large Modal</button>--%>
 
 <%--<!-- Modal -->--%>
-<%--<div class="modal fade" id="myModal" role="dialog">--%>
+<%--<div class="modal fade" id="myModal" authority="dialog">--%>
 <%--<div class="modal-dialog modal-lg">--%>
 <%--<div class="modal-content">--%>
 <%--<div class="modal-header">--%>

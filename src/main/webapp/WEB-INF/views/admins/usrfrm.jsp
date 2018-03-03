@@ -33,13 +33,13 @@
         <form:input path="id" type="hidden" id="id" />
 
         <br/>
-        <spring:bind path="login">
+        <spring:bind path="username">
             <div class="form-group ${status.error ? 'has-error' : ''}">
                 <div class="col-sm-10">
                     <label class="col-sm-2 control-label">Логин: &nbsp;
-                        <form:input path="login" type="text" class="form-control"
-                                    id="login" style='width: 12em !important;' onkeyup="checkParams3()" />
-                        <form:errors path="login" class="control-label" />
+                        <form:input path="username" type="text" class="form-control"
+                                    id="username" style='width: 12em !important;' onkeyup="checkParams3()" />
+                        <form:errors path="username" class="control-label" />
                     </label>
                 </div>
             </div>
@@ -74,12 +74,12 @@
             <%--<output id="pass2warning"><br/></output>--%>
         <%--</div>--%>
         <br/>
-        <spring:bind path="role">
+        <spring:bind path="authority">
             <div class="form-group" >
                 <div class="col-sm-10">
                     <label class="col-sm-2 control-label">Статус пользователя:
-                        <select id="role" customerName="product" size="1" onchange="checkParams3()">
-                            <option customerName="role" id="role0" value="NaN">-Виберіть-статус-</option>
+                        <select id="authority" customerName="product" size="1" onchange="checkParams3()">
+                            <option customerName="authority" id="role0" value="NaN">-Виберіть-статус-</option>
                             <c:forEach items="${roles}" var="item">
                                 <option customerName="type" value="${item}">
                                         ${item.customerName}

@@ -29,7 +29,7 @@
     <link href="${coreCss}" rel="stylesheet" />
 </head>
 
-<body class="custom gratitude">
+<body class="gratitude">
 
 <div class="container">
     <br/>
@@ -38,7 +38,7 @@
         <span style="color: lawngreen !important;">:)</span></h1>
     <br/>
     <div class="col-sm-offset-2 col-sm-10 pull-right">
-        <button type="button" class="btn btn-success btn-md" onclick="document.location='/'">Заказать ещё</button>
+        <button type="button" class="btn btn-success btn-md" onclick="document.location='/'">Заказать биогумат</button>
         <button type="button" class="btn btn-default btn-md" onclick="document.location='http://zhivorost.com.ua/'">
             Перейти на Главную &nbsp;<img src="../../../resources/images/png/logo1.png"/></button>
     </div>

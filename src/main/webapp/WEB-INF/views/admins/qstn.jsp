@@ -25,7 +25,7 @@
     <hr/>
 
         <c:if test="${not empty msg}">
-            <div class="alert alert-${css} alert-dismissible" role="alert">
+            <div class="alert alert-${css} alert-dismissible" authority="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

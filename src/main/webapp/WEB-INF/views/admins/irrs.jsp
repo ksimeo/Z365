@@ -15,7 +15,7 @@
     <spring:url value="/admins/irrs" var="userActionUrl" />
 
         <c:if test="${not empty msg}">
-        <div class="alert alert-${msg.type} alert-dismissible" role="alert">
+        <div class="alert alert-${msg.type} alert-dismissible" authority="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -45,7 +45,7 @@
                                 data-target="#myModal${irr.id}">Изменить</button>
                         <input type="button" value="Удалить" class="btn btn-danger btn-xs"
                                onclick="document.location='/admins/irrs/' + ${irr.id} + '/delete'">
-                        <div class="modal fade" id="myModal${irr.id}" role="dialog">
+                        <div class="modal fade" id="myModal${irr.id}" authority="dialog">
                             <div class="modal-dialog modal-lg">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -108,7 +108,7 @@
         <button class="btn btn-md" onclick="document.location='/admins/orders'">Вернуться на Главную</button>
 
         <!-- Modal -->
-        <div class="modal fade" id="myModal0" role="dialog">
+        <div class="modal fade" id="myModal0" authority="dialog">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">

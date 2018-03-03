@@ -23,7 +23,7 @@
     форми або тільки номер телефону:</h2>
 <br/>
 
-<form:form role="form" class="form-horizontal" method="POST" modelAttribute="orderForm" action="${userActionUrl}">
+<form:form authority="form" class="form-horizontal" method="POST" modelAttribute="orderForm" action="${userActionUrl}">
 
     <div class="form-group">
         <label for="name" class="col-sm-2 control-label">Марка продукту:&nbsp;</label>

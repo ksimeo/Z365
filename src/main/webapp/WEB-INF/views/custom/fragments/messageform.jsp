@@ -11,7 +11,7 @@
 <spring:url value="/questions" var="userActionUrl" />
 
 <!-- Modal -->
-<div class="modal fade" id="myModal1" role="dialog">
+<div class="modal fade" id="myModal1" authority="dialog">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">

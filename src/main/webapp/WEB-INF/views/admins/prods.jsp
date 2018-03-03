@@ -20,7 +20,7 @@
 <div class="container">
     <spring:url value="/admins/prods" var="userActionUrl" />
     <c:if test="${not empty msg}">
-        <div class="alert alert-${msg.type} alert-dismissible" role="alert">
+        <div class="alert alert-${msg.type} alert-dismissible" authority="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -72,7 +72,7 @@
                             <input type="button" class="btn btn-danger btn-xs" value="Удалить"
                                onclick="document.location='/admins/prods/${prod.id}/delete'">
                         </div>
-                        <div class="modal fade" id="myModal${prod.id}" role="dialog">
+                        <div class="modal fade" id="myModal${prod.id}" authority="dialog">
                             <div class="modal-dialog modal-lg">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -179,7 +179,7 @@
     <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#myModal0">Добавить</button>
     <button class="btn btn-default btn-md" onclick="document.location='/admins/orders'">Вернуться на главную</button> &nbsp;
     <!-- Modal -->
-    <div class="modal fade" id="myModal0" role="dialog">
+    <div class="modal fade" id="myModal0" authority="dialog">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">

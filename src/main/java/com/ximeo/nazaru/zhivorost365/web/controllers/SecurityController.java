@@ -18,12 +18,10 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Locale;
 
 @Controller
-@RequestMapping(value = "/security")
 public class SecurityController {
     private final Logger logger = LoggerFactory.getLogger(SecurityController.class);
 
     private UserService usrServ;
-
     private MessageSource messageSource;
 
     @RequestMapping(value = "/loginfail", method = RequestMethod.GET)

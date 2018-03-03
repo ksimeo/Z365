@@ -42,10 +42,10 @@
                         <%--<td><c:if test="${not empty order.customer.surname}">${order.customer.surname}</c:if></td>--%>
                         <%--<td>${order.customer.phoneNumber}</td>--%>
                         <%--<td><c:if test="${not empty order.customer.email}">${order.customer.email}</c:if></td>--%>
-                    <td>${user.login}</td>
+                    <td>${user.username}</td>
                     <td>${user.name}</td>
                     <td>${user.surname}</td>
-                    <td>${user.role.name}</td>
+                    <td>${user.authority.name}</td>
                     <td>${user.regDate}</td>
                     <td>
                         <!-- Trigger the modal with a button -->
@@ -53,7 +53,7 @@
                                 data-target="#myModal${user.id}">Изменить</button>
                         <button class="btn btn-danger btn-xs" onclick="document.location='/admins/users/'+ ${user.id} +
                                 '/delete'">Удалить</button> &nbsp;
-                        <div class="modal fade" id="myModal${user.id}" role="dialog">
+                        <div class="modal fade" id="myModal${user.id}" authority="dialog">
                             <div class="modal-dialog modal-lg">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -66,16 +66,16 @@
 
                                             <form:input path="id" type="hidden" id="id"/>
 
-                                            <spring:bind path="login">
+                                            <spring:bind path="username">
                                             <div class="form-group ${status.error ? 'has-error' : ''}">
                                                 <div class="col-sm-10">
                                                     <label class="col-sm-2 control-label">Логин: &nbsp;</label>
-                                                    <form:input path="login" type="text" class="form-control"
-                                                                id="login" style='width: 200px;' min="0"
+                                                    <form:input path="username" type="text" class="form-control"
+                                                                id="username" style='width: 200px;' min="0"
                                                                 max="1000" onchange="checkParams()"
-                                                                value="${user.login}"
+                                                                value="${user.username}"
                                                                 disabled="true"/>
-                                                    <form:errors path="login" class="control-label" />
+                                                    <form:errors path="username" class="control-label" />
                                                 </div>
                                             </div>
                                             </spring:bind>
@@ -118,15 +118,15 @@
                                             <%--<span id="pass22"></span><br/>--%>
                                         <%--</div>--%>
 
-                                            <spring:bind path="role">
+                                            <spring:bind path="authority">
                                             <div class="form-group" >
                                                 <div class="col-sm-10">
                                                     <label class="col-sm-2 control-label">Статус пользователя:&nbsp;</label>
-                                                    <select id="role" name="product" size="1" onchange="checkParams3()">
-                                                        <option name="role" id="role0" value="NaN">-Виберіть-статус-</option>
+                                                    <select id="authority" name="product" size="1" onchange="checkParams3()">
+                                                        <option name="authority" id="role0" value="NaN">-Виберіть-статус-</option>
                                                         <c:forEach items="${roles}" var="item">
                                                             <option name="type" value="${item}"
-                                                                ${item == user.role ? 'selected' : ''}>${item.name}</option>
+                                                                ${item == user.authority ? 'selected' : ''}>${item.name}</option>
                                                             </c:forEach>
                                                         </select>
                                                     </div>
@@ -163,7 +163,7 @@
     </div>
     &nbsp;
     <!-- Modal -->
-    <div class="modal fade" id="myModal0" role="dialog">
+    <div class="modal fade" id="myModal0" authority="dialog">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
@@ -176,15 +176,15 @@
 
                     <form:input path="id" type="hidden" id="id" />
 
-                        <spring:bind path="login">
+                        <spring:bind path="username">
                             <div class="form-group ${status.error ? 'has-error' : ''}">
                                 <div class="col-sm-10">
                                     <label class="col-sm-2 control-label">Логин:&nbsp;</label>
-                                    <form:input path="login" type="text" class="form-control" id="login"
+                                    <form:input path="username" type="text" class="form-control" id="username"
                                                 style='width: 200px;' min="0" max="1000"
                                                 placeholder="Ваш логин"
                                                 onchange="checkParams()"/>
-                                    <form:errors path="login" class="control-label" />
+                                    <form:errors path="username" class="control-label" />
                                 </div>
                             </div>
                         </spring:bind>
@@ -238,12 +238,12 @@
                             <span id="pass22"></span><br/>
                         </div>
 
-                <spring:bind path="role">
+                <spring:bind path="authority">
                     <div class="form-group" >
                         <div class="col-sm-10">
                             <label class="col-sm-2 control-label">Статус пользователя:&nbsp;</label>
-                            <select id="role" name="product" size="1" onchange="checkParams3()">
-                                <option name="role" id="role0" value="NaN">-Виберіть-статус-</option>
+                            <select id="authority" name="product" size="1" onchange="checkParams3()">
+                                <option name="authority" id="role0" value="NaN">-Виберіть-статус-</option>
                                 <c:forEach items="${roles}" var="item">
                                     <option name="type" value="${item}">
                                             ${item.name}

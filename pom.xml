@@ -26,7 +26,7 @@
         <hibernate-jpa.version>1.0.0.Final</hibernate-jpa.version>
         <servlet-api.version>2.5</servlet-api.version>
         <hibernate.validator.version>5.1.0.Final</hibernate.validator.version>
-        <!--S e C U R I T Y-->
+        <!--S E C U R I T Y-->
         <spring-security.version>4.2.2.RELEASE</spring-security.version>
         <!--U T I L I T E S-->
         <guava.version>14.0.1</guava.version>
@@ -44,7 +44,6 @@
     </properties>
 
     <dependencyManagement>
-        <!--all spring dependencies -->
         <dependencies>
             <dependency>
                 <groupId>org.springframework</groupId>
@@ -78,10 +77,10 @@
             <artifactId>spring-context</artifactId>
         </dependency>
         <!--W E B-->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.springframework</groupId>-->
+            <!--<artifactId>spring-web</artifactId>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
@@ -97,17 +96,16 @@
             <artifactId>jstl</artifactId>
             <version>${jstl.version}</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/javax.servlet/jstl -->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
             <version>1.2</version>
         </dependency>
-        <!--<dependency>-->
-            <!--<groupId>javax.validation</groupId>-->
-            <!--<artifactId>validation-api</artifactId>-->
-            <!--<version>${jsr349.version}</version>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+            <version>${jsr349.version}</version>
+        </dependency>
         <!--S E C U R I T Y-->
         <dependency>
             <groupId>org.springframework.security</groupId>
@@ -195,43 +193,21 @@
             <!--<artifactId>jackson-mapper-asl</artifactId>-->
             <!--<version>${jackson-mapper.version}</version>-->
         <!--</dependency>-->
-        <dependency>
-            <groupId>org.codehaus.jackson</groupId>
-            <artifactId>jackson-mapper-lgpl</artifactId>
-            <version>${jackson-mapper.version}</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.codehaus.jackson</groupId>-->
+            <!--<artifactId>jackson-mapper-lgpl</artifactId>-->
+            <!--<version>${jackson-mapper.version}</version>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>${commons.io.version}</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
             <version>2.2.4</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.jadira.usertype/usertype.core -->
-        <!--<dependency>-->
-            <!--<groupId>org.jadira.usertype</groupId>-->
-            <!--<artifactId>usertype.core</artifactId>-->
-            <!--<version>3.0.0.GA</version>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-            <!--<groupId>org.jadira.usertype</groupId>-->
-            <!--<artifactId>usertype.spi</artifactId>-->
-            <!--<version>3.0.0.GA</version>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-            <!--<groupId>joda-time</groupId>-->
-            <!--<artifactId>joda-time</artifactId>-->
-            <!--<version>${joda.time.version}</version>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-            <!--<groupId>joda-time</groupId>-->
-            <!--<artifactId>joda-time-jsptags</artifactId>-->
-            <!--<version>${joda.time.jsptags.version}</version>-->
-        <!--</dependency>-->
         <!--T E S T I N G-->
         <dependency>
             <groupId>junit</groupId>
@@ -257,11 +233,17 @@
             <version>${jcl.slf4j.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${jcl.slf4j.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>${logback.version}</version>
+            <scope>runtime</scope>
         </dependency>
-
         <!--<dependency>-->
             <!--<groupId>org.slf4j</groupId>-->
             <!--<artifactId>slf4j-api</artifactId>-->

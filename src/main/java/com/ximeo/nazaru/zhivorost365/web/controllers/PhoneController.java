@@ -17,14 +17,15 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 @Controller
 public class PhoneController {
-    private static final Logger logger = LoggerFactory.getLogger(PhoneController.class);
+    private final Logger logger = LoggerFactory.getLogger(PhoneController.class);
 
     private CustomerService custServ;
 
-    @RequestMapping(value = {"/phone"}, method = RequestMethod.GET)
+    @RequestMapping(value = "/phone", method = RequestMethod.GET)
     public String showStartPage(Model uiModel, HttpServletRequest req,
                                 @CookieValue(value = "parth1", required = false) Cookie cookieParth1,
                                 @CookieValue(value = "parth2", required = false) Cookie cookieParth2,
@@ -47,11 +48,11 @@ public class PhoneController {
         return "custom/starting";
     }
 
-    @RequestMapping(value = {"/phone"}, method = RequestMethod.POST)
-    public String enterPhoneNumber(Model uiModel, PhoneInfo phoneInfo, HttpServletRequest req, HttpServletResponse resp,
-                                   HttpSession session) {
+    @RequestMapping(value = "/phone", method = RequestMethod.POST)
+    public String enterPhoneNumber(Model uiModel, @Valid PhoneInfo phoneInfo, HttpServletRequest req,
+                                   HttpServletResponse resp, HttpSession session) {
         String phone = phoneInfo.toString();
-        logger.info("showResultPage(): the phone number {} has been entered.");
+        logger.info("enterPhoneNumber(): the phone number {} has been entered.", phone);
 //        HttpSession session = req.getSession();
         session.setMaxInactiveInterval(60*20);
         session.setAttribute("phone", phone);
@@ -70,12 +71,12 @@ public class PhoneController {
         Customer cust = custServ.getById(phone);
         if (cust != null) {
             session.setAttribute("customer", cust);
-            logger.info("showResultPage(): The visitor has been recognised as a identified customer.");
+            logger.info("enterPhoneNumber(): The visitor has been recognised as a identified customer.");
             uiModel.addAttribute("questForm", new Question());
             return "custom/branch1";
         }
         session.setAttribute("phone", phone);
-        logger.info("showResultPage(): The visitor has been recognised as a new customer.");
+        logger.info("enterPhoneNumber(): The visitor has been recognised as a new customer.");
         return "redirect:/customers?form";
     }
 
