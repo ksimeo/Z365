@@ -6,7 +6,7 @@ $(function(){
         colNames:['#ID',
             'Дата',
             'Ім\'я',
-            'Фамилия',
+            'Прізвіще',
             'Тел',
             'e-mail',
             'Тип продукции',
@@ -43,7 +43,7 @@ $(function(){
         gridview: true,
         height: 335,
         width: 1150,
-        caption: 'Замовлення які поступили на ций момент4',
+        caption: 'Замовлення які поступили до останнього моменту',
         onSelectRow: function(id){
             document.location.href = "/admins/orders/" + id;
         }

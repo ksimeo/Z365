@@ -10,6 +10,12 @@
 
 <jsp:include page="fragments/header.jsp" />
 
+<spring:message code="label_for_changing_password" var="labelForChangingPassword"/>
+<spring:message code="label_old_password" var="labelOldPassword"/>
+<spring:message code="label_new_password" var="labelNewPassword"/>
+<spring:message code="label_repeat_new_password" var="labelRepeatNewPassword"/>
+<spring:message code="label_save" var="labelSave"/>
+<spring:message code="label_cancel" var="labelCancel"/>
 
 <body class="main" onload="checkParams2()">
 <div class="container">
@@ -17,7 +23,7 @@
 
     <div class="container">
         <br/>
-        <h3 class="title">Для смены пароля, пожалуйста, заполните поля ниже:</h3>
+        <h3 class="title">${labelForChangingPassword}:</h3>
         <br/>
         <br/>
     </div>
@@ -30,7 +36,7 @@
     <spring:bind path="oldPassword">
         <div class="form-group ${status.error ? 'has-error' : ''}">
             <div class="col-sm-10">
-                <label class="col-sm-2 control-label">Прежний пароль: &nbsp;
+                <label class="col-sm-2 control-label">${labelOldPassword}: &nbsp;
                     <form:input path="oldPassword" type="password" class="form-control"
                                 id="oldPassword" style='width: 12em !important;' />
                     <form:errors path="oldPassword" class="control-label" />
@@ -42,11 +48,11 @@
     <spring:bind path="newPassword">
         <div class="form-group ${status.error ? 'has-error' : ''}">
             <div class="col-sm-10">
-                <label class="col-sm-2 control-label">Новый пароль: &nbsp;
+                <label class="col-sm-2 control-label">${labelNewPassword}: &nbsp;
                     <form:input path="newPassword" type="password" class="form-control" id="newPassword" customerName="newPassword"
                                 style='width: 12em !important;' onkeyup="passValid2('form','pass1','pass12','submit');
                          isRavno('form','pass1','pass2','pass22', 'submit')" />
-                    <form:errors path="newPassword" class="control-label" placeholder = "Введите новый пароль"/>
+                    <form:errors path="newPassword" class="control-label"/>
                     <span id="pass11"><span id="pass12"></span></span><br/>
                 </label>
             </div>
@@ -55,7 +61,7 @@
     </spring:bind>
     <br/>
     <div class="col-sm-10">
-        <label class="col-sm-2 control-label">Еще раз новый пароль: &nbsp;
+        <label class="col-sm-2 control-label">${labelRepeatNewPassword}: &nbsp;
             <input type="password" class="form-control" id="pass2" customerName="pass2" style='width: 12em !important;'
                    onkeyup="isRavno('form','pass1','pass2','pass22','submit')" />
             <span id="pass22"></span><br/>
@@ -66,9 +72,9 @@
 <br/>
 <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" id="submit" class="btn-success btn-lg btn-primary pull-right">Сохранить</button> &nbsp;
+        <button type="submit" id="submit" class="btn-success btn-lg btn-primary pull-right">${labelSave}</button> &nbsp;
         <button type="button" onclick="document.location='/admin'" class="btn-success btn-lg btn-primary pull-right">
-            Отмена</button>
+            ${labelCancel}</button>
     </div>
 </div>
 <div>

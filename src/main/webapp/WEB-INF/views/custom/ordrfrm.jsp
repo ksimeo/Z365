@@ -15,7 +15,7 @@
 <spring:message code="label_select_product_type" var="labelSelectProductType"/>
 <spring:message code="label_product_quantity" var="labelProductQuantity"/>
 <spring:message code="label_required_quantity_of_product" var="labelRequiredQuantity"/>
-<spring:message code="label_do_order" var="labelMakeAnOrder"/>
+<spring:message code="label_do_order" var="labelDoAnOrder"/>
 <spring:message code="label_back_to_main" var="labelBackToMain"/>
 <spring:message code="label_ask_a_question" var="labelAskAQuestion"/>
 
@@ -61,11 +61,11 @@
     <br/>
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" id="submit" class="btn btn-success btn-md">${label_do_order}</button>
+            <button type="submit" id="submit" class="btn btn-success btn-md">${labelDoAnOrder}</button>
             &nbsp;
             <button type="button" onclick="document.location='/'" class="btn btn-md">${labelBackToMain}</button>
             &nbsp;
-            <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal">
+            <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal1">
                 <img src="../../../resources/images/png/question.png">&nbsp;${labelAskAQuestion}</button>
             <jsp:include page="fragments/messageform.jsp"/>
         </div>
@@ -77,8 +77,9 @@
     <%--TODO Предварительный подсчёт цены (on-line) --%>
 </form:form>
         </div>
-</div>
-<jsp:include page="fragments/footer.jsp" />
+        </div>
+        <jsp:include page="fragments/messageform.jsp"/>
+        <jsp:include page="fragments/footer.jsp" />
 
 </body>
 </html>

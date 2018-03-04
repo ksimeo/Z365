@@ -11,12 +11,14 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
+import org.apache.commons.io.IOUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
+import java.io.IOException;
+import java.io.InputStream;
 
 @Controller
 public class UserController {
@@ -55,7 +57,22 @@ public class UserController {
     }
 
     @RequestMapping(value = "/admins/users", method = RequestMethod.POST)
-    public String saveUser(User usr) {
+    public String saveUser(User usr, @RequestParam(value = "file", required = false) Part file) {
+
+        if (file != null) {
+            logger.info("File name: " + file.getName());
+            logger.info("File size: " + file.getSize());
+            logger.info("File content type: " + file.getContentType());
+            byte[] fileContent = null;
+            try {
+                InputStream inputStream = file.getInputStream();
+                if (inputStream == null) logger.info("File input stream is null");
+                fileContent = IOUtils.toByteArray(inputStream);
+                usr.setImage(fileContent);
+            } catch (IOException ex) {
+                logger.error("Error saving uploaded file");
+            }
+        }
         usrServ.addUser(usr);
         return "redirect:/admin/users";
     }
@@ -82,6 +99,16 @@ public class UserController {
             return "redirect:/admin";
         }
         return "private/chpswrd";
+    }
+
+    @RequestMapping(value = "/admins/users/{id}/image", method = RequestMethod.GET)
+    @ResponseBody
+    public byte[] downloadImage(@PathVariable("id") Long id) {
+        User usr = usrServ.getUser(id);
+        if (usr.getImage() != null) {
+            logger.info("Downloading photo for id: {} with size: {}", usr.getId(), usr.getImage());
+        }
+        return usr.getImage();
     }
 
     @Autowired

@@ -6,7 +6,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <div class="pull-right">
-        <h6><b><a href="phone?lang=uk_UA" style="color: yellowgreen">Українська</a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <h6><b>
+            <a href="phone?lang=uk_UA" style="color: yellowgreen">Українська</a>&nbsp;&nbsp;&nbsp;&nbsp;
             <a href="phone?lang=en_US" style="color: yellowgreen">English</a>&nbsp;&nbsp;&nbsp;&nbsp;
             <a href="phone?lang=ru_UA" style="color: yellowgreen">Русский</a></b></h6>
 </div>

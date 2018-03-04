@@ -11,6 +11,21 @@
 
 <jsp:include page="fragments/header.jsp" />
 
+<spring:message code="label_cultures_list" var="labelCulturesList"/>
+<spring:message code="label_id" var="labelId"/>
+<spring:message code="label_name_of_culture" var="labelNameOfCulture"/>
+<spring:message code="label_coefficient" var="labelCoefficient"/>
+<spring:message code="label_edit" var="labelEdit"/>
+<spring:message code="label_changing_culture" var="labelChangingCulture"/>
+<spring:message code="label_title" var="labelTitle"/>
+<spring:message code="label_save" var="labelSave"/>
+<spring:message code="label_cancel" var="labelCancel"/>
+<spring:message code="label_flow_coefficient" var="labelFlowCoefficient"/>
+<spring:message code="label_back_to_main" var="labelBackToMain"/>
+<spring:message code="label_add" var="labelAdd"/>
+<spring:message code="label_adding_new_culture" var="labelAddingNewCulture"/>
+<spring:message code="label_required_quantity_of_product" var="labelRequiredQuantityofProduct"/>
+
 <div class="container">
     <spring:url value="/admins/cultures" var="userActionUrl" />
 
@@ -23,16 +38,15 @@
         </div>
         </c:if>
 
-
-        <h3>Список культур для расчета количества продукта</h3>
+        <h3>${labelCulturesList}</h3>
 
         <c:if test="${not empty cults}">
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>#ID</th>
-                <th>Наименование культуры</th>
-                <th>Коэффициент</th>
+                <th>${labelId}</th>
+                <th>${labelNameOfCulture}</th>
+                <th>${labelCoefficient}</th>
                 <th>&nbsp;</th>
             </tr>
             </thead>
@@ -43,7 +57,7 @@
                     <td>${cult.name}</td>
                     <td>${cult.coefficient}</td>
                     <td><button type="button" class="btn btn-warning btn-xs" data-toggle="modal"
-                                data-target="#myModal${cult.id}">Изменить</button>
+                                data-target="#myModal${cult.id}">${labeEdit}</button>
                         <input type="button" value="Удалить" class="btn btn-danger btn-xs"
                                onclick="document.location='/admin/cultures/' + ${cult.id} + '/delete'">
                         <div class="modal fade" id="myModal${cult.id}" authority="dialog">
@@ -51,7 +65,7 @@
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        <h4 class="modal-title">Изменение культуры</h4>
+                                        <h4 class="modal-title">${labelChangingCulture}</h4>
                                     </div>
                                     <div class="modal-body">
                                         <form:form class="form-horizontal" method="POST" modelAttribute="cultForm"
@@ -62,7 +76,7 @@
                                             <spring:bind path="name">
                                                 <div class="form-group ${status.error ? 'has-error' : ''}">
                                                     <div class="col-sm-10">
-                                                        <label class="col-sm-2 control-label">Наименование:&nbsp;&nbsp;
+                                                        <label class="col-sm-2 control-label">${labelTitle}:&nbsp;&nbsp;
                                                         </label>
                                                             <form:input path="name" type="text" class="form-control"
                                                                         id="name" style='width: 200px;'
@@ -76,12 +90,12 @@
                                             <spring:bind path="coefficient">
                                                 <div class="form-group ${status.error ? 'has-error' : ''}">
                                                     <div class="col-sm-10">
-                                                        <label class="col-sm-2 control-label">Коэффициент:&nbsp;&nbsp;
+                                                        <label class="col-sm-2 control-label">${labelCoefficient}:&nbsp;&nbsp;
                                                         </label>
                                                         <form:input path="coefficient" type="text"
                                                                         class="form-control"  id="coefficient"
                                                                         style='width: 200px;'
-                                                                        placeholder="Коэффициент расхода"
+                                                                        placeholder="${labelFlowCoefficient}"
                                                                         value="${cult.coefficient}"
                                                                         onchange="checkParams()"/>
                                                             <form:errors path="coefficient" class="control-label" />
@@ -91,9 +105,9 @@
                                             <br/>
                                             <div class="modal-footer">
                                                 <button type="submit" id="submit" class="btn btn-success btn-md">
-                                                    Сохранить</button>
+                                                    ${labelSave}</button>
                                                 <button type="button" class="btn btn-default btn-md"
-                                                        data-dismiss="modal">Отмена</button>
+                                                        data-dismiss="modal">${labelCancel}</button>
                                             </div>
                                         </form:form>
                                     </div>
@@ -113,15 +127,15 @@
         <h4><i>В списке пока ничего нет.</i></h4>
         </c:if>
         <br/>
-        <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#myModal0">Добавить</button>
-        <button class="btn btn-md" onclick="document.location='/admins/orders'">Вернуться на Главную</button>
+        <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#myModal0">${labelAdd}</button>
+        <button class="btn btn-md" onclick="document.location='/admins/orders'">${labelBackToMain}</button>
         <!-- Modal -->
         <div class="modal fade" id="myModal0" authority="dialog">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Добавление новой культуры</h4>
+                        <h4 class="modal-title">${labelAddingNewCulture}</h4>
                     </div>
                     <div class="modal-body">
                         <form:form class="form-horizontal" method="POST" modelAttribute="cultForm" action="${userActionUrl}">
@@ -131,7 +145,7 @@
                         <spring:bind path="name">
                             <div class="form-group ${status.error ? 'has-error' : ''}">
                                 <div class="col-sm-10">
-                                    <label class="col-sm-2 control-label"> Наименование:&nbsp;&nbsp;</label>
+                                    <label class="col-sm-2 control-label">${labelName}:&nbsp;&nbsp;</label>
                                         <form:input path="name" type="text" class="form-control"
                                                     id="name" style='width: 200px;' onchange="checkParams()"/>
                                         <form:errors path="name" class="control-label" />
@@ -142,18 +156,19 @@
                         <spring:bind path="coefficient">
                             <div class="form-group ${status.error ? 'has-error' : ''}">
                                 <div class="col-sm-10">
-                                    <label class="col-sm-2 control-label">Коэффициент:&nbsp;&nbsp;</label>
+                                    <label class="col-sm-2 control-label">${labelCoefficient}:&nbsp;&nbsp;</label>
                                         <form:input path="coefficient" type="text" class="form-control"
                                                     id="coefficient" style='width: 200px;'
-                                                    placeholder="Необходимое количество продукта" onchange="checkParams()"/>
+                                                    placeholder="${labelRequiredQuantityofProduct}"
+                                                    onchange="checkParams()"/>
                                         <form:errors path="coefficient" class="control-label" />
                                 </div>
                             </div>
                         </spring:bind>
 
                     <div class="modal-footer">
-                        <button type="submit" id="submit" class="btn btn-success btn-md">Сохранить</button>
-                        <button type="button" class="btn btn-default btn-md" data-dismiss="modal">Отмена</button>
+                        <button type="submit" id="submit" class="btn btn-success btn-md">${labelSave}</button>
+                        <button type="button" class="btn btn-default btn-md" data-dismiss="modal">${labelCancel}</button>
                     </div>
                     </form:form>
                 </div>

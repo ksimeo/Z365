@@ -11,7 +11,20 @@
 
 <jsp:include page="fragments/header.jsp" />
 
-<%--<body>--%>
+<spring:message code="label_logbook" var="labelLogBook"/>
+<spring:message code="label_id" var="labelId"/>
+<spring:message code="label_date" var="labelDate"/>
+<spring:message code="label_name" var="labelName"/>
+<spring:message code="label_surname" var="labelSurname"/>
+<spring:message code="label_phone" var="labelPhone"/>
+<spring:message code="label_email" var="labelEMail"/>
+<spring:message code="label_product_type" var="labelProductType"/>
+<spring:message code="label_count" var="labelCount"/>
+<spring:message code="label_units" var="labelUnits"/>
+<spring:message code="label_state" var="labelState"/>
+<spring:message code="label_viewed" var="labelViewed"/>
+<spring:message code="label_no_orders" var="labelNoOrder"/>
+<spring:message code="label_no_indicated" var="labelNoIndicated"/>
 
 <div class="container">
 
@@ -27,67 +40,64 @@
     </div>
     </c:if>
 
-    <%--<marquee loop="1"><h3>Доброго ранку, Назару Васильовічу! На цей час, поступило 2 нових замовлення!</h3>
-    </marquee>--%>
+    <%--<h2>${labelLogBook}</h2>--%>
 
-    <h2>Заказы поступившие на данный момент</h2>
-
-    <c:if test="${not empty orders}">
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th>#ID</th>
-            <th>Дата</th>
-            <th>Имя</th>
-            <th>Фамилия</th>
-            <th>Тел.</th>
-            <th>e-mail</th>
-            <th>Тип продукции</th>
-            <th>Кол-во</th>
-            <th></th>
-            <th>Единицы изм.</th>
-            <th>Состояние</th>
-        </tr>
-        </thead>
-        <tbody>
-        <c:forEach var="order" items="${orders}">
-            <tr ${order.reviewDate != null ? 'style="color: grey"' : ''}>
-                <td>${order.id}</td>
-                <td><fmt:formatDate pattern="dd.MM.yy HH:mm" value="${order.createDate}"/></td>
-                <td>
-                    <c:if test="${not empty order.customer.name}">${order.customer.name}</c:if>
-                    <c:if test="${empty order.customer.name}">Не указано</c:if>
-                </td>
-                <td>
-                    <c:if test="${not empty order.customer.surname}">${order.customer.surname}</c:if>
-                    <c:if test="${empty order.customer.surname}">Не указано</c:if>
-                </td>
-                <td>${order.customer.phoneNumber}</td>
-                <td>
-                    <c:if test="${not empty order.customer.email}">${order.customer.email}</c:if>
-                    <c:if test="${empty order.customer.email}">Не указано</c:if>
-                </td>
-                <td>${order.product.name}</td>
-                <td>${order.amount}</td>
-                <td>&nbsp; x &nbsp;</td>
-                <td>${order.product.units.name}</td>
-                <td>
-                    <c:if test="${not empty order.reviewDate}">
-                        <fmt:formatDate pattern="dd.MM.yy HH:mm" value="${order.reviewDate}"/></c:if>
-                    <c:if test="${empty order.reviewDate}"><button class="btn btn-info btn-sm" onclick=" ">
-                        Просмотрено</button></c:if>
-                </td>
-            </tr>
-        </c:forEach>
-        </tbody>
-    </table>
-    </c:if>
-    <c:if test="${empty orders}">
-    <br/>
-    <br/>
-    <br/>
-    <h4><i>На данный момент заказов не поступало.</i></h4>
-    </c:if>
+    <%--<c:if test="${not empty orders}">--%>
+    <%--<table class="table table-striped">--%>
+        <%--<thead>--%>
+        <%--<tr>--%>
+            <%--<th>${labelId}</th>--%>
+            <%--<th>${labelDate}</th>--%>
+            <%--<th>${labelName}</th>--%>
+            <%--<th>${labelSurname}</th>--%>
+            <%--<th>${labelPhone}</th>--%>
+            <%--<th>${labelEMail}</th>--%>
+            <%--<th>${labelProductType}</th>--%>
+            <%--<th>${labelCount}</th>--%>
+            <%--<th></th>--%>
+            <%--<th>${labelUnits}</th>--%>
+            <%--<th>${labelState}</th>--%>
+        <%--</tr>--%>
+        <%--</thead>--%>
+        <%--<tbody>--%>
+        <%--<c:forEach var="order" items="${orders}">--%>
+            <%--<tr ${order.reviewDate != null ? 'style="color: grey"' : ''}>--%>
+                <%--<td>${order.id}</td>--%>
+                <%--<td><fmt:formatDate pattern="dd.MM.yy HH:mm" value="${order.createDate}"/></td>--%>
+                <%--<td>--%>
+                    <%--<c:if test="${not empty order.customer.name}">${order.customer.name}</c:if>--%>
+                    <%--<c:if test="${empty order.customer.name}">${labelNoIndicated}</c:if>--%>
+                <%--</td>--%>
+                <%--<td>--%>
+                    <%--<c:if test="${not empty order.customer.surname}">${order.customer.surname}</c:if>--%>
+                    <%--<c:if test="${empty order.customer.surname}">${labelNoIndicated}</c:if>--%>
+                <%--</td>--%>
+                <%--<td>${order.customer.phoneNumber}</td>--%>
+                <%--<td>--%>
+                    <%--<c:if test="${not empty order.customer.email}">${order.customer.email}</c:if>--%>
+                    <%--<c:if test="${empty order.customer.email}">${labelNoIndicated}</c:if>--%>
+                <%--</td>--%>
+                <%--<td>${order.product.name}</td>--%>
+                <%--<td>${order.amount}</td>--%>
+                <%--<td>&nbsp; x &nbsp;</td>--%>
+                <%--<td>${order.product.units.name}</td>--%>
+                <%--<td>--%>
+                    <%--<c:if test="${not empty order.reviewDate}">--%>
+                        <%--<fmt:formatDate pattern="dd.MM.yy HH:mm" value="${order.reviewDate}"/></c:if>--%>
+                    <%--<c:if test="${empty order.reviewDate}"><button class="btn btn-info btn-sm" onclick=" ">--%>
+                        <%--${labelViewed}</button></c:if>--%>
+                <%--</td>--%>
+            <%--</tr>--%>
+        <%--</c:forEach>--%>
+        <%--</tbody>--%>
+    <%--</table>--%>
+    <%--</c:if>--%>
+    <%--<c:if test="${empty orders}">--%>
+    <%--<br/>--%>
+    <%--<br/>--%>
+    <%--<br/>--%>
+    <%--<h4><i>${labelNoOrder}.</i></h4>--%>
+    <%--</c:if>--%>
 
     <jsp:include page="fragments/footer.jsp" />
 </html>

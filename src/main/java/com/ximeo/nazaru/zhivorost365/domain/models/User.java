@@ -14,6 +14,7 @@ public class User implements Serializable {
     private String surname;
     private String password;
     private UserRole authority;
+    private byte[] image;
     private boolean enabled;
     private Date regDate;
     private int version;
@@ -84,6 +85,17 @@ public class User implements Serializable {
 
     public void setAuthority(UserRole authority) {
         this.authority = authority;
+    }
+
+    @Basic(fetch = FetchType.LAZY)
+    @Lob
+    @Column(name = "IMAGE")
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 
     @Column(name = "ENABLED")
